@@ -8,22 +8,16 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class DataManager: NSObject {
     override init() {
         super.init()
     }
 
-    func getPointsListWithToken(_ pageToken: String, radius: Int, types: String, completion: @escaping (_ responseData: Any, _ error: NSError?) -> Void) {
+    func getPointsListWithToken(_ pageToken: String, radius: Int, types: String, completion: @escaping (_ responseData: APIPlaces?, _ error: NSError?) -> Void) {
         let latitude = (LocationManager.sharedInstance().currentLocation?.coordinate.latitude)!
         let longitude = (LocationManager.sharedInstance().currentLocation?.coordinate.longitude)!
-
-//        https://maps.googleapis.com/maps/api/place/nearbysearch/json?
-//        key=AIzaSyCxuVJdnxwfiFIHURJN8rlgdKgiVR6iUPs
-//        &radius=1000
-//        &types=
-//        &pagetoken=
-//        &location=37.337710,-122.031878
 
         let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
         let params: [String: Any] = ["location": String(format: "%f,%f", latitude, longitude),
@@ -31,9 +25,12 @@ class DataManager: NSObject {
                                      "types": types,
                                      "pagetoken": pageToken,
                                      "key": googleAPIKey]
-        //"key": ConfigurationManager().retrieveStringFromPlist("googleAPIKey")]
         processServiceRequest(.get, url: url, params: params) { (response, error) in
-            completion(response, error)
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            completion(response as? APIPlaces, nil)
         }
     }
     
@@ -51,8 +48,7 @@ class DataManager: NSObject {
                     completion(response, error)
                     return
                 }
-                print("\(response.result.value)")
-                completion(response, nil)
-            })
+                completion(response.result.value, nil)
+        })
     }
 }

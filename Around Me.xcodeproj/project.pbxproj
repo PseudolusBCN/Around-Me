@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2CF6A5A58C22CFF58E679903 /* Pods_Around_MeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2622EC7AA881ADB45B357F62 /* Pods_Around_MeTests.framework */; };
+		3D06444721B306580088AB2C /* APIPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D06444621B306580088AB2C /* APIPlaces.swift */; };
 		3D37D2CD21B0203C002F7467 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D37D2CC21B0203C002F7467 /* Constants.swift */; };
 		3D94207021AEF13C00569238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94206F21AEF13C00569238 /* AppDelegate.swift */; };
 		3D94207221AEF13C00569238 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94207121AEF13C00569238 /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		2622EC7AA881ADB45B357F62 /* Pods_Around_MeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Around_MeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36DD0EC90025C79DA5EB7730 /* Pods-Around MeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Around MeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Around MeTests/Pods-Around MeTests.release.xcconfig"; sourceTree = "<group>"; };
+		3D06444621B306580088AB2C /* APIPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPlaces.swift; sourceTree = "<group>"; };
 		3D37D2CC21B0203C002F7467 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D94206C21AEF13C00569238 /* Around Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Around Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D94206F21AEF13C00569238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 				F8C4B93445108273119D4800 /* Pods-Around MeUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3D06444821B308A10088AB2C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3D06444621B306580088AB2C /* APIPlaces.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		3D37D2CA21B02015002F7467 /* Misc */ = {
@@ -234,6 +244,7 @@
 		3DF1A62521AFEC3000A1E8A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3D06444821B308A10088AB2C /* API */,
 				3DF1A62721AFECED00A1E8A5 /* Place.swift */,
 			);
 			path = Models;
@@ -449,12 +460,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Around Me/Pods-Around Me-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Localize/Localize.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -472,6 +491,7 @@
 				3D94207221AEF13C00569238 /* ViewController.swift in Sources */,
 				3D9420A921AEF70D00569238 /* MainPresenter.swift in Sources */,
 				3D9420A221AEF4D700569238 /* BaseViewController.swift in Sources */,
+				3D06444721B306580088AB2C /* APIPlaces.swift in Sources */,
 				3D94207021AEF13C00569238 /* AppDelegate.swift in Sources */,
 				3D9420B121AEF7C200569238 /* LocationManager.swift in Sources */,
 				3D94207821AEF13C00569238 /* Around_Me.xcdatamodeld in Sources */,

@@ -30,8 +30,8 @@ class MainViewController: BaseViewController {
             guard error == nil else {
                 return
             }
-
-            
+            print("RESPONSE OK")
+            print(response)
         }
     }
 }

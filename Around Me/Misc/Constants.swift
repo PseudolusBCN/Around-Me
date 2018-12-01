@@ -11,6 +11,3 @@ import UIKit
 public let notificationLocationUpdated = "notificationLocationUpdated"
 
 public let googleAPIKey = "AIzaSyCxuVJdnxwfiFIHURJN8rlgdKgiVR6iUPs"
-
-class Constants: NSObject {
-}
