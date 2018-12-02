@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Around Me/Managers/LocationManager.swift"
-            timestampString = "565385707.193499"
+            timestampString = "565458561.8692631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Around Me/Managers/DataManager.swift"
-            timestampString = "565385707.195649"
+            timestampString = "565458561.869885"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -58,11 +58,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Around Me/Managers/DataManager.swift"
-            timestampString = "565385707.196102"
+            timestampString = "565458561.87079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "processServiceRequest(_:url:params:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Around Me/Managers/DataManager.swift"
+            timestampString = "565458561.871479"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "getPointsListWithToken(_:radius:types:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Around Me/Managers/DataManager.swift"
+            timestampString = "565458561.872113"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "processServiceRequest(_:url:params:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Around_Me.DataManager.(processServiceRequest in _09D51E718F1601CD75BE5CE669A4DC2D)(_: Alamofire.HTTPMethod, url: Swift.String, params: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Around Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/miquelmasip/Documents/_WorkSpace/Around%20Me/Around%20Me/Managers/DataManager.swift"
+                  timestampString = "565458562.535278"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "1514">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Around_Me.APIPlaces&gt;) -&gt; () in Around_Me.DataManager.(processServiceRequest in _09D51E718F1601CD75BE5CE669A4DC2D)(_: Alamofire.HTTPMethod, url: Swift.String, params: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Around Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/miquelmasip/Documents/_WorkSpace/Around%20Me/Around%20Me/Managers/DataManager.swift"
+                  timestampString = "565458562.538964"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Around Me/Managers/DataManager.swift"
+            timestampString = "565458565.2781889"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "processServiceRequest(_:url:params:completion:)"
             landmarkType = "7">
          </BreakpointContent>
