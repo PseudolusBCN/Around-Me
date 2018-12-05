@@ -12,7 +12,7 @@ class ConfigurationManager: NSObject {
     override init() {
         super.init()
     }
-
+    
     func retrieveStringFromPlist(_ key: String) -> String {
         if let path = Bundle.main.path(forResource: "Configuration", ofType: "plist"), let plist = FileManager.default.contents(atPath: path) {
             do {
