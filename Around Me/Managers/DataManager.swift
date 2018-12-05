@@ -53,12 +53,6 @@ class DataManager: NSObject {
     
     // MARK: - Private methods
     private func processErrorRequest(_ status: requestStatus) -> NSError {
-        
-        print( "hello.world".localize() )
-        print( "hello.world".localized )
-
-        
-        
         switch status {
         case .overQueryLimit:
             return NSError(domain: "NSURLErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "generic.error.request.overQuery".localized])
