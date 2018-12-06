@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class MainViewController: BaseViewController {
+//    let presenter = MainPresenter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideNavBar()
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        showProgressHUD(title: "Updating location")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -24,6 +34,8 @@ class MainViewController: BaseViewController {
     @objc private func getData() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
 
+        showProgressHUD(title: "Downloadind data")
+
         let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
         var nextPageToken = ""
         DataManager().getPointsListWithToken(nextPageToken, radius: radius!, types: "") { (response, error) in
@@ -32,6 +44,8 @@ class MainViewController: BaseViewController {
             }
             print("RESPONSE OK")
             print(response)
+            nextPageToken = (response?.nextPageToken)!
+            self.hideProgressHUD()
         }
     }
 }

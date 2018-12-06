@@ -9,5 +9,11 @@
 import UIKit
 
 class MainPresenter: NSObject {
-    
+//    let interactor = MainInteractor()
+//    let router = MainRouter()
+//    let view = MainViewController()
+
+    override init() {
+        super.init()
+    }
 }

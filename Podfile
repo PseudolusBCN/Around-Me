@@ -9,9 +9,9 @@ target 'Around Me' do
   pod 'Alamofire'
   pod 'ObjectMapper'
   pod 'Localize'
+  pod 'MBProgressHUD'
   #pod 'SwiftyJSON'
   #pod 'Firebase/Core'
-  #pod 'MBProgressHUD'
 
   target 'Around MeTests' do
     inherit! :search_paths
