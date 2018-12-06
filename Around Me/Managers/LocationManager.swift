@@ -30,8 +30,8 @@ class LocationManager: NSObject {
     override init() {
         super.init()
         
-        //locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
     }
     
     func startUpdatingLocation() {
@@ -40,7 +40,6 @@ class LocationManager: NSObject {
             locationManager.requestWhenInUseAuthorization()
             break
         case .authorizedAlways, .authorizedWhenInUse:
-            locationManager.delegate = self
             locationManager.startUpdatingLocation()
             break
         }

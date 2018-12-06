@@ -10,8 +10,6 @@ import UIKit
 import MBProgressHUD
 
 class MainViewController: BaseViewController {
-//    let presenter = MainPresenter()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,15 +34,15 @@ class MainViewController: BaseViewController {
 
         showProgressHUD(title: "Downloadind data")
 
+        let placesManager = PlacesManager.sharedInstance()
+        
         let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
-        var nextPageToken = ""
-        DataManager().getPointsListWithToken(nextPageToken, radius: radius!, types: "") { (response, error) in
+        DataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, types: "") { (response, error) in
             guard error == nil else {
                 return
             }
-            print("RESPONSE OK")
-            print(response)
-            nextPageToken = (response?.nextPageToken)!
+            
+            placesManager.addPlacesFromData(response!)
             self.hideProgressHUD()
         }
     }
