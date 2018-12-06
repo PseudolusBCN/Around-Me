@@ -11,7 +11,7 @@ import CoreLocation
 
 class LocationManager: NSObject {
     private static var instance: LocationManager?
-    
+
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     
@@ -54,19 +54,20 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.last!
         
-        let notification = Notification(name: Notification.Name(rawValue: notificationLocationUpdated), object: nil)
-        NotificationCenter.default.post(notification)
+        NotificationsManager().sendNotification(notificationLocationUpdated)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("LocationManager: Error \(error)")
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .notDetermined, .restricted, .denied:
+            NotificationsManager().sendNotification(notificationLocationUnauthorized)
             break
         case .authorizedAlways, .authorizedWhenInUse:
+            NotificationsManager().sendNotification(notificationLocationAuthorized)
             locationManager.startUpdatingLocation()
             break
         }

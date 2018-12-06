@@ -12,9 +12,11 @@ import MBProgressHUD
 class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.hideNavBar()
+
+        hideNavBar()
+
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(locationUnauthorized), name: NSNotification.Name(rawValue: notificationLocationUnauthorized), object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -26,9 +28,12 @@ class MainViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
 
+    @objc private func locationUnauthorized() {
+    }
+    
     @objc private func getData() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
 
@@ -44,6 +49,8 @@ class MainViewController: BaseViewController {
             
             placesManager.addPlacesFromData(response!)
             self.hideProgressHUD()
+            
+            self.navigationController?.present(TabBarViewController(), animated: true)
         }
     }
 }
