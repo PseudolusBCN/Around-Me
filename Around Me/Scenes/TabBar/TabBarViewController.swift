@@ -18,7 +18,7 @@ class TabBarViewController: UITabBarController {
 
     private func configTabBar() {
         let listViewController = PlacesListViewController()
-        let favouritesViewController = PlacesFavouritesViewController()
+        let favouritesViewController = FavouritesListViewController()
         let settingsViewController = SettingsViewController()
         
         listViewController.tabBarItem = UITabBarItem(title: "main.tabBar.list".localized, image: UIImage(), tag: 0)

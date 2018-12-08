@@ -10,7 +10,7 @@ target 'Around Me' do
   pod 'ObjectMapper'
   pod 'Localize'
   pod 'MBProgressHUD'
-  #pod 'SwiftyJSON'
+  #pod 'DZNEmptyDataSet'
   #pod 'Firebase/Core'
 
   target 'Around MeTests' do

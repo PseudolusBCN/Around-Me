@@ -16,19 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-//        let localize = Localize.shared
-//        localize.update(provider: .json)
-//        localize.update(fileName: "Translations")
-//        localize.update(defaultLanguage: "en")
-//        localize.update(language: "en")
 
         Localize.update(provider: .json)
         Localize.update(fileName: "Translations")
         Localize.update(defaultLanguage: "en")
         Localize.update(language: "en")
 
-        
         LocationManager.sharedInstance().startUpdatingLocation()
         
         launchMainScreen()

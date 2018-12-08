@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Localize
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "main.appName".localized
+        setNavBarTitle("main.appName".localized)
     }
 }

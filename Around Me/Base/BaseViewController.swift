@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize
 import MBProgressHUD
 
 class BaseViewController: UIViewController {
@@ -47,6 +48,10 @@ class BaseViewController: UIViewController {
     
     func hideNavBar() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    func setNavBarTitle(_ title: String) {
+        navigationItem.title = "main.appName".localized
     }
     
     // MARK: - MBProgressHUD

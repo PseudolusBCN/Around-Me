@@ -1,5 +1,5 @@
 //
-//  PlacesFavouritesViewController.swift
+//  FavouritesListViewController.swift
 //  Around Me
 //
 //  Created by Miquel Masip on 06/12/2018.
@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
+import DZNEmptyDataSet
 
-class PlacesFavouritesViewController: UIViewController {
+class FavouritesListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "main.appName".localized
+        setNavBarTitle("main.appName".localized)
     }
 }
