@@ -9,48 +9,32 @@
 import UIKit
 import MBProgressHUD
 
-class MainViewController: BaseViewController {
+class MainViewController: BaseViewController, InterfaceMainViewController {
+    var presenter: InterfaceMainPresenter?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         hideNavBar()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(locationUnauthorized), name: NSNotification.Name(rawValue: notificationLocationUnauthorized), object: nil)
+        presenter?.setupObservers()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        showProgressHUD(title: "Updating location")
+        //presenter?.showHUD("generic.hud.updatingLocation".localized)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self)
+        //presenter?.removeObservers()
     }
 
-    @objc private func locationUnauthorized() {
-    }
+//    @objc private func locationUnauthorized() {
+//    }
     
-    @objc private func getData() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
-
-        showProgressHUD(title: "Downloadind data")
-
-        let placesManager = PlacesManager.sharedInstance()
-        
-        let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
-        DataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, types: "") { (response, error) in
-            guard error == nil else {
-                return
-            }
-            
-            placesManager.addPlacesFromData(response!)
-            self.hideProgressHUD()
-            
-            self.navigationController?.present(TabBarViewController(), animated: true)
-        }
+    deinit {
     }
 }

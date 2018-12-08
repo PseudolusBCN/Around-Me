@@ -8,6 +8,10 @@
                 "unknown": "ERROR: UNKNOWN ERROR"
             }
         },
+        "hud": {
+            "updatingLocation": "Updating location",
+            "downloadingData": "Downloading data"
+        }
     },
     "main": {
         "appName": "Around Me",

@@ -8,10 +8,11 @@
 
 import UIKit
 
-class MainRouter: NSObject {
-//    let presenter = MainPresenter()
-
-    override init() {
-        super.init()
+class MainRouter: InterfaceMainRouter {
+    weak var presenter: InterfaceMainPresenter?
+    weak var view: UIViewController?
+    
+    func gotoMainScene() {
+        view?.navigationController?.present(TabBarViewController(), animated: true)
     }
 }

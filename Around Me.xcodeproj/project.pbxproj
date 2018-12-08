@@ -11,6 +11,11 @@
 		3D06444721B306580088AB2C /* APIPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D06444621B306580088AB2C /* APIPlaces.swift */; };
 		3D1681AE21BC00FE007ABC72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D1681AD21BC00FE007ABC72 /* Assets.xcassets */; };
 		3D1681B221BC23ED007ABC72 /* LocalizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1681B121BC23ED007ABC72 /* LocalizeManager.swift */; };
+		3D1681B521BC2FEC007ABC72 /* InterfaceMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1681B421BC2FEC007ABC72 /* InterfaceMainViewController.swift */; };
+		3D1681B721BC303E007ABC72 /* InterfaceMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1681B621BC303E007ABC72 /* InterfaceMainPresenter.swift */; };
+		3D1681B921BC3046007ABC72 /* InterfaceMainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1681B821BC3046007ABC72 /* InterfaceMainInteractor.swift */; };
+		3D1681BB21BC304D007ABC72 /* InterfaceMainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1681BA21BC304D007ABC72 /* InterfaceMainRouter.swift */; };
+		3D1681BD21BC39DF007ABC72 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1681BC21BC39DF007ABC72 /* MainBuilder.swift */; };
 		3D37D2CD21B0203C002F7467 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D37D2CC21B0203C002F7467 /* Constants.swift */; };
 		3D409DDE21B992BA0001BBF0 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D409DDD21B992BA0001BBF0 /* PlacesManager.swift */; };
 		3D409DE121B99AF60001BBF0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D409DDF21B99AF60001BBF0 /* TabBarViewController.swift */; };
@@ -79,6 +84,11 @@
 		3D06444621B306580088AB2C /* APIPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPlaces.swift; sourceTree = "<group>"; };
 		3D1681AD21BC00FE007ABC72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D1681B121BC23ED007ABC72 /* LocalizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeManager.swift; sourceTree = "<group>"; };
+		3D1681B421BC2FEC007ABC72 /* InterfaceMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceMainViewController.swift; sourceTree = "<group>"; };
+		3D1681B621BC303E007ABC72 /* InterfaceMainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceMainPresenter.swift; sourceTree = "<group>"; };
+		3D1681B821BC3046007ABC72 /* InterfaceMainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceMainInteractor.swift; sourceTree = "<group>"; };
+		3D1681BA21BC304D007ABC72 /* InterfaceMainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceMainRouter.swift; sourceTree = "<group>"; };
+		3D1681BC21BC39DF007ABC72 /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
 		3D37D2CC21B0203C002F7467 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D409DDD21B992BA0001BBF0 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
 		3D409DDF21B99AF60001BBF0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +199,17 @@
 				3D5BA33021B9337600A1D985 /* APIPlacePlusCode.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		3D1681B321BC2FC9007ABC72 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				3D1681B421BC2FEC007ABC72 /* InterfaceMainViewController.swift */,
+				3D1681B621BC303E007ABC72 /* InterfaceMainPresenter.swift */,
+				3D1681B821BC3046007ABC72 /* InterfaceMainInteractor.swift */,
+				3D1681BA21BC304D007ABC72 /* InterfaceMainRouter.swift */,
+			);
+			path = Interfaces;
 			sourceTree = "<group>";
 		};
 		3D37D2CA21B02015002F7467 /* Misc */ = {
@@ -361,8 +382,10 @@
 		3D9420AC21AEF72300569238 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3D1681B321BC2FC9007ABC72 /* Interfaces */,
 				3D9420A521AEF6FA00569238 /* MainViewController.xib */,
 				3D9420A421AEF6FA00569238 /* MainViewController.swift */,
+				3D1681BC21BC39DF007ABC72 /* MainBuilder.swift */,
 				3D9420A821AEF70D00569238 /* MainPresenter.swift */,
 				3D9420AA21AEF71C00569238 /* MainInteractor.swift */,
 				3D5BA33421B939DC00A1D985 /* MainRouter.swift */,
@@ -644,6 +667,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D409DF721B99CCD0001BBF0 /* PlaceDetailViewController.swift in Sources */,
+				3D1681B721BC303E007ABC72 /* InterfaceMainPresenter.swift in Sources */,
 				3D5BA32521B932DA00A1D985 /* APIPlace.swift in Sources */,
 				3DF1A62A21AFEDFF00A1E8A5 /* ConfigurationManager.swift in Sources */,
 				3D9420A921AEF70D00569238 /* MainPresenter.swift in Sources */,
@@ -651,6 +675,7 @@
 				3D5BA32921B9333700A1D985 /* APIPlaceViewport.swift in Sources */,
 				3D5BA33321B934F200A1D985 /* PlaceLocation.swift in Sources */,
 				3D9420A221AEF4D700569238 /* BaseViewController.swift in Sources */,
+				3D1681BB21BC304D007ABC72 /* InterfaceMainRouter.swift in Sources */,
 				3DFE536821BBD79D00593A0F /* BaseCollectionViewController.swift in Sources */,
 				3D06444721B306580088AB2C /* APIPlaces.swift in Sources */,
 				3D94207021AEF13C00569238 /* AppDelegate.swift in Sources */,
@@ -662,15 +687,18 @@
 				3D5BA32721B9332700A1D985 /* APIPlaceGeometry.swift in Sources */,
 				3DF1A62821AFECED00A1E8A5 /* Place.swift in Sources */,
 				3D409DE121B99AF60001BBF0 /* TabBarViewController.swift in Sources */,
+				3D1681B521BC2FEC007ABC72 /* InterfaceMainViewController.swift in Sources */,
 				3DF1A62C21AFEE1300A1E8A5 /* DataManager.swift in Sources */,
 				3D9420AB21AEF71C00569238 /* MainInteractor.swift in Sources */,
 				3D409DED21B99B990001BBF0 /* PlacesListViewController.swift in Sources */,
 				3D9420A621AEF6FA00569238 /* MainViewController.swift in Sources */,
 				3D5BA32D21B9335A00A1D985 /* APIPlaceOpeningHours.swift in Sources */,
 				3D409DFA21B9A0BA0001BBF0 /* NotificationsManager.swift in Sources */,
+				3D1681B921BC3046007ABC72 /* InterfaceMainInteractor.swift in Sources */,
 				3D37D2CD21B0203C002F7467 /* Constants.swift in Sources */,
 				3D409DF321B99CB70001BBF0 /* FavouritesListViewController.swift in Sources */,
 				3DFE536C21BBDF8C00593A0F /* PlaceCollectionViewCell.swift in Sources */,
+				3D1681BD21BC39DF007ABC72 /* MainBuilder.swift in Sources */,
 				3D5BA32F21B9336900A1D985 /* APIPlacePhoto.swift in Sources */,
 				3D409DDE21B992BA0001BBF0 /* PlacesManager.swift in Sources */,
 				3D409DE821B99B730001BBF0 /* SettingsViewController.swift in Sources */,

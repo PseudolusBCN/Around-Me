@@ -44,11 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Private methods
     private func launchMainScreen() {
-        let viewController = MainViewController()
-        let navigationController = UINavigationController.init(rootViewController: viewController)
-
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationController
+        window?.rootViewController = MainBuilder().main()
         window?.makeKeyAndVisible()
     }
 

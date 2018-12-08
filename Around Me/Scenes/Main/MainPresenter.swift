@@ -8,12 +8,31 @@
 
 import UIKit
 
-class MainPresenter: NSObject {
-//    let interactor = MainInteractor()
-//    let router = MainRouter()
-//    let view = MainViewController()
-
-    override init() {
-        super.init()
+class MainPresenter: InterfaceMainPresenter {
+    var router: InterfaceMainRouter?
+    var interactor: InterfaceMainInteractor?
+    weak var view: InterfaceMainViewController?
+    
+    func setupObservers() {
+        interactor?.setupObservers()
     }
+    
+    func removeObservers() {
+        interactor?.removeObservers()
+    }
+    
+    func showHUD(_ title: String) {
+        print("showHUD: \(title)")
+        //view.showProgressHUD(title: title)
+    }
+
+    func hideHUD() {
+        //view.hideProgressHUD()
+        print("hideHUD")
+    }
+    
+    func gotoMainScene() {
+        router?.gotoMainScene()
+    }
+
 }
