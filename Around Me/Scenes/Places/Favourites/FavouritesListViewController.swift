@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import DZNEmptyDataSet
-import DZNEmptyDataSet
 
 class FavouritesListViewController: BaseViewController {
     override func viewDidLoad() {

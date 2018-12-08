@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2CF6A5A58C22CFF58E679903 /* Pods_Around_MeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2622EC7AA881ADB45B357F62 /* Pods_Around_MeTests.framework */; };
 		3D06444721B306580088AB2C /* APIPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D06444621B306580088AB2C /* APIPlaces.swift */; };
+		3D1681AE21BC00FE007ABC72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D1681AD21BC00FE007ABC72 /* Assets.xcassets */; };
+		3D1681B221BC23ED007ABC72 /* LocalizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1681B121BC23ED007ABC72 /* LocalizeManager.swift */; };
 		3D37D2CD21B0203C002F7467 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D37D2CC21B0203C002F7467 /* Constants.swift */; };
 		3D409DDE21B992BA0001BBF0 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D409DDD21B992BA0001BBF0 /* PlacesManager.swift */; };
 		3D409DE121B99AF60001BBF0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D409DDF21B99AF60001BBF0 /* TabBarViewController.swift */; };
@@ -34,7 +36,6 @@
 		3D5BA33D21B9516F00A1D985 /* HelveticaNeue.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 3D5BA33C21B9516F00A1D985 /* HelveticaNeue.ttc */; };
 		3D94207021AEF13C00569238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94206F21AEF13C00569238 /* AppDelegate.swift */; };
 		3D94207821AEF13C00569238 /* Around_Me.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D94207621AEF13C00569238 /* Around_Me.xcdatamodeld */; };
-		3D94207A21AEF13E00569238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D94207921AEF13E00569238 /* Assets.xcassets */; };
 		3D94207D21AEF13E00569238 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D94207B21AEF13E00569238 /* LaunchScreen.storyboard */; };
 		3D94208821AEF13E00569238 /* Around_MeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94208721AEF13E00569238 /* Around_MeTests.swift */; };
 		3D94209321AEF13E00569238 /* Around_MeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94209221AEF13E00569238 /* Around_MeUITests.swift */; };
@@ -76,6 +77,8 @@
 		2622EC7AA881ADB45B357F62 /* Pods_Around_MeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Around_MeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36DD0EC90025C79DA5EB7730 /* Pods-Around MeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Around MeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Around MeTests/Pods-Around MeTests.release.xcconfig"; sourceTree = "<group>"; };
 		3D06444621B306580088AB2C /* APIPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPlaces.swift; sourceTree = "<group>"; };
+		3D1681AD21BC00FE007ABC72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3D1681B121BC23ED007ABC72 /* LocalizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeManager.swift; sourceTree = "<group>"; };
 		3D37D2CC21B0203C002F7467 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D409DDD21B992BA0001BBF0 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
 		3D409DDF21B99AF60001BBF0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +105,6 @@
 		3D94206C21AEF13C00569238 /* Around Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Around Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D94206F21AEF13C00569238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D94207721AEF13C00569238 /* Around_Me.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Around_Me.xcdatamodel; sourceTree = "<group>"; };
-		3D94207921AEF13E00569238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D94207C21AEF13E00569238 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D94207E21AEF13E00569238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D94208321AEF13E00569238 /* Around MeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Around MeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,9 +264,9 @@
 		3D77E48E21B856B400C0418B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3D1681AD21BC00FE007ABC72 /* Assets.xcassets */,
 				3D5BA33B21B9515C00A1D985 /* Fonts */,
 				3D77E48F21B8570400C0418B /* Translations */,
-				3D94207921AEF13E00569238 /* Assets.xcassets */,
 				3DF1A62321AFEB2700A1E8A5 /* Configuration.plist */,
 			);
 			path = Resources;
@@ -372,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF1A62921AFEDFF00A1E8A5 /* ConfigurationManager.swift */,
+				3D1681B121BC23ED007ABC72 /* LocalizeManager.swift */,
 				3DF1A62B21AFEE1300A1E8A5 /* DataManager.swift */,
 				3D9420B021AEF7C200569238 /* LocationManager.swift */,
 				3D409DDD21B992BA0001BBF0 /* PlacesManager.swift */,
@@ -527,7 +530,7 @@
 				3D409DF421B99CB70001BBF0 /* FavouritesListViewController.xib in Resources */,
 				3DF1A62421AFEB2700A1E8A5 /* Configuration.plist in Resources */,
 				3D5BA33D21B9516F00A1D985 /* HelveticaNeue.ttc in Resources */,
-				3D94207A21AEF13E00569238 /* Assets.xcassets in Resources */,
+				3D1681AE21BC00FE007ABC72 /* Assets.xcassets in Resources */,
 				3D409DFC21B9A9ED0001BBF0 /* Translations-en.json in Resources */,
 				3D409DF821B99CCD0001BBF0 /* PlaceDetailViewController.xib in Resources */,
 				3D409DE921B99B730001BBF0 /* SettingsViewController.xib in Resources */,
@@ -615,7 +618,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Around Me/Pods-Around Me-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize/Localize.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -623,7 +626,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -644,6 +647,7 @@
 				3D5BA32521B932DA00A1D985 /* APIPlace.swift in Sources */,
 				3DF1A62A21AFEDFF00A1E8A5 /* ConfigurationManager.swift in Sources */,
 				3D9420A921AEF70D00569238 /* MainPresenter.swift in Sources */,
+				3D1681B221BC23ED007ABC72 /* LocalizeManager.swift in Sources */,
 				3D5BA32921B9333700A1D985 /* APIPlaceViewport.swift in Sources */,
 				3D5BA33321B934F200A1D985 /* PlaceLocation.swift in Sources */,
 				3D9420A221AEF4D700569238 /* BaseViewController.swift in Sources */,

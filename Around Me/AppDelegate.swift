@@ -17,10 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        Localize.update(provider: .json)
-        Localize.update(fileName: "Translations")
-        Localize.update(defaultLanguage: "en")
-        Localize.update(language: "en")
+        LocalizeManager().setup()
 
         LocationManager.sharedInstance().startUpdatingLocation()
         

@@ -7,6 +7,7 @@ target 'Around Me' do
 
   # Pods for Around Me
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'ObjectMapper'
   pod 'Localize'
   pod 'MBProgressHUD'

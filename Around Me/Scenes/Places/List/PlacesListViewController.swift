@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class PlacesListViewController: BaseCollectionViewController {
     @IBOutlet weak var placesCollectionView: UICollectionView!
@@ -44,7 +45,10 @@ extension PlacesListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let place = placesManager.places[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: placeCollectionCell, for: indexPath) as! PlaceCollectionViewCell
+
+        cell.placeIcon.af_setImage(withURL: URL(string: place.icon)!)
         cell.placeLabel.text = place.name
+
         return cell
     }
 }

@@ -21,9 +21,9 @@ class TabBarViewController: UITabBarController {
         let favouritesViewController = FavouritesListViewController()
         let settingsViewController = SettingsViewController()
         
-        listViewController.tabBarItem = UITabBarItem(title: "main.tabBar.list".localized, image: UIImage(), tag: 0)
-        favouritesViewController.tabBarItem = UITabBarItem(title: "main.tabBar.favourites".localized, image: UIImage(), tag: 1)
-        settingsViewController.tabBarItem = UITabBarItem(title: "main.tabBar.settings".localized, image: UIImage(), tag: 2)
+        listViewController.tabBarItem = UITabBarItem(title: "main.tabBar.list".localized, image: UIImage(named:"IcoList"), tag: 0)
+        favouritesViewController.tabBarItem = UITabBarItem(title: "main.tabBar.favourites".localized, image: UIImage(named:"IcoFavourites"), tag: 1)
+        settingsViewController.tabBarItem = UITabBarItem(title: "main.tabBar.settings".localized, image: UIImage(named:"IcoSettings"), tag: 2)
 
         let tabBarList = [listViewController, favouritesViewController, settingsViewController]
         viewControllers = tabBarList.map { UINavigationController(rootViewController: $0) }
