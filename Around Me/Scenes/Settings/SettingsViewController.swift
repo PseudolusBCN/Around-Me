@@ -9,13 +9,13 @@
 import UIKit
 import Localize
 
-class SettingsViewController: BaseViewController, InterfaceSettingsViewController {
+class SettingsViewController: UIViewController, InterfaceSettingsViewController {
     var presenter: InterfaceSettingsPresenter?
     
     init() {
         super.init(nibName: "SettingsViewController", bundle: nil)
         
-        setNavBarTitle("main.appName".localized)
+        navigationItem.title = "main.appName".localized
         tabBarItem.title = "main.tabBar.settings".localized
         tabBarItem.image = UIImage(named:"IcoSettings")
     }

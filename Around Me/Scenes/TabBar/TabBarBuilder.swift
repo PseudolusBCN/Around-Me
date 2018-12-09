@@ -10,11 +10,7 @@ import UIKit
 
 class TabBarBuilder: BaseBuilder {
     func main() -> UIViewController {
-        let modules: [BaseBuilder] = [
-            PlacesListBuilder(),
-            FavouritesListBuilder(),
-            SettingsBuilder(),
-            ]
+        let modules: [BaseBuilder] = [PlacesListBuilder(), FavouritesListBuilder(), SettingsBuilder()]
         
         let tabbarController = UITabBarController()
         tabbarController.viewControllers = modules.map { $0.main() }

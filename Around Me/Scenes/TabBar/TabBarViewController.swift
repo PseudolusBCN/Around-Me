@@ -9,5 +9,5 @@
 import UIKit
 import Localize
 
-class TabBarViewController {
+class TabBarViewController: UIViewController {
 }

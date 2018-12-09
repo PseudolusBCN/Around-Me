@@ -16,6 +16,9 @@ protocol InterfacePlacesListPresenter: class {
     var router: InterfacePlacesListRouter? { get set }
     var interactor: InterfacePlacesListInteractorInput? { get set }
     var view: InterfacePlacesListViewController? { get set }
+    
+    func setupCollectionView(_ collectionView: UICollectionView, viewController: UIViewController)
+    func collectionViewReuseIdentifier() -> String
 }
 
 protocol InterfacePlacesListInteractorInput: class {

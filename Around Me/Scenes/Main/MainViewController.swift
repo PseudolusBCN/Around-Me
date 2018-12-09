@@ -9,32 +9,30 @@
 import UIKit
 import MBProgressHUD
 
-class MainViewController: BaseViewController, InterfaceMainViewController {
+class MainViewController: UIViewController, InterfaceMainViewController {
     var presenter: InterfaceMainPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        hideNavBar()
-
         presenter?.setupObservers()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        //presenter?.showHUD("generic.hud.updatingLocation".localized)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        //presenter?.removeObservers()
+        HUDManager().showProgressHUD(title: "generic.hud.updatingLocation".localized)
     }
 
-//    @objc private func locationUnauthorized() {
-//    }
-    
-    deinit {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        presenter?.removeObservers()
     }
 }

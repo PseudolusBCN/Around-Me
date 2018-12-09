@@ -9,13 +9,13 @@
 import UIKit
 import Localize
 
-class FavouritesListViewController: BaseViewController, InterfaceFavouritesListViewController {
+class FavouritesListViewController: UIViewController, InterfaceFavouritesListViewController {
     var presenter: InterfaceFavouritesListPresenter?
     
     init() {
         super.init(nibName: "FavouritesListViewController", bundle: nil)
 
-        setNavBarTitle("main.appName".localized)
+        navigationItem.title = "main.appName".localized
         tabBarItem.title = "main.tabBar.favourites".localized
         tabBarItem.image = UIImage(named:"IcoFavourites")
     }

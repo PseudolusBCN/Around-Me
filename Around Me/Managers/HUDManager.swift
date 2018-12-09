@@ -1,0 +1,62 @@
+//
+//  HUDManager.swift
+//  Around Me
+//
+//  Created by Miquel Masip on 09/12/2018.
+//  Copyright © 2018 Miquel Masip. All rights reserved.
+//
+
+import UIKit
+import MBProgressHUD
+
+class HUDManager: NSObject {
+    var backgroundView: UIView?
+
+    override init() {
+        super.init()
+    }
+
+    func showProgressHUD(_ view: UIView) {
+        _ = createHUD(title: "", subtitle: "")
+    }
+
+    func showProgressHUD(title: String) {
+        _ = createHUD(title: title, subtitle: "")
+    }
+
+    func showProgressHUD(subtitle: String) {
+        _ = createHUD(title: "", subtitle: subtitle)
+    }
+
+    func showProgressHUD(title: String, subtitle: String) {
+        _ = createHUD(title: title, subtitle: subtitle)
+    }
+
+    func hideProgressHUD() {
+        MBProgressHUD.hide(for: (UIApplication.topViewController()?.view)!, animated: true)
+        backgroundView?.removeFromSuperview()
+    }
+
+    // MARK: - Private methods
+    private func createHUD(title: String, subtitle: String) -> MBProgressHUD {
+        hideProgressHUD()
+
+        backgroundView = UIView(frame: UIScreen.main.bounds)
+        backgroundView?.backgroundColor = UIColor.black
+        backgroundView?.alpha = 0.5
+        UIApplication.topViewController()?.view.addSubview(backgroundView!)
+
+        let hud = MBProgressHUD.showAdded(to: (UIApplication.topViewController()?.view)!, animated: true)
+        hud.mode = .indeterminate
+        hud.isUserInteractionEnabled = false
+
+        if title.count > 0 {
+            hud.label.text = title
+        }
+        if subtitle.count > 0 {
+            hud.detailsLabel.text = subtitle
+        }
+
+        return hud
+    }
+}

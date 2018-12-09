@@ -19,9 +19,6 @@ protocol InterfaceMainPresenter: class {
     
     func setupObservers()
     func removeObservers()
-    
-    func showHUD(_ title: String)
-    func hideHUD()
 }
 
 protocol InterfaceMainInteractorInput: class {

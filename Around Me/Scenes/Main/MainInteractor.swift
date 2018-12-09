@@ -32,8 +32,8 @@ class MainInteractor: InterfaceMainInteractorInput {
     @objc private func getData() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
         
-        //*****presenter?.showHUD("generic.hud.downloadingData".localized)
-        
+        HUDManager().showProgressHUD(title: "generic.hud.downloadingData".localized)
+
         let placesManager = PlacesManager.sharedInstance()
         
         let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
@@ -44,10 +44,8 @@ class MainInteractor: InterfaceMainInteractorInput {
             
             placesManager.addPlacesFromData(response!)
             
-//            self.hideProgressHUD()
-//
-//            self.navigationController?.present(TabBarViewController(), animated: true)
-            //self.presenter?.gotoMainScene()
+            HUDManager().hideProgressHUD()
+
             self.delegate.gotoMainScene()
         }
     }

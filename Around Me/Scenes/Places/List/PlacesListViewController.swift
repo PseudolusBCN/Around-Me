@@ -10,7 +10,7 @@ import UIKit
 import AlamofireImage
 import Localize
 
-class PlacesListViewController: BaseCollectionViewController, InterfacePlacesListViewController {
+class PlacesListViewController: UIViewController, InterfacePlacesListViewController {
     @IBOutlet weak var placesCollectionView: UICollectionView!
     
     private let placesManager = PlacesManager.sharedInstance()
@@ -22,7 +22,7 @@ class PlacesListViewController: BaseCollectionViewController, InterfacePlacesLis
     init() {
         super.init(nibName: "PlacesListViewController", bundle: nil)
 
-        setNavBarTitle("main.appName".localized)
+        navigationItem.title = "main.appName".localized
         tabBarItem.title = "main.tabBar.list".localized
         tabBarItem.image = UIImage(named:"IcoList")
     }
@@ -31,26 +31,10 @@ class PlacesListViewController: BaseCollectionViewController, InterfacePlacesLis
         fatalError("init(coder:) has not been implemented")
     }
 
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setNavBarTitle("main.appName".localized)
-
-        placesCollectionView.register(UINib(nibName: "PlaceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: placeCollectionCell)
-
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.scrollDirection = .vertical
-        placesCollectionView.collectionViewLayout = collectionViewLayout
-
-        placesCollectionView.dataSource = self
-        placesCollectionView.delegate = self
-        placesCollectionView.reloadData()
+        presenter?.setupCollectionView(placesCollectionView, viewController: self)
     }
 }
 
@@ -65,7 +49,7 @@ extension PlacesListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let place = placesManager.places[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: placeCollectionCell, for: indexPath) as! PlaceCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: (presenter?.collectionViewReuseIdentifier())!, for: indexPath) as! PlaceCollectionViewCell
 
         cell.placeIcon.af_setImage(withURL: URL(string: place.icon)!)
         cell.placeLabel.text = place.name
