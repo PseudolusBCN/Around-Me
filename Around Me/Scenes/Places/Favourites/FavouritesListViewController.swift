@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import Localize
 
-class FavouritesListViewController: BaseViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class FavouritesListViewController: BaseViewController, InterfaceFavouritesListViewController {
+    var presenter: InterfaceFavouritesListPresenter?
+    
+    init() {
+        super.init(nibName: "FavouritesListViewController", bundle: nil)
 
         setNavBarTitle("main.appName".localized)
+        tabBarItem.title = "main.tabBar.favourites".localized
+        tabBarItem.image = UIImage(named:"IcoFavourites")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -1,5 +1,5 @@
 //
-//  MainBuilder.swift
+//  SettingsBuilder.swift
 //  Around Me
 //
 //  Created by Miquel Masip on 08/12/2018.
@@ -8,19 +8,19 @@
 
 import UIKit
 
-class MainBuilder: BaseBuilder {
+class SettingsBuilder: BaseBuilder {
     func main() -> UIViewController {
-        let view = MainViewController()
-        let presenter = MainPresenter()
-        let interactor = MainInteractor(delegate: presenter)
-        let router = MainRouter()
+        let view = SettingsViewController()
+        let presenter = SettingsPresenter()
+        let interactor = SettingsInteractor(delegate: presenter)
+        let router = SettingsRouter()
         
         view.presenter = presenter
         
         presenter.interactor = interactor
         presenter.view = view
         presenter.router = router
-
+        
         router.presenter = presenter
         router.view = view
         

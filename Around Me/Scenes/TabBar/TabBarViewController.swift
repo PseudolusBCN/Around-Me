@@ -9,23 +9,5 @@
 import UIKit
 import Localize
 
-class TabBarViewController: UITabBarController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        configTabBar()
-    }
-
-    private func configTabBar() {
-        let listViewController = PlacesListViewController()
-        let favouritesViewController = FavouritesListViewController()
-        let settingsViewController = SettingsViewController()
-        
-        listViewController.tabBarItem = UITabBarItem(title: "main.tabBar.list".localized, image: UIImage(named:"IcoList"), tag: 0)
-        favouritesViewController.tabBarItem = UITabBarItem(title: "main.tabBar.favourites".localized, image: UIImage(named:"IcoFavourites"), tag: 1)
-        settingsViewController.tabBarItem = UITabBarItem(title: "main.tabBar.settings".localized, image: UIImage(named:"IcoSettings"), tag: 2)
-
-        let tabBarList = [listViewController, favouritesViewController, settingsViewController]
-        viewControllers = tabBarList.map { UINavigationController(rootViewController: $0) }
-    }
+class TabBarViewController {
 }

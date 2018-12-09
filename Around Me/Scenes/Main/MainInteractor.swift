@@ -8,8 +8,14 @@
 
 import UIKit
 
-class MainInteractor: InterfaceMainInteractor {
+class MainInteractor: InterfaceMainInteractorInput {
     weak var presenter: InterfaceMainPresenter?
+
+    unowned var delegate: InterfaceMainInteractorOutput
+
+    init(delegate: InterfaceMainInteractorOutput) {
+        self.delegate = delegate
+    }
 
     func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
@@ -26,7 +32,7 @@ class MainInteractor: InterfaceMainInteractor {
     @objc private func getData() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
         
-        presenter?.showHUD("generic.hud.downloadingData".localized)
+        //*****presenter?.showHUD("generic.hud.downloadingData".localized)
         
         let placesManager = PlacesManager.sharedInstance()
         
@@ -41,7 +47,8 @@ class MainInteractor: InterfaceMainInteractor {
 //            self.hideProgressHUD()
 //
 //            self.navigationController?.present(TabBarViewController(), animated: true)
-            self.presenter?.gotoMainScene()
+            //self.presenter?.gotoMainScene()
+            self.delegate.gotoMainScene()
         }
     }
 }

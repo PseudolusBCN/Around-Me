@@ -8,13 +8,34 @@
 
 import UIKit
 import AlamofireImage
+import Localize
 
-class PlacesListViewController: BaseCollectionViewController {
+class PlacesListViewController: BaseCollectionViewController, InterfacePlacesListViewController {
     @IBOutlet weak var placesCollectionView: UICollectionView!
     
     private let placesManager = PlacesManager.sharedInstance()
     
     private let placeCollectionCell = "PlaceCollectionCell"
+    
+    var presenter: InterfacePlacesListPresenter?
+
+    init() {
+        super.init(nibName: "PlacesListViewController", bundle: nil)
+
+        setNavBarTitle("main.appName".localized)
+        tabBarItem.title = "main.tabBar.list".localized
+        tabBarItem.image = UIImage(named:"IcoList")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

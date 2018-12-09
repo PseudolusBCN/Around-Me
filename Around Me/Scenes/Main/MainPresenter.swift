@@ -10,7 +10,7 @@ import UIKit
 
 class MainPresenter: InterfaceMainPresenter {
     var router: InterfaceMainRouter?
-    var interactor: InterfaceMainInteractor?
+    var interactor: InterfaceMainInteractorInput?
     weak var view: InterfaceMainViewController?
     
     func setupObservers() {
@@ -30,9 +30,10 @@ class MainPresenter: InterfaceMainPresenter {
         //view.hideProgressHUD()
         print("hideHUD")
     }
-    
+}
+
+extension MainPresenter: InterfaceMainInteractorOutput {
     func gotoMainScene() {
         router?.gotoMainScene()
     }
-
 }
