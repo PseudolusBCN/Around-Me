@@ -20,16 +20,6 @@ class MainPresenter: InterfaceMainPresenter {
     func removeObservers() {
         interactor?.removeObservers()
     }
-    
-    func showHUD(_ title: String) {
-        print("showHUD: \(title)")
-        //view.showProgressHUD(title: title)
-    }
-
-    func hideHUD() {
-        //view.hideProgressHUD()
-        print("hideHUD")
-    }
 }
 
 extension MainPresenter: InterfaceMainInteractorOutput {

@@ -1,5 +1,5 @@
 //
-//  DataManager.swift
+//  RemoteDataManager.swift
 //  Around Me
 //
 //  Created by Miquel Masip on 29/11/18.
@@ -20,12 +20,12 @@ enum requestStatus: String {
     case errorUnknown = "UNKNOWN_ERROR"
 }
 
-class DataManager: NSObject {
+class RemoteDataManager: NSObject {
     override init() {
         super.init()
     }
     
-    func getPointsListWithToken(_ pageToken: String, radius: Int, types: String, completion: @escaping (_ responseData: APIPlaces?, _ error: NSError?) -> Void) {
+    func getPointsListWithToken(_ pageToken: String, radius: Int, types: String, completion: @escaping(_ responseData: APIPlaces?, _ error: NSError?) -> Void) {
         let latitude = (LocationManager.sharedInstance().currentLocation?.coordinate.latitude)!
         let longitude = (LocationManager.sharedInstance().currentLocation?.coordinate.longitude)!
         
@@ -67,7 +67,7 @@ class DataManager: NSObject {
         }
     }
     
-    private func processServiceRequest(_ method: HTTPMethod, url: String, params: [String: Any], completion: @escaping (_ responseData: Any?, _ error: NSError?) -> Void) {
+    private func processServiceRequest(_ method: HTTPMethod, url: String, params: [String: Any], completion: @escaping(_ responseData: Any?, _ error: NSError?) -> Void) {
         print("URL Request: \(url)")
         print("\(params)")
         

@@ -36,7 +36,7 @@ class PlacesManager: NSObject {
     func addPlacesFromData(_ data: APIPlaces) {
         nextPageToken = data.nextPageToken
         for place in data.results ?? [] {
-            places?.append(Place.init(place: place))
+            places?.append(Place.init(place))
         }
     }
 }

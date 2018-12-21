@@ -10,7 +10,8 @@
         },
         "hud": {
             "updatingLocation": "Updating location",
-            "downloadingData": "Downloading data"
+            "downloadingData": "Downloading data",
+            "retrievingFavourites": "Retrieving favourites"
         }
     },
     "main": {

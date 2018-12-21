@@ -18,7 +18,7 @@ class MainInteractor: InterfaceMainInteractorInput {
     }
 
     func setupObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getRemoteData), name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(locationUnauthorized), name: NSNotification.Name(rawValue: notificationLocationUnauthorized), object: nil)
     }
 
@@ -29,23 +29,35 @@ class MainInteractor: InterfaceMainInteractorInput {
     @objc private func locationUnauthorized() {
     }
     
-    @objc private func getData() {
+    @objc private func getRemoteData() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
-        
+
         HUDManager().showProgressHUD(title: "generic.hud.downloadingData".localized)
 
         let placesManager = PlacesManager.sharedInstance()
-        
         let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
-        DataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, types: "") { (response, error) in
+        RemoteDataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, types: "") { (response, error) in
             guard error == nil else {
                 return
             }
-            
             placesManager.addPlacesFromData(response!)
-            
-            HUDManager().hideProgressHUD()
+            self.getLocalData()
+        }
+    }
+    
+    private func getLocalData() {
+        HUDManager().showProgressHUD(title: "generic.hud.retrievingFavourites".localized)
 
+        let favouritesManager = FavouritesManager.sharedInstance()
+
+        DatabaseManager().retrieveFavourites() { (response, error) in
+            guard error == nil else {
+                return
+            }
+            for favourite in response! {
+                favouritesManager.addFavourite(favourite)
+            }
+            HUDManager().hideProgressHUD()
             self.delegate.gotoMainScene()
         }
     }

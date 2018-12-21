@@ -8,16 +8,32 @@
 
 import UIKit
 
+protocol PlaceCollectionViewCellDelegate {
+    func favouriteButton_Pressed(_ button: UIButton, placeId: String)
+}
+
 class PlaceCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var placeIcon: UIImageView!
     @IBOutlet weak var placeLabel: UILabel!
-    @IBOutlet weak var favouritesButton: UIButton!
+    @IBOutlet weak var favouriteImage: UIImageView!
+    @IBOutlet weak var favouriteButton: UIButton!
+    
+    var placeId: String!
+    
+    var delegate: PlaceCollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        commonInit()
     }
 
-    @IBAction func favouritesButton_Pressed(_ sender: Any) {
-        print("favouritesButton_Pressed")
+    // MARK: - Configuration
+    private func commonInit() {
+    }
+
+    // MARK: - Actions
+    @IBAction func favouriteButton_Pressed(_ sender: Any) {
+        delegate?.favouriteButton_Pressed(sender as! UIButton, placeId: placeId)
     }
 }
