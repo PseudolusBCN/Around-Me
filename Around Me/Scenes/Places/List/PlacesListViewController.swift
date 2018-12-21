@@ -82,39 +82,8 @@ extension PlacesListViewController: PlaceCollectionViewCellDelegate {
     func favouriteButton_Pressed(_ button: UIButton, placeId: String) {
         if button.isSelected {
             presenter?.removeFavourite(placeId)
-//            let favouritesManager = FavouritesManager.sharedInstance()
-//            let place = favouritesManager.places.filter { $0.id == placeId }
-//
-//            guard place.count > 0 else {
-//                return
-//            }
-//
-//            DatabaseManager().removePlaceFromFavourites(place[0].id, completion: { (error) in
-//                if let error = error as NSError? {
-//                    fatalError("Unresolved error \(error), \(error.userInfo)")
-//                } else {
-//                    let favouritesManager = FavouritesManager.sharedInstance()
-//                    favouritesManager.removeFavourite(place[0])
-//                    self.placesCollectionView.reloadData()
-//                }
-//            })
         } else {
             presenter?.addFavourite(placeId)
-//            let placesManager = PlacesManager.sharedInstance()
-//            let place = placesManager.places.filter { $0.id == placeId }
-//
-//            guard place.count > 0 else {
-//                return
-//            }
-//            DatabaseManager().addPlaceToFavourites(place[0], completion: { (error) in
-//                if let error = error as NSError? {
-//                    fatalError("Unresolved error \(error), \(error.userInfo)")
-//                } else {
-//                    let favouritesManager = FavouritesManager.sharedInstance()
-//                    favouritesManager.addFavourite(place[0])
-//                    self.placesCollectionView.reloadData()
-//                }
-//            })
         }
     }
 }
