@@ -14,6 +14,7 @@ class FavouritesManager: NSObject {
    
     var places: [Place]!
 
+    // MARK: - Singleton
     class func sharedInstance() -> FavouritesManager {
         guard let currentInstance = instance else {
             instance = FavouritesManager()
@@ -26,12 +27,14 @@ class FavouritesManager: NSObject {
         instance = nil
     }
     
+    // MARK: - Init
     override init() {
         super.init()
 
         places = []
     }
     
+    // MARK: - Public methods
     func addFavourite(_ item: Any) {
         if let place = item as? Place {
             places?.append(place)

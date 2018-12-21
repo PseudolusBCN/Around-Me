@@ -10,9 +10,10 @@ import UIKit
 
 class MainPresenter: InterfaceMainPresenter {
     var router: InterfaceMainRouter?
-    var interactor: InterfaceMainInteractorInput?
+    var interactor: InterfaceMainInteractor?
     weak var view: InterfaceMainViewController?
     
+    // MARK: - Public methods
     func setupObservers() {
         interactor?.setupObservers()
     }

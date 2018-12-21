@@ -8,15 +8,17 @@
 
 import UIKit
 
-class MainInteractor: InterfaceMainInteractorInput {
+class MainInteractor: InterfaceMainInteractor {
     weak var presenter: InterfaceMainPresenter?
 
     unowned var delegate: InterfaceMainInteractorOutput
 
+    // MARK: - Init
     init(delegate: InterfaceMainInteractorOutput) {
         self.delegate = delegate
     }
 
+    // MARK: - Public methods
     func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(getRemoteData), name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(locationUnauthorized), name: NSNotification.Name(rawValue: notificationLocationUnauthorized), object: nil)
@@ -26,6 +28,7 @@ class MainInteractor: InterfaceMainInteractorInput {
         NotificationCenter.default.removeObserver(self)
     }
     
+    // MARK: - Private methods
     @objc private func locationUnauthorized() {
     }
     

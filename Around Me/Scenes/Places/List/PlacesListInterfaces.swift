@@ -14,18 +14,33 @@ protocol InterfacePlacesListViewController: class {
 
 protocol InterfacePlacesListPresenter: class {
     var router: InterfacePlacesListRouter? { get set }
-    var interactor: InterfacePlacesListInteractorInput? { get set }
+    var interactor: InterfacePlacesListInteractor? { get set }
     var view: InterfacePlacesListViewController? { get set }
     
     func setupCollectionView(_ collectionView: UICollectionView, viewController: UIViewController)
-    func collectionViewReuseIdentifier() -> String
+    func placeCollectionViewCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> PlaceCollectionViewCell
+
+    func addFavourite(_ placeId: String)
+    func removeFavourite(_ placeId: String)
 }
 
-protocol InterfacePlacesListInteractorInput: class {
+protocol InterfacePlacesListPresenterOutput: class {
+    func updateData()
+}
+
+protocol InterfacePlacesListInteractor: class {
     var presenter: InterfacePlacesListPresenter? { get set }
+    
+    func addFavourite(_ placeId: String)
+    func removeFavourite(_ placeId: String)
+    
+    func place(_ index: NSInteger) -> Place
+    func placeIsFavourite(_ place: Place) -> Bool
 }
 
 protocol InterfacePlacesListInteractorOutput: class {
+    func favouriteAdded()
+    func favouriteRemoved()
 }
 
 protocol InterfacePlacesListRouter: class {

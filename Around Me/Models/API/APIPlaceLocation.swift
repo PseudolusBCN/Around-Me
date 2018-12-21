@@ -12,12 +12,14 @@ import ObjectMapper
 class APIPlaceLocation: Mappable {
     var lat: Double = 0.0
     var lng: Double = 0.0
-    
+
+    // MARK: - Init
     required init?(map: Map) {
         lat <- map["lat"]
         lng <- map["lng"]
     }
     
+    // MARK: - Mapping
     func mapping(map: Map) {
     }
 }

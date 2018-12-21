@@ -10,9 +10,17 @@ import UIKit
 
 class PlacesListPresenter: InterfacePlacesListPresenter {
     var router: InterfacePlacesListRouter?
-    var interactor: InterfacePlacesListInteractorInput?
+    var interactor: InterfacePlacesListInteractor?
     weak var view: InterfacePlacesListViewController?
     
+    unowned var delegate: InterfacePlacesListPresenterOutput
+
+    // MARK: - Init
+    init(delegate: InterfacePlacesListPresenterOutput) {
+        self.delegate = delegate
+    }
+
+    // MARK: - Public methods
     func setupCollectionView(_ collectionView: UICollectionView, viewController: UIViewController) {
         collectionView.register(UINib(nibName: "PlaceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: collectionViewReuseIdentifier())
         
@@ -22,13 +30,46 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
         
         collectionView.dataSource = viewController as? UICollectionViewDataSource
         collectionView.delegate = viewController as? UICollectionViewDelegate
-        collectionView.reloadData()
     }
     
-    func collectionViewReuseIdentifier() -> String {
+    func placeCollectionViewCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> PlaceCollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewReuseIdentifier(), for: indexPath) as! PlaceCollectionViewCell
+
+        let place: Place = (interactor?.place(indexPath.row))!
+        cell.placeId = place.id
+        cell.placeIcon.af_setImage(withURL: URL(string: place.icon)!)
+        cell.placeLabel.text = place.name
+        if (interactor?.placeIsFavourite(place))! {
+            cell.favouriteButton.isSelected = true
+            cell.favouriteImage.image = UIImage(named: "BtnFavourite_On")
+        } else {
+            cell.favouriteButton.isSelected = false
+            cell.favouriteImage.image = UIImage(named: "BtnFavourite_Off")
+        }
+
+        return cell
+    }
+
+    func addFavourite(_ placeId: String) {
+        interactor?.addFavourite(placeId)
+    }
+    
+    func removeFavourite(_ placeId: String) {
+        interactor?.removeFavourite(placeId)
+    }
+    
+    // MARK: - Private methods
+    private func collectionViewReuseIdentifier() -> String {
         return "PlaceCollectionCell"
     }
 }
 
 extension PlacesListPresenter: InterfacePlacesListInteractorOutput {
+    func favouriteAdded() {
+        delegate.updateData()
+    }
+
+    func favouriteRemoved() {
+        delegate.updateData()
+    }
 }

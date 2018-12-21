@@ -14,14 +14,14 @@ protocol InterfaceMainViewController: class {
 
 protocol InterfaceMainPresenter: class {
     var router: InterfaceMainRouter? { get set }
-    var interactor: InterfaceMainInteractorInput? { get set }
+    var interactor: InterfaceMainInteractor? { get set }
     var view: InterfaceMainViewController? { get set }
     
     func setupObservers()
     func removeObservers()
 }
 
-protocol InterfaceMainInteractorInput: class {
+protocol InterfaceMainInteractor: class {
     var presenter: InterfaceMainPresenter? { get set }
     
     func setupObservers()

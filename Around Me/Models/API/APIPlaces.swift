@@ -15,9 +15,11 @@ class APIPlaces: Mappable {
     var results: [APIPlace]?
     var status: requestStatus?
     
+    // MARK: - Init
     required init?(map: Map) {
     }
     
+    // MARK: - Mapping
     func mapping(map: Map) {
         htmlAttributions <- map["html_attributions"]
         nextPageToken <- map["next_page_token"]

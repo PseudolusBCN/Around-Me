@@ -14,6 +14,7 @@ class PlacesManager: NSObject {
     var places: [Place]!
     var nextPageToken: String!
     
+    // MARK: - Singleton
     class func sharedInstance() -> PlacesManager {
         guard let currentInstance = instance else {
             instance = PlacesManager()
@@ -26,6 +27,7 @@ class PlacesManager: NSObject {
         instance = nil
     }
     
+    // MARK: - Init
     override init() {
         super.init()
 
@@ -33,6 +35,7 @@ class PlacesManager: NSObject {
         nextPageToken = ""
     }
     
+    // MARK: - Public methods
     func addPlacesFromData(_ data: APIPlaces) {
         nextPageToken = data.nextPageToken
         for place in data.results ?? [] {

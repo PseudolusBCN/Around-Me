@@ -10,7 +10,7 @@ import UIKit
 
 class FavouritesListPresenter: InterfaceFavouritesListPresenter {
     var router: InterfaceFavouritesListRouter?
-    var interactor: InterfaceFavouritesListInteractorInput?
+    var interactor: InterfaceFavouritesListInteractor?
     weak var view: InterfaceFavouritesListViewController?
     
 }

@@ -12,9 +12,11 @@ import ObjectMapper
 class APIPlaceOpeningHours: Mappable {
     var openNow: Bool = false
     
+    // MARK: - Init
     required init?(map: Map) {
     }
-    
+
+    // MARK: - Mapping
     func mapping(map: Map) {
         openNow <- map["open_now"]
     }

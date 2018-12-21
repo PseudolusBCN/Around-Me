@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavouritesListInteractor: InterfaceFavouritesListInteractorInput {
+class FavouritesListInteractor: InterfaceFavouritesListInteractor {
     weak var presenter: InterfaceFavouritesListPresenter?
     
     unowned var delegate: InterfaceFavouritesListInteractorOutput

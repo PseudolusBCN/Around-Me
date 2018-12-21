@@ -21,10 +21,12 @@ enum requestStatus: String {
 }
 
 class RemoteDataManager: NSObject {
+    // MARK: - Init
     override init() {
         super.init()
     }
     
+    // MARK: - Public methods
     func getPointsListWithToken(_ pageToken: String, radius: Int, types: String, completion: @escaping(_ responseData: APIPlaces?, _ error: NSError?) -> Void) {
         let latitude = (LocationManager.sharedInstance().currentLocation?.coordinate.latitude)!
         let longitude = (LocationManager.sharedInstance().currentLocation?.coordinate.longitude)!

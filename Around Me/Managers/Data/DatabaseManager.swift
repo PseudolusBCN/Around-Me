@@ -10,17 +10,17 @@ import UIKit
 import CoreData
 
 class DatabaseManager: NSObject {
+    // MARK: - Init
     override init() {
         super.init()
     }
 
+    // MARK: - Public methods
     func addPlaceToFavourites(_ place: Place, completion: @escaping(_ error: NSError?) -> Void) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            completion(NSError(domain: "CoreDataErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "NO APP DELEGATE"]))
+        guard let managedContext = managedContext() else {
+            completion(errorNoAppDelegate())
             return
         }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Favourites", in: managedContext)!
         
         let favourite = NSManagedObject(entity: entity, insertInto: managedContext)
@@ -34,17 +34,15 @@ class DatabaseManager: NSObject {
             try managedContext.save()
             completion(nil)
         } catch {
-            completion(NSError(domain: "CoreDataErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "NO ERROR CORE DATA SAVING"]))
+            completion(errorSavingData())
         }
     }
     
     func removePlaceFromFavourites(_ placeId: String, completion: @escaping(_ error: NSError?) -> Void) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            completion(NSError(domain: "CoreDataErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "NO APP DELEGATE"]))
+        guard let managedContext = managedContext() else {
+            completion(errorNoAppDelegate())
             return
         }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Favourites")
         request.predicate = NSPredicate.init(format: "id==%@", placeId)
@@ -58,18 +56,15 @@ class DatabaseManager: NSObject {
             try managedContext.save()
             completion(nil)
         } catch {
-            print("Failed")
+            completion(errorRemovingData())
         }
     }
 
     func retrieveFavourites(completion: @escaping(_ responseData: [NSManagedObject]?, _ error: NSError?) -> Void) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            let error = NSError(domain: "CoreDataErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "NO APP DELEGATE"])
-            completion(nil, error)
+        guard let managedContext = managedContext() else {
+            completion(nil, errorNoAppDelegate())
             return
         }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Favourites")
         request.returnsObjectsAsFaults = false
@@ -77,7 +72,32 @@ class DatabaseManager: NSObject {
             let result = try managedContext.fetch(request)
             completion(result as? [NSManagedObject], nil)
         } catch {
-            print("Failed")
+            completion(nil, errorRetrievingData())
         }
     }
+    
+    // MARK: - Private methods
+    private func managedContext() -> NSManagedObjectContext? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    private func errorNoAppDelegate() -> NSError {
+        return NSError(domain: "CoreDataErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "NO APP DELEGATE"])
+    }
+    
+    private func errorSavingData() -> NSError {
+        return NSError(domain: "CoreDataErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "ERROR SAVING DATA"])
+    }
+
+    private func errorRetrievingData() -> NSError {
+        return NSError(domain: "CoreDataErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "ERROR RETRIEVING DATA"])
+    }
+
+    private func errorRemovingData() -> NSError {
+        return NSError(domain: "CoreDataErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "ERROR REMOVING DATA"])
+    }
+
 }

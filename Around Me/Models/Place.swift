@@ -15,6 +15,7 @@ class Place: NSObject {
     var icon: String = ""
     var location: PlaceLocation = PlaceLocation()
     
+    // MARK: - Init
     override init() {
         super.init()
     }

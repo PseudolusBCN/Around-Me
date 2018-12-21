@@ -15,6 +15,7 @@ class LocationManager: NSObject {
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     
+    // MARK: - Singleton
     class func sharedInstance() -> LocationManager {
         guard let currentInstance = instance else {
             instance = LocationManager()
@@ -27,6 +28,7 @@ class LocationManager: NSObject {
         instance = nil
     }
     
+    // MARK: - Init
     override init() {
         super.init()
         
@@ -34,6 +36,7 @@ class LocationManager: NSObject {
         locationManager.delegate = self
     }
     
+    // MARK: - Public methods
     func startUpdatingLocation() {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined, .restricted, .denied:

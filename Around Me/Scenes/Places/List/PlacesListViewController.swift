@@ -14,9 +14,7 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     @IBOutlet weak var placesCollectionView: UICollectionView!
     
     private let placesManager = PlacesManager.sharedInstance()
-    
-    private let placeCollectionCell = "PlaceCollectionCell"
-    
+
     var presenter: InterfacePlacesListPresenter?
 
     // MARK: - Configuration
@@ -50,26 +48,11 @@ extension PlacesListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: (presenter?.collectionViewReuseIdentifier())!, for: indexPath) as! PlaceCollectionViewCell
-
-        let favouritesManager = FavouritesManager.sharedInstance()
-
-        let place = placesManager.places[indexPath.row]
-        let favourite = favouritesManager.places.filter { $0.id == place.id }
-
-        cell.placeId = place.id
-        cell.placeIcon.af_setImage(withURL: URL(string: place.icon)!)
-        cell.placeLabel.text = place.name
-        if favourite.count > 0 {
-            cell.favouriteButton.isSelected = true
-            cell.favouriteImage.image = UIImage(named: "BtnFavourite_On")
-        } else {
-            cell.favouriteButton.isSelected = false
-            cell.favouriteImage.image = UIImage(named: "BtnFavourite_Off")
+        if let cell = presenter?.placeCollectionViewCell(collectionView, indexPath: indexPath) {
+            cell.delegate = self
+            return cell
         }
-        cell.delegate = self
-
-        return cell
+        return UICollectionViewCell()
     }
 }
 
@@ -98,38 +81,46 @@ extension PlacesListViewController: UICollectionViewDelegateFlowLayout {
 extension PlacesListViewController: PlaceCollectionViewCellDelegate {
     func favouriteButton_Pressed(_ button: UIButton, placeId: String) {
         if button.isSelected {
-            let favouritesManager = FavouritesManager.sharedInstance()
-            let place = favouritesManager.places.filter { $0.id == placeId }
-
-            guard place.count > 0 else {
-                return
-            }
-            
-            DatabaseManager().removePlaceFromFavourites(place[0].id, completion: { (error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                } else {
-                    let favouritesManager = FavouritesManager.sharedInstance()
-                    favouritesManager.removeFavourite(place[0])
-                    self.placesCollectionView.reloadData()
-                }
-            })
+            presenter?.removeFavourite(placeId)
+//            let favouritesManager = FavouritesManager.sharedInstance()
+//            let place = favouritesManager.places.filter { $0.id == placeId }
+//
+//            guard place.count > 0 else {
+//                return
+//            }
+//
+//            DatabaseManager().removePlaceFromFavourites(place[0].id, completion: { (error) in
+//                if let error = error as NSError? {
+//                    fatalError("Unresolved error \(error), \(error.userInfo)")
+//                } else {
+//                    let favouritesManager = FavouritesManager.sharedInstance()
+//                    favouritesManager.removeFavourite(place[0])
+//                    self.placesCollectionView.reloadData()
+//                }
+//            })
         } else {
-            let placesManager = PlacesManager.sharedInstance()
-            let place = placesManager.places.filter { $0.id == placeId }
-
-            guard place.count > 0 else {
-                return
-            }
-            DatabaseManager().addPlaceToFavourites(place[0], completion: { (error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                } else {
-                    let favouritesManager = FavouritesManager.sharedInstance()
-                    favouritesManager.addFavourite(place[0])
-                    self.placesCollectionView.reloadData()
-                }
-            })
+            presenter?.addFavourite(placeId)
+//            let placesManager = PlacesManager.sharedInstance()
+//            let place = placesManager.places.filter { $0.id == placeId }
+//
+//            guard place.count > 0 else {
+//                return
+//            }
+//            DatabaseManager().addPlaceToFavourites(place[0], completion: { (error) in
+//                if let error = error as NSError? {
+//                    fatalError("Unresolved error \(error), \(error.userInfo)")
+//                } else {
+//                    let favouritesManager = FavouritesManager.sharedInstance()
+//                    favouritesManager.addFavourite(place[0])
+//                    self.placesCollectionView.reloadData()
+//                }
+//            })
         }
+    }
+}
+
+extension PlacesListViewController: InterfacePlacesListPresenterOutput {
+    func updateData() {
+        self.placesCollectionView.reloadData()
     }
 }

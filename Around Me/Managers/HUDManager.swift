@@ -12,10 +12,12 @@ import MBProgressHUD
 class HUDManager: NSObject {
     var backgroundView: UIView?
 
+    // MARK: - Init
     override init() {
         super.init()
     }
 
+    // MARK: - Public methods
     func showProgressHUD(_ view: UIView) {
         _ = createHUD(title: "", subtitle: "")
     }

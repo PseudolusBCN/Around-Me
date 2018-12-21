@@ -15,9 +15,11 @@ class APIPlacePhoto: Mappable {
     var htmlAttributions: [String]?
     var photoReference: String?
     
+    // MARK: - Init
     required init?(map: Map) {
     }
     
+    // MARK: - Mapping
     func mapping(map: Map) {
         height <- map["height"]
         width <- map["width"]

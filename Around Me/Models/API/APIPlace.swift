@@ -25,9 +25,11 @@ class APIPlace: Mappable {
     var rating: Double?
     var priceLevel: Int?
     
+    // MARK: - Init
     required init?(map: Map) {
     }
     
+    // MARK: - Mapping
     func mapping(map: Map) {
         geometry <- map["geometry"]
         icon <- map["icon"]

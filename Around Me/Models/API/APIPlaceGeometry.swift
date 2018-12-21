@@ -13,9 +13,11 @@ class APIPlaceGeometry: Mappable {
     var location: APIPlaceLocation?
     var viewport: APIPlaceViewport?
     
+    // MARK: - Init
     required init?(map: Map) {
     }
     
+    // MARK: - Mapping
     func mapping(map: Map) {
         location <- map["location"]
         viewport <- map["viewport"]

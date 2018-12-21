@@ -12,6 +12,7 @@ class PlaceLocation: NSObject {
     var latitude: Double!
     var longitude: Double!
 
+    // MARK: - Init
     override init() {
         super.init()
         

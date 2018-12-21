@@ -15,7 +15,5 @@ class MainRouter: InterfaceMainRouter {
     func gotoMainScene() {
         let viewController = TabBarBuilder().main()
         view?.navigationController?.present(viewController, animated: true)
-
-//        view?.navigationController?.present(TabBarViewController(), animated: true)
     }
 }

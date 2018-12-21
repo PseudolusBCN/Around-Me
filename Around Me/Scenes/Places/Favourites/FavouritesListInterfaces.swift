@@ -14,11 +14,11 @@ protocol InterfaceFavouritesListViewController: class {
 
 protocol InterfaceFavouritesListPresenter: class {
     var router: InterfaceFavouritesListRouter? { get set }
-    var interactor: InterfaceFavouritesListInteractorInput? { get set }
+    var interactor: InterfaceFavouritesListInteractor? { get set }
     var view: InterfaceFavouritesListViewController? { get set }
 }
 
-protocol InterfaceFavouritesListInteractorInput: class {
+protocol InterfaceFavouritesListInteractor: class {
     var presenter: InterfaceFavouritesListPresenter? { get set }
 }
 

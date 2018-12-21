@@ -11,7 +11,7 @@ import UIKit
 class PlacesListBuilder: BaseBuilder {
     func main() -> UIViewController {
         let view = PlacesListViewController()
-        let presenter = PlacesListPresenter()
+        let presenter = PlacesListPresenter(delegate: view)
         let interactor = PlacesListInteractor(delegate: presenter)
         let router = PlacesListRouter()
         

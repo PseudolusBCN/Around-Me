@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsPresenter: InterfaceSettingsPresenter {
     var router: InterfaceSettingsRouter?
-    var interactor: InterfaceSettingsInteractorInput?
+    var interactor: InterfaceSettingsInteractor?
     weak var view: InterfaceSettingsViewController?
     
 }

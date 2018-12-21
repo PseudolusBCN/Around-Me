@@ -10,10 +10,12 @@ import UIKit
 import Localize
 
 class LocalizeManager: NSObject {
+    // MARK: - Init
     override init() {
         super.init()
     }
 
+    // MARK: - Public methods
     func setup() {
         Localize.update(provider: .json)
         Localize.update(fileName: "Translations")

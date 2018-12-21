@@ -14,11 +14,11 @@ protocol InterfaceSettingsViewController: class {
 
 protocol InterfaceSettingsPresenter: class {
     var router: InterfaceSettingsRouter? { get set }
-    var interactor: InterfaceSettingsInteractorInput? { get set }
+    var interactor: InterfaceSettingsInteractor? { get set }
     var view: InterfaceSettingsViewController? { get set }
 }
 
-protocol InterfaceSettingsInteractorInput: class {
+protocol InterfaceSettingsInteractor: class {
     var presenter: InterfaceSettingsPresenter? { get set }
 }
 

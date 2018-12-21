@@ -13,9 +13,11 @@ class APIPlacePlusCode: Mappable {
     var compoundCode: String?
     var globalCode: String?
     
+    // MARK: - Init
     required init?(map: Map) {
     }
     
+    // MARK: - Mapping
     func mapping(map: Map) {
         compoundCode <- map["compound_code"]
         globalCode <- map["global_code"]

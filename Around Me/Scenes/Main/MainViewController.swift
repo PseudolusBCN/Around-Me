@@ -12,6 +12,7 @@ import MBProgressHUD
 class MainViewController: UIViewController, InterfaceMainViewController {
     var presenter: InterfaceMainPresenter?
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 

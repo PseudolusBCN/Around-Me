@@ -22,6 +22,7 @@ class PlaceCollectionViewCell: UICollectionViewCell {
     
     var delegate: PlaceCollectionViewCellDelegate?
     
+    // MARK: - Init
     override func awakeFromNib() {
         super.awakeFromNib()
         

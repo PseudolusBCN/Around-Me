@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsInteractor: InterfaceSettingsInteractorInput {
+class SettingsInteractor: InterfaceSettingsInteractor {
     weak var presenter: InterfaceSettingsPresenter?
     
     unowned var delegate: InterfaceSettingsInteractorOutput
