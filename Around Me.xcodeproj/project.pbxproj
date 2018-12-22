@@ -70,6 +70,7 @@
 		3D9420A921AEF70D00569238 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9420A821AEF70D00569238 /* MainPresenter.swift */; };
 		3D9420AB21AEF71C00569238 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9420AA21AEF71C00569238 /* MainInteractor.swift */; };
 		3D9420B121AEF7C200569238 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9420B021AEF7C200569238 /* LocationManager.swift */; };
+		3DA14A0221CEBD810099EAC7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3DA14A0121CEBD800099EAC7 /* README.md */; };
 		3DF1A62421AFEB2700A1E8A5 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DF1A62321AFEB2700A1E8A5 /* Configuration.plist */; };
 		3DF1A62821AFECED00A1E8A5 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A62721AFECED00A1E8A5 /* Place.swift */; };
 		3DF1A62A21AFEDFF00A1E8A5 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A62921AFEDFF00A1E8A5 /* ConfigurationManager.swift */; };
@@ -168,6 +169,7 @@
 		3D9420A821AEF70D00569238 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		3D9420AA21AEF71C00569238 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		3D9420B021AEF7C200569238 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3DA14A0121CEBD800099EAC7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3DF1A62321AFEB2700A1E8A5 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		3DF1A62721AFECED00A1E8A5 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		3DF1A62921AFEDFF00A1E8A5 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 		3D94206321AEF13C00569238 = {
 			isa = PBXGroup;
 			children = (
+				3DA14A0121CEBD800099EAC7 /* README.md */,
 				3D94206E21AEF13C00569238 /* Around Me */,
 				3D94208621AEF13E00569238 /* Around MeTests */,
 				3D94209121AEF13E00569238 /* Around MeUITests */,
@@ -617,6 +620,7 @@
 				3D94207D21AEF13E00569238 /* LaunchScreen.storyboard in Resources */,
 				3D409DF421B99CB70001BBF0 /* FavouritesListViewController.xib in Resources */,
 				3DF1A62421AFEB2700A1E8A5 /* Configuration.plist in Resources */,
+				3DA14A0221CEBD810099EAC7 /* README.md in Resources */,
 				3D5BA33D21B9516F00A1D985 /* HelveticaNeue.ttc in Resources */,
 				3D1681AE21BC00FE007ABC72 /* Assets.xcassets in Resources */,
 				3D409DFC21B9A9ED0001BBF0 /* Translations-en.json in Resources */,
