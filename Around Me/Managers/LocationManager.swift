@@ -14,7 +14,8 @@ class LocationManager: NSObject {
 
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-
+    
+    // MARK: - Singleton
     class func sharedInstance() -> LocationManager {
         guard let currentInstance = instance else {
             instance = LocationManager()
@@ -26,21 +27,22 @@ class LocationManager: NSObject {
     class func clearInstance() {
         instance = nil
     }
-
+    
+    // MARK: - Init
     override init() {
         super.init()
-
-        //locationManager = CLLocationManager()
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
     }
     
+    // MARK: - Public methods
     func startUpdatingLocation() {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined, .restricted, .denied:
             locationManager.requestWhenInUseAuthorization()
             break
         case .authorizedAlways, .authorizedWhenInUse:
-            locationManager.delegate = self
             locationManager.startUpdatingLocation()
             break
         }
@@ -54,11 +56,10 @@ class LocationManager: NSObject {
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.last!
-
-        let notification = Notification(name: Notification.Name(rawValue: notificationLocationUpdated), object: nil)
-        NotificationCenter.default.post(notification)
+        
+        NotificationsManager().sendNotification(notificationLocationUpdated)
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("LocationManager: Error \(error)")
     }
@@ -66,8 +67,10 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .notDetermined, .restricted, .denied:
+            NotificationsManager().sendNotification(notificationLocationUnauthorized)
             break
         case .authorizedAlways, .authorizedWhenInUse:
+            NotificationsManager().sendNotification(notificationLocationAuthorized)
             locationManager.startUpdatingLocation()
             break
         }

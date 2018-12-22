@@ -7,22 +7,24 @@ target 'Around Me' do
 
   # Pods for Around Me
   pod 'Alamofire'
-  pod 'SwiftyJSON
+  pod 'AlamofireImage'
+  pod 'ObjectMapper'
   pod 'Localize'
-  pod 'Firebase/Core'
   pod 'MBProgressHUD'
+  #pod 'DZNEmptyDataSet'
+  #pod 'Firebase/Core'
 
   target 'Around MeTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Quick'
-    pod 'Nimble'
+    #pod 'Quick'
+    #pod 'Nimble'
   end
 
   target 'Around MeUITests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Quick'
-    pod 'Nimble'
+    #pod 'Quick'
+    #pod 'Nimble'
   end
 end

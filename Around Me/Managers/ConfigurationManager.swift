@@ -9,10 +9,12 @@
 import UIKit
 
 class ConfigurationManager: NSObject {
+    // MARK: - Init
     override init() {
         super.init()
     }
-
+    
+    // MARK: - Public methods
     func retrieveStringFromPlist(_ key: String) -> String {
         if let path = Bundle.main.path(forResource: "Configuration", ofType: "plist"), let plist = FileManager.default.contents(atPath: path) {
             do {

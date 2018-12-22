@@ -7,31 +7,33 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class MainViewController: BaseViewController {
+class MainViewController: UIViewController, InterfaceMainViewController {
+    var presenter: InterfaceMainPresenter?
+
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
+
+        presenter?.setupObservers()
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        HUDManager().showProgressHUD(title: "generic.hud.updatingLocation".localized)
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
-    }
 
-    @objc private func getData() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
-
-        let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
-        var nextPageToken = ""
-        DataManager().getPointsListWithToken(nextPageToken, radius: radius!, types: "") { (response, error) in
-            guard error == nil else {
-                return
-            }
-
-            
-        }
+        presenter?.removeObservers()
     }
 }

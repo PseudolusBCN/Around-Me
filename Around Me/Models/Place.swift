@@ -7,11 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 class Place: NSObject {
-    var id: String!
-    var name: String!
-    var address: String!
-    var latitude: Double!
-    var longitude: Double!
+    var id: String = ""
+    var name: String = ""
+    var icon: String = ""
+    var location: PlaceLocation = PlaceLocation()
+    
+    // MARK: - Init
+    override init() {
+        super.init()
+    }
+
+    init(_ place: APIPlace) {
+        id = place.id!
+        name = place.name!
+        icon = place.icon!
+        location = PlaceLocation(lat: (place.geometry?.location?.lat)!, lng: (place.geometry?.location?.lng)!)
+    }
+    
+    init(_ place: NSManagedObject)  {
+        id = place.value(forKey: "id") as! String
+        name = place.value(forKey: "name") as! String
+        icon = place.value(forKey: "icon") as! String
+        location = PlaceLocation(lat: place.value(forKey: "latitude") as! Double, lng: place.value(forKey: "longitude") as! Double)
+    }
 }

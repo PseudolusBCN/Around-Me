@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Localize
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        LocalizeManager().setup()
+
         LocationManager.sharedInstance().startUpdatingLocation()
         
         launchMainScreen()
@@ -40,11 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Private methods
     private func launchMainScreen() {
-        let viewController = MainViewController()
-        let navigationController = UINavigationController.init(rootViewController: viewController)
-
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationController
+        window?.rootViewController = MainBuilder().main()
         window?.makeKeyAndVisible()
     }
 

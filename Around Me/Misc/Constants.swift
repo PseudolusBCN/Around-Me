@@ -8,9 +8,9 @@
 
 import UIKit
 
+public let notificationLocationAuthorized = "notificationLocationAuthorized"
+public let notificationLocationUnauthorized = "notificationLocationUnauthorized"
+
 public let notificationLocationUpdated = "notificationLocationUpdated"
 
 public let googleAPIKey = "AIzaSyCxuVJdnxwfiFIHURJN8rlgdKgiVR6iUPs"
-
-class Constants: NSObject {
-}
