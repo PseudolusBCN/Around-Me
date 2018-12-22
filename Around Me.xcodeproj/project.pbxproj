@@ -34,6 +34,8 @@
 		3D1681C921BC4665007ABC72 /* BaseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1681C821BC4665007ABC72 /* BaseBuilder.swift */; };
 		3D26930521CACD68000038F0 /* FavouritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26930421CACD68000038F0 /* FavouritesManager.swift */; };
 		3D29629E21C193B50075B363 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D29629D21C193B50075B363 /* DatabaseManager.swift */; };
+		3D2FEC4621CE8D690088B42C /* FavouriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FEC4421CE8D690088B42C /* FavouriteCollectionViewCell.swift */; };
+		3D2FEC4721CE8D690088B42C /* FavouriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2FEC4521CE8D690088B42C /* FavouriteCollectionViewCell.xib */; };
 		3D37D2CD21B0203C002F7467 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D37D2CC21B0203C002F7467 /* Constants.swift */; };
 		3D409DDE21B992BA0001BBF0 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D409DDD21B992BA0001BBF0 /* PlacesManager.swift */; };
 		3D409DE121B99AF60001BBF0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D409DDF21B99AF60001BBF0 /* TabBarViewController.swift */; };
@@ -124,6 +126,8 @@
 		3D1681C821BC4665007ABC72 /* BaseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBuilder.swift; sourceTree = "<group>"; };
 		3D26930421CACD68000038F0 /* FavouritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesManager.swift; sourceTree = "<group>"; };
 		3D29629D21C193B50075B363 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		3D2FEC4421CE8D690088B42C /* FavouriteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		3D2FEC4521CE8D690088B42C /* FavouriteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		3D37D2CC21B0203C002F7467 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D409DDD21B992BA0001BBF0 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
 		3D409DDF21B99AF60001BBF0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -478,6 +482,8 @@
 		3DFE536921BBDF5A00593A0F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				3D2FEC4421CE8D690088B42C /* FavouriteCollectionViewCell.swift */,
+				3D2FEC4521CE8D690088B42C /* FavouriteCollectionViewCell.xib */,
 				3DFE536A21BBDF8C00593A0F /* PlaceCollectionViewCell.swift */,
 				3DFE536B21BBDF8C00593A0F /* PlaceCollectionViewCell.xib */,
 			);
@@ -615,6 +621,7 @@
 				3D1681AE21BC00FE007ABC72 /* Assets.xcassets in Resources */,
 				3D409DFC21B9A9ED0001BBF0 /* Translations-en.json in Resources */,
 				3D409DF821B99CCD0001BBF0 /* PlaceDetailViewController.xib in Resources */,
+				3D2FEC4721CE8D690088B42C /* FavouriteCollectionViewCell.xib in Resources */,
 				3D409DE921B99B730001BBF0 /* SettingsViewController.xib in Resources */,
 				3D9420A721AEF6FA00569238 /* MainViewController.xib in Resources */,
 				3DFE536D21BBDF8C00593A0F /* PlaceCollectionViewCell.xib in Resources */,
@@ -759,6 +766,7 @@
 				3DF1A62C21AFEE1300A1E8A5 /* RemoteDataManager.swift in Sources */,
 				3D079DA121BD737700330B2B /* SettingsInteractor.swift in Sources */,
 				3D9420AB21AEF71C00569238 /* MainInteractor.swift in Sources */,
+				3D2FEC4621CE8D690088B42C /* FavouriteCollectionViewCell.swift in Sources */,
 				3D1681C321BC45A0007ABC72 /* FavouritesListBuilder.swift in Sources */,
 				3D409DED21B99B990001BBF0 /* PlacesListViewController.swift in Sources */,
 				3D9420A621AEF6FA00569238 /* MainViewController.swift in Sources */,

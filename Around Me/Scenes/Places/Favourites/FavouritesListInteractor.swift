@@ -13,7 +13,19 @@ class FavouritesListInteractor: InterfaceFavouritesListInteractor {
     
     unowned var delegate: InterfaceFavouritesListInteractorOutput
     
+    private let favouritesManager = FavouritesManager.sharedInstance()
+
+    // MARK: - Init
     init(delegate: InterfaceFavouritesListInteractorOutput) {
         self.delegate = delegate
+    }
+    
+    // MARK: - Public methods
+    func numberOfFavourites() -> Int {
+        return favouritesManager.places.count
+    }
+    
+    func place(_ index: NSInteger) -> Place {
+        return favouritesManager.places[index]
     }
 }

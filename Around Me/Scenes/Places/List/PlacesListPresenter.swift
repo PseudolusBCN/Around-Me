@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class PlacesListPresenter: InterfacePlacesListPresenter {
     var router: InterfacePlacesListRouter?

@@ -29,7 +29,6 @@ class PlaceCollectionViewCell: UICollectionViewCell {
         commonInit()
     }
 
-    // MARK: - Configuration
     private func commonInit() {
     }
 

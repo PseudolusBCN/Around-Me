@@ -7,17 +7,14 @@
 //
 
 import UIKit
-import AlamofireImage
 import Localize
 
 class PlacesListViewController: UIViewController, InterfacePlacesListViewController {
     @IBOutlet weak var placesCollectionView: UICollectionView!
     
-    //private let placesManager = PlacesManager.sharedInstance()
-
     var presenter: InterfacePlacesListPresenter?
 
-    // MARK: - Configuration
+    // MARK: - Init
     init() {
         super.init(nibName: "PlacesListViewController", bundle: nil)
 
@@ -63,18 +60,15 @@ extension PlacesListViewController: UICollectionViewDelegate {
 
 extension PlacesListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var width: CGFloat
         if UIDevice.current.userInterfaceIdiom == .pad {
-            width = (collectionView.frame.size.width - 10) / 2
+            return CGSize(width: (collectionView.frame.size.width - 10) / 2, height: 120)
         } else {
-            width = collectionView.frame.size.width - 10
+            return CGSize(width: (collectionView.frame.size.width - 10), height: 120)
         }
-
-        return CGSize(width: width, height: 120)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets.init(top: 2.5, left: 5, bottom: 2.5, right: 5)
     }
 }
 
@@ -90,6 +84,6 @@ extension PlacesListViewController: PlaceCollectionViewCellDelegate {
 
 extension PlacesListViewController: InterfacePlacesListPresenterOutput {
     func updateData() {
-        self.placesCollectionView.reloadData()
+        placesCollectionView.reloadData()
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class FavouritesListBuilder: BaseBuilder {
     func main() -> UIViewController {
         let view = FavouritesListViewController()
-        let presenter = FavouritesListPresenter()
+        let presenter = FavouritesListPresenter(delegate: view)
         let interactor = FavouritesListInteractor(delegate: presenter)
         let router = FavouritesListRouter()
         
