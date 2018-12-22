@@ -13,4 +13,4 @@ public let notificationLocationUnauthorized = "notificationLocationUnauthorized"
 
 public let notificationLocationUpdated = "notificationLocationUpdated"
 
-public let googleAPIKey = "AIzaSyCxuVJdnxwfiFIHURJN8rlgdKgiVR6iUPs"
+public let googleAPIKey = "## YOUR GOOGLE API KEY ##"
