@@ -56,7 +56,11 @@ class PlacesListInteractor: InterfacePlacesListInteractor {
             }
         })
     }
-    
+
+    func numberOfPlaces() -> Int {
+        return placesManager.places.count
+    }
+
     func place(_ index: NSInteger) -> Place {
         return placesManager.places[index]
     }

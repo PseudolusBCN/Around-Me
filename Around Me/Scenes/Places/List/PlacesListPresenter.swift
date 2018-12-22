@@ -50,6 +50,10 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
         return cell
     }
 
+    func itemsForSection(_ section: Int) -> Int {
+        return interactor?.numberOfPlaces() ?? 0
+    }
+
     func addFavourite(_ placeId: String) {
         interactor?.addFavourite(placeId)
     }

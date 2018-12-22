@@ -19,6 +19,7 @@ protocol InterfacePlacesListPresenter: class {
     
     func setupCollectionView(_ collectionView: UICollectionView, viewController: UIViewController)
     func placeCollectionViewCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> PlaceCollectionViewCell
+    func itemsForSection(_ section: Int) -> Int
 
     func addFavourite(_ placeId: String)
     func removeFavourite(_ placeId: String)
@@ -33,7 +34,8 @@ protocol InterfacePlacesListInteractor: class {
     
     func addFavourite(_ placeId: String)
     func removeFavourite(_ placeId: String)
-    
+
+    func numberOfPlaces() -> Int
     func place(_ index: NSInteger) -> Place
     func placeIsFavourite(_ place: Place) -> Bool
 }

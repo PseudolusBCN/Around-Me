@@ -13,7 +13,7 @@ import Localize
 class PlacesListViewController: UIViewController, InterfacePlacesListViewController {
     @IBOutlet weak var placesCollectionView: UICollectionView!
     
-    private let placesManager = PlacesManager.sharedInstance()
+    //private let placesManager = PlacesManager.sharedInstance()
 
     var presenter: InterfacePlacesListPresenter?
 
@@ -44,7 +44,7 @@ extension PlacesListViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return placesManager.places.count
+        return presenter?.itemsForSection(section) ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
