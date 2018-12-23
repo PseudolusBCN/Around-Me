@@ -12,6 +12,7 @@ import MBProgressHUD
 class MainViewController: UIViewController, InterfaceMainViewController {
     var presenter: InterfaceMainPresenter?
 
+    @IBOutlet weak var versionLabel: UILabel!
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class MainViewController: UIViewController, InterfaceMainViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        versionLabel.text = presenter?.appVersion()
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 

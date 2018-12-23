@@ -1,5 +1,15 @@
 {
     "generic": {
+        "distance": {
+            "meters": "%@ meter(s)",
+            "metersShort": "%@ m",
+            "kilometers": "%@ kilometer(s)",
+            "kilometersShort": "%@ km"
+        },
+        "emptyData": {
+            "places": "No data allowed",
+            "favourites": "No favourites stored"
+        },
         "error": {
             "request": {
                 "overQuery": "ERROR: REQUEST OVER QUERY",
@@ -16,6 +26,7 @@
     },
     "main": {
         "appName": "Around Me",
+        "appVersion": "Version %@ (%@)",
         "tabBar": {
             "list": "List",
             "favourites": "Favourites",

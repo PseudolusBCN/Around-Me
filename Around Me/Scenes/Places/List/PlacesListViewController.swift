@@ -14,6 +14,8 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     
     var presenter: InterfacePlacesListPresenter?
 
+    private var emptyResultsView: EmptyResultsView?
+
     // MARK: - Init
     init() {
         super.init(nibName: "PlacesListViewController", bundle: nil)
@@ -31,7 +33,24 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        emptyResultsView = EmptyResultsView(frame: placesCollectionView.frame)
+        emptyResultsView!.titleLabel.text = "generic.places.favourites".localized
+
         presenter?.setupCollectionView(placesCollectionView, viewController: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if presenter?.itemsForSection(0) == 0 {
+            self.view.addSubview(emptyResultsView!)
+        } else {
+            placesCollectionView.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if presenter?.itemsForSection(0) == 0 {
+            emptyResultsView!.removeFromSuperview()
+        }
     }
 }
 
