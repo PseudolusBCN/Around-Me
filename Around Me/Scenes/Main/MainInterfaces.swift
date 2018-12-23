@@ -19,6 +19,8 @@ protocol InterfaceMainPresenter: class {
     
     func setupObservers()
     func removeObservers()
+    
+    func appVersion() -> String
 }
 
 protocol InterfaceMainInteractor: class {

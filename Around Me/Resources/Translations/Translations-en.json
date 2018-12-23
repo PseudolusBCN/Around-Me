@@ -1,5 +1,6 @@
 {
     "generic": {
+        "appVersion": "Version %@ (%@)",
         "error": {
             "request": {
                 "overQuery": "ERROR: REQUEST OVER QUERY",

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize
 
 class MainPresenter: InterfaceMainPresenter {
     var router: InterfaceMainRouter?
@@ -20,6 +21,14 @@ class MainPresenter: InterfaceMainPresenter {
     
     func removeObservers() {
         interactor?.removeObservers()
+    }
+    
+    func appVersion() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        let build = dictionary["CFBundleVersion"] as! String
+        
+        return(String(format: "generic.appVersion".localized, version, build))
     }
 }
 
