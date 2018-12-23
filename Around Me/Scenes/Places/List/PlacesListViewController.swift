@@ -42,6 +42,8 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     override func viewWillAppear(_ animated: Bool) {
         if presenter?.itemsForSection(0) == 0 {
             self.view.addSubview(emptyResultsView!)
+        } else {
+            placesCollectionView.reloadData()
         }
     }
     
