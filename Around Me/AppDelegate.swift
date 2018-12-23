@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Localize
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -33,6 +33,16 @@
             "settings": "Settings"
         }
     },
+    "settings": {
+        "language": {
+            "title": "Language",
+            "option": {
+                "catalan": "Català",
+                "english": "English"
+            }
+        },
+        "radiousSearch": "Radious search"
+    },
     "config": {
         "place": {
             "type": {

@@ -54,7 +54,7 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     }
 }
 
-extension PlacesListViewController: UICollectionViewDataSource {
+extension PlacesListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -70,9 +70,7 @@ extension PlacesListViewController: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
-}
 
-extension PlacesListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     }
 }

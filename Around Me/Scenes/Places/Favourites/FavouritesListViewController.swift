@@ -54,7 +54,7 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     }
 }
 
-extension FavouritesListViewController: UICollectionViewDataSource {
+extension FavouritesListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
