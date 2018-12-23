@@ -81,6 +81,7 @@ class RemoteDataManager: NSObject {
                     completion(nil, error)
                     return
                 }
+                print("\(response.result.value!)")
                 completion(response.result.value!, nil)
         }
     }

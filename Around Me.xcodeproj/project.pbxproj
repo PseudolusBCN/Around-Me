@@ -71,6 +71,8 @@
 		3D9420AB21AEF71C00569238 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9420AA21AEF71C00569238 /* MainInteractor.swift */; };
 		3D9420B121AEF7C200569238 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9420B021AEF7C200569238 /* LocationManager.swift */; };
 		3DA14A0221CEBD810099EAC7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3DA14A0121CEBD800099EAC7 /* README.md */; };
+		3DA14A0521CFA6A20099EAC7 /* EmptyResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA14A0321CFA6A20099EAC7 /* EmptyResultsView.swift */; };
+		3DA14A0621CFA6A20099EAC7 /* EmptyResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA14A0421CFA6A20099EAC7 /* EmptyResultsView.xib */; };
 		3DF1A62421AFEB2700A1E8A5 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DF1A62321AFEB2700A1E8A5 /* Configuration.plist */; };
 		3DF1A62821AFECED00A1E8A5 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A62721AFECED00A1E8A5 /* Place.swift */; };
 		3DF1A62A21AFEDFF00A1E8A5 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A62921AFEDFF00A1E8A5 /* ConfigurationManager.swift */; };
@@ -170,6 +172,8 @@
 		3D9420AA21AEF71C00569238 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		3D9420B021AEF7C200569238 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3DA14A0121CEBD800099EAC7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3DA14A0321CFA6A20099EAC7 /* EmptyResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResultsView.swift; sourceTree = "<group>"; };
+		3DA14A0421CFA6A20099EAC7 /* EmptyResultsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyResultsView.xib; sourceTree = "<group>"; };
 		3DF1A62321AFEB2700A1E8A5 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		3DF1A62721AFECED00A1E8A5 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		3DF1A62921AFEDFF00A1E8A5 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
@@ -489,6 +493,8 @@
 				3D2FEC4521CE8D690088B42C /* FavouriteCollectionViewCell.xib */,
 				3DFE536A21BBDF8C00593A0F /* PlaceCollectionViewCell.swift */,
 				3DFE536B21BBDF8C00593A0F /* PlaceCollectionViewCell.xib */,
+				3DA14A0321CFA6A20099EAC7 /* EmptyResultsView.swift */,
+				3DA14A0421CFA6A20099EAC7 /* EmptyResultsView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -619,6 +625,7 @@
 				3D409DEE21B99B990001BBF0 /* PlacesListViewController.xib in Resources */,
 				3D94207D21AEF13E00569238 /* LaunchScreen.storyboard in Resources */,
 				3D409DF421B99CB70001BBF0 /* FavouritesListViewController.xib in Resources */,
+				3DA14A0621CFA6A20099EAC7 /* EmptyResultsView.xib in Resources */,
 				3DF1A62421AFEB2700A1E8A5 /* Configuration.plist in Resources */,
 				3DA14A0221CEBD810099EAC7 /* README.md in Resources */,
 				3D5BA33D21B9516F00A1D985 /* HelveticaNeue.ttc in Resources */,
@@ -779,6 +786,7 @@
 				3D5BA32D21B9335A00A1D985 /* APIPlaceOpeningHours.swift in Sources */,
 				3D409DFA21B9A0BA0001BBF0 /* NotificationsManager.swift in Sources */,
 				3D37D2CD21B0203C002F7467 /* Constants.swift in Sources */,
+				3DA14A0521CFA6A20099EAC7 /* EmptyResultsView.swift in Sources */,
 				3D079D9D21BD734C00330B2B /* FavouritesListPresenter.swift in Sources */,
 				3D409DF321B99CB70001BBF0 /* FavouritesListViewController.swift in Sources */,
 				3DFE536C21BBDF8C00593A0F /* PlaceCollectionViewCell.swift in Sources */,

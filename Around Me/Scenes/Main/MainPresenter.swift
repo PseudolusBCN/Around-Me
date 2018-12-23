@@ -28,7 +28,7 @@ class MainPresenter: InterfaceMainPresenter {
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String
         
-        return(String(format: "generic.appVersion".localized, version, build))
+        return(String(format: "main.appVersion".localized, version, build))
     }
 }
 
