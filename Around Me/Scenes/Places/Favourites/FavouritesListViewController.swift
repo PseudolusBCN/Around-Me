@@ -14,6 +14,8 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
 
     var presenter: InterfaceFavouritesListPresenter?
     
+    private var emptyResultsView: EmptyResultsView?
+
     // MARK: - Init
     init() {
         super.init(nibName: "FavouritesListViewController", bundle: nil)
@@ -31,7 +33,24 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emptyResultsView = EmptyResultsView(frame: favouritesCollectionView.frame)
+        emptyResultsView!.titleLabel.text = "generic.emptyData.favourites".localized
+
         presenter?.setupCollectionView(favouritesCollectionView, viewController: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if presenter?.itemsForSection(0) == 0 {
+            self.view.addSubview(emptyResultsView!)
+        } else {
+            favouritesCollectionView.reloadData()
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if presenter?.itemsForSection(0) == 0 {
+            emptyResultsView!.removeFromSuperview()
+        }
     }
 }
 
