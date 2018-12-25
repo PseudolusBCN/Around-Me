@@ -29,36 +29,47 @@ class SettingsViewController: UIViewController, InterfaceSettingsViewController 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        settingsTableView.dataSource = self
-        settingsTableView.delegate = self
+
+        presenter?.setupTableView(settingsTableView, viewController: self)
     }
 }
 
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter?.numberOfSections() ?? 0
+        return (presenter?.numberOfSections())!
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.numberOfRows(section) ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return (presenter?.sectionExpanded(section))! ? (presenter?.numberOfRows(section))! : 0
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionView = SettingSectionView()
-        sectionView.titleLabel.text = presenter?.sectionTitle(section)
-        return sectionView
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? SettingSectionView ?? SettingSectionView(reuseIdentifier: "header")
+        header.titleLabel.text = presenter?.sectionTitle(section)
+        header.section = section
+        header.status = (presenter?.sectionExpanded(section))! ? .expanded : .collapsed
+        header.delegate = self
+        return header
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: (presenter?.tableViewReuseIdentifier())!, for: indexPath) as! SettingTableViewCell
+        cell.titleLabel.text = presenter?.optionValue(indexPath)
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+}
+
+extension SettingsViewController: SettingSectionViewDelegate {
+    func toggleSection(_ header: SettingSectionView, section: Int) {
+        presenter?.toggleSection(section)
+    }
+}
+
+extension SettingsViewController: InterfaceSettingsPresenterOutput {
+    func updateData() {
+        settingsTableView.reloadData()
     }
 }

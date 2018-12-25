@@ -11,12 +11,23 @@ import Localize
 
 private class Setting {
     var name: String = ""
-    var values: [Any] = []
+    var values: [Option] = []
+    var expanded = false
     
     // MARK: - Init
-    init(_ name: String, values: [Any]) {
+    init(_ name: String, values: [Option]) {
         self.name = name
         self.values = values
+    }
+}
+
+private class Option {
+    var name: String = ""
+    var selected = false
+    
+    // MARK: - Init
+    init(_ name: String) {
+        self.name = name
     }
 }
 
@@ -34,20 +45,43 @@ class SettingsInteractor: InterfaceSettingsInteractor {
     init(delegate: InterfaceSettingsInteractorOutput) {
         self.delegate = delegate
 
-        settings.append(Setting("settings.radiousSearch".localized, values: [100, 250, 500, 1000, 2500, 5000]))
-        settings.append(Setting("settings.language.title".localized, values: ["settings.language.option.english".localized, "settings.language.option.catalan".localized]))
+        settings.append(Setting("settings.radiousSearch".localized, values: [Option("100"), Option("250"), Option("500"), Option("1000"), Option("2500"), Option("5000")]))
+        settings.append(Setting("settings.language.title".localized, values: [Option("settings.language.option.english".localized), Option("settings.language.option.catalan".localized)]))
     }
 
     // MARK: - Public methods
-    func numberOfSettings() -> Int {
+    func numberOfSections() -> Int {
         return settings.count
     }
 
     func numberOfOptions(_ section: Int) -> Int {
         return settings[section].values.count
     }
-    
-    func settingTitle(_ section: Int) -> String {
+
+    func sectionTitle(_ section: Int) -> String {
         return settings[section].name
+    }
+
+    func optionValue(_ indexPath: IndexPath) -> String {
+        return settings[indexPath.section].values[indexPath.row].name
+    }
+
+    func sectionExpanded(_ section: Int) -> Bool {
+        return settings[section].expanded
+    }
+
+    func optionSelected(_ indexPath: IndexPath) -> Bool {
+        return settings[indexPath.section].values[indexPath.row].selected
+    }
+
+    func toggleSection(_ section: Int) {
+        settings[section].expanded = !settings[section].expanded
+        delegate.sectionToggled()
+    }
+    
+    func selectOption(_ indexPath: IndexPath) {
+        // *** MARCAR A FALSE TODAS LAS OPCIONES ANTES DE CAMBIAR
+        //settings[indexPath.section].values[indexPath.row].selected = !settings[indexPath.section].values[indexPath.row].selected
+        delegate.optionSelected()
     }
 }

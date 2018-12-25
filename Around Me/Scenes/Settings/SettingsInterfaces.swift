@@ -17,20 +17,41 @@ protocol InterfaceSettingsPresenter: class {
     var interactor: InterfaceSettingsInteractor? { get set }
     var view: InterfaceSettingsViewController? { get set }
     
+    func sectionViewReuseIdentifier() -> String
+    func tableViewReuseIdentifier() -> String
+    func setupTableView(_ tableView: UITableView, viewController: UIViewController)
     func numberOfSections() -> Int
     func numberOfRows(_ section: Int) -> Int
     func sectionTitle(_ section: Int) -> String
+    func optionValue(_ indexPath: IndexPath) -> String
+    func sectionExpanded(_ section: Int) -> Bool
+    func optionSelected(_ indexPath: IndexPath) -> Bool
+    
+    func toggleSection(_ section: Int)
+    func selectOption(_ indexPath: IndexPath)
+}
+
+protocol InterfaceSettingsPresenterOutput: class {
+    func updateData()
 }
 
 protocol InterfaceSettingsInteractor: class {
     var presenter: InterfaceSettingsPresenter? { get set }
 
-    func numberOfSettings() -> Int
+    func numberOfSections() -> Int
     func numberOfOptions(_ section: Int) -> Int
-    func settingTitle(_ section: Int) -> String
+    func sectionTitle(_ section: Int) -> String
+    func optionValue(_ indexPath: IndexPath) -> String
+    func sectionExpanded(_ section: Int) -> Bool
+    func optionSelected(_ indexPath: IndexPath) -> Bool
+    
+    func toggleSection(_ section: Int)
+    func selectOption(_ indexPath: IndexPath)
 }
 
 protocol InterfaceSettingsInteractorOutput: class {
+    func sectionToggled()
+    func optionSelected()
 }
 
 protocol InterfaceSettingsRouter: class {

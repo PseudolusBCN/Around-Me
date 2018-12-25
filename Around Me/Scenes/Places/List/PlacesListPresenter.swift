@@ -52,7 +52,7 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
     }
 
     func itemsForSection(_ section: Int) -> Int {
-        return interactor?.numberOfPlaces() ?? 0
+        return (interactor?.numberOfPlaces())!
     }
 
     func addFavourite(_ placeId: String) {
