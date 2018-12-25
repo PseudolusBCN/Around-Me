@@ -44,21 +44,22 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? SettingSectionView ?? SettingSectionView(reuseIdentifier: "header")
-        header.titleLabel.text = presenter?.sectionTitle(section)
-        header.section = section
-        header.status = (presenter?.sectionExpanded(section))! ? .expanded : .collapsed
-        header.delegate = self
-        return header
+        if let header = presenter?.settingSectionView(tableView, section: section) {
+            header.delegate = self
+            return header
+        }
+        return UIView()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: (presenter?.tableViewReuseIdentifier())!, for: indexPath) as! SettingTableViewCell
-        cell.titleLabel.text = presenter?.optionValue(indexPath)
-        return cell
+        if let cell = presenter?.optionTableViewCell(tableView, indexPath: indexPath) {
+            return cell
+        }
+        return UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 

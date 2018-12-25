@@ -17,13 +17,11 @@ protocol InterfaceSettingsPresenter: class {
     var interactor: InterfaceSettingsInteractor? { get set }
     var view: InterfaceSettingsViewController? { get set }
     
-    func sectionViewReuseIdentifier() -> String
-    func tableViewReuseIdentifier() -> String
     func setupTableView(_ tableView: UITableView, viewController: UIViewController)
+    func settingSectionView(_ tableView: UITableView, section: Int) -> SettingSectionView
+    func optionTableViewCell(_ tableView: UITableView, indexPath: IndexPath) -> SettingTableViewCell
     func numberOfSections() -> Int
     func numberOfRows(_ section: Int) -> Int
-    func sectionTitle(_ section: Int) -> String
-    func optionValue(_ indexPath: IndexPath) -> String
     func sectionExpanded(_ section: Int) -> Bool
     func optionSelected(_ indexPath: IndexPath) -> Bool
     

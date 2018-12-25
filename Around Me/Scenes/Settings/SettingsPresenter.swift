@@ -21,14 +21,6 @@ class SettingsPresenter: InterfaceSettingsPresenter {
     }
     
     // MARK: - Public methods
-    func sectionViewReuseIdentifier() -> String {
-        return "SettingSectionView"
-    }
-
-    func tableViewReuseIdentifier() -> String {
-        return "SettingTableCell"
-    }
-
     func setupTableView(_ tableView: UITableView, viewController: UIViewController) {
         tableView.register(UINib(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: tableViewReuseIdentifier())
 
@@ -42,6 +34,21 @@ class SettingsPresenter: InterfaceSettingsPresenter {
         tableView.delegate = viewController as? UITableViewDelegate
     }
 
+    func settingSectionView(_ tableView: UITableView, section: Int) -> SettingSectionView {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: sectionViewReuseIdentifier()) as? SettingSectionView ?? SettingSectionView(reuseIdentifier: sectionViewReuseIdentifier())
+        header.titleLabel.text = interactor?.sectionTitle(section)
+        header.section = section
+        header.status = (interactor?.sectionExpanded(section))! ? .expanded : .collapsed
+        return header
+    }
+
+    func optionTableViewCell(_ tableView: UITableView, indexPath: IndexPath) -> SettingTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewReuseIdentifier(), for: indexPath) as! SettingTableViewCell
+        cell.titleLabel.text = interactor?.optionValue(indexPath)
+        return cell
+
+    }
+
     func numberOfSections() -> Int {
         return (interactor?.numberOfSections())!
     }
@@ -49,15 +56,7 @@ class SettingsPresenter: InterfaceSettingsPresenter {
     func numberOfRows(_ section: Int) -> Int {
         return (interactor?.numberOfOptions(section))!
     }
-    
-    func sectionTitle(_ section: Int) -> String {
-        return interactor?.sectionTitle(section) ?? ""
-    }
 
-    func optionValue(_ indexPath: IndexPath) -> String {
-        return interactor?.optionValue(indexPath) ?? ""
-    }
-    
     func sectionExpanded(_ section: Int) -> Bool {
         return interactor?.sectionExpanded(section) ?? false
     }
@@ -75,6 +74,13 @@ class SettingsPresenter: InterfaceSettingsPresenter {
     }
 
     // MARK: - Private methods
+    func sectionViewReuseIdentifier() -> String {
+        return "SettingSectionView"
+    }
+    
+    func tableViewReuseIdentifier() -> String {
+        return "SettingTableCell"
+    }
 }
 
 extension SettingsPresenter: InterfaceSettingsInteractorOutput {
