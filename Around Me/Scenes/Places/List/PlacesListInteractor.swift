@@ -68,4 +68,20 @@ class PlacesListInteractor: InterfacePlacesListInteractor {
     func placeIsFavourite(_ place: Place) -> Bool {
         return (favouritesManager.places.filter { $0.id == place.id }).count > 0
     }
+
+    func getRemoteData() {
+        HUDManager.sharedInstance().showProgressHUD(title: "generic.hud.downloadingData".localized)
+        
+        let placesManager = PlacesManager.sharedInstance()
+        let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
+        RemoteDataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, types: "") { (response, error) in
+            guard error == nil else {
+                return
+            }
+            placesManager.addPlacesFromData(response!)
+            
+            HUDManager.sharedInstance().hideProgressHUD()
+            self.delegate.dataDownloaded()
+        }
+    }
 }

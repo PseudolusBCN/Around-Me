@@ -42,4 +42,12 @@ class PlacesManager: NSObject {
             places?.append(Place.init(place))
         }
     }
+    
+    func clearData() {
+        places.removeAll()
+    }
+
+    func clearToken() {
+        nextPageToken = ""
+    }
 }

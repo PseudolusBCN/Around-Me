@@ -17,7 +17,9 @@ class SettingsViewController: UIViewController, InterfaceSettingsViewController 
     // MARK: - Init
     init() {
         super.init(nibName: "SettingsViewController", bundle: nil)
-        
+
+        UINavigationBar.appearance().backgroundColor = UIColor.hexString("#FF8000")
+
         navigationItem.title = "main.appName".localized
         setLocalizedTitles()
         
