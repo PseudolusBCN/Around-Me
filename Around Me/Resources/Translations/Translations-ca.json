@@ -1,14 +1,14 @@
 {
     "generic": {
         "distance": {
-            "meters": "%@ meter(s)",
+            "meters": "%@ metre(s)",
             "metersShort": "%@ m",
-            "kilometers": "%@ kilometer(s)",
+            "kilometers": "%@ quilòmetre(s)",
             "kilometersShort": "%@ km"
         },
         "emptyData": {
-            "places": "No data downloaded",
-            "favourites": "No favourites stored"
+            "places": "No s'han descarregat dades",
+            "favourites": "No hi han favorits enmagatzemats"
         },
         "error": {
             "request": {
@@ -19,29 +19,29 @@
             }
         },
         "hud": {
-            "updatingLocation": "Updating location",
-            "downloadingData": "Downloading data",
-            "retrievingFavourites": "Retrieving favourites"
+            "updatingLocation": "Actualitzant ubicació",
+            "downloadingData": "Descarregant dades",
+            "retrievingFavourites": "Recuperant favorits"
         }
     },
     "main": {
         "appName": "Around Me",
-        "appVersion": "Version %@ (%@)",
+        "appVersion": "Versió %@ (%@)",
         "tabBar": {
-            "list": "List",
-            "favourites": "Favourites",
-            "settings": "Settings"
+            "list": "Llistat",
+            "favourites": "Favorits",
+            "settings": "Configuració"
         }
     },
     "settings": {
         "language": {
-            "title": "Language",
+            "title": "Llenguatge",
             "option": {
                 "catalan": "Català",
                 "english": "English"
             }
         },
-        "radiousSearch": "Radious search"
+        "radiousSearch": "Radi de recerca"
     },
     "config": {
         "place": {
