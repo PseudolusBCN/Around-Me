@@ -44,9 +44,14 @@ class SettingsPresenter: InterfaceSettingsPresenter {
 
     func optionTableViewCell(_ tableView: UITableView, indexPath: IndexPath) -> SettingTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewReuseIdentifier(), for: indexPath) as! SettingTableViewCell
-        cell.titleLabel.text = interactor?.optionValue(indexPath)
-        return cell
+        cell.titleLabel.text = interactor?.optionTitle(indexPath)
+        
+        let icon = UIImage(named: "IcoOption_Selected")?.withRenderingMode(.alwaysTemplate)
+        cell.statusIcon.tintColor = UIColor.blue
+        cell.statusIcon.image = icon
+        cell.statusIcon.isHidden = !((interactor?.optionSelected(indexPath))!)
 
+        return cell
     }
 
     func numberOfSections() -> Int {

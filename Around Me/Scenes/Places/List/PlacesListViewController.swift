@@ -20,9 +20,10 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     init() {
         super.init(nibName: "PlacesListViewController", bundle: nil)
 
-        navigationItem.title = "main.appName".localized
-        tabBarItem.title = "main.tabBar.list".localized
         tabBarItem.image = UIImage(named:"IcoList")
+        setLocalizedTitles()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setLocalizedTitles), name: NSNotification.Name(rawValue: notificationLanguageChanged), object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +52,12 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
         if presenter?.itemsForSection(0) == 0 {
             emptyResultsView!.removeFromSuperview()
         }
+    }
+
+    // MARK: - Private methods
+    @objc private func setLocalizedTitles() {
+        navigationItem.title = "main.appName".localized
+        tabBarItem.title = "main.tabBar.list".localized
     }
 }
 

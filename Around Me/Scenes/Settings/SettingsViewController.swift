@@ -14,12 +14,14 @@ class SettingsViewController: UIViewController, InterfaceSettingsViewController 
     
     @IBOutlet weak var settingsTableView: UITableView!
     
+    // MARK: - Init
     init() {
         super.init(nibName: "SettingsViewController", bundle: nil)
         
         navigationItem.title = "main.appName".localized
-        tabBarItem.title = "main.tabBar.settings".localized
-        tabBarItem.image = UIImage(named:"IcoSettings")
+        setLocalizedTitles()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setLocalizedTitles), name: NSNotification.Name(rawValue: notificationLanguageChanged), object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,6 +33,12 @@ class SettingsViewController: UIViewController, InterfaceSettingsViewController 
         super.viewDidLoad()
 
         presenter?.setupTableView(settingsTableView, viewController: self)
+    }
+
+    // MARK: - Private methods
+    @objc private func setLocalizedTitles() {
+        tabBarItem.title = "main.tabBar.settings".localized
+        tabBarItem.image = UIImage(named:"IcoSettings")
     }
 }
 
@@ -60,6 +68,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        presenter?.selectOption(indexPath)
     }
 }
 

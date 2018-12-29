@@ -20,9 +20,10 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     init() {
         super.init(nibName: "FavouritesListViewController", bundle: nil)
 
-        navigationItem.title = "main.appName".localized
-        tabBarItem.title = "main.tabBar.favourites".localized
         tabBarItem.image = UIImage(named:"IcoFavourites")
+        setLocalizedTitles()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setLocalizedTitles), name: NSNotification.Name(rawValue: notificationLanguageChanged), object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +52,12 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
         if presenter?.itemsForSection(0) == 0 {
             emptyResultsView!.removeFromSuperview()
         }
+    }
+
+    // MARK: - Private methods
+    @objc private func setLocalizedTitles() {
+        navigationItem.title = "main.appName".localized
+        tabBarItem.title = "main.tabBar.favourites".localized
     }
 }
 

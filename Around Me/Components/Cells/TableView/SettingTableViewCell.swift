@@ -10,7 +10,8 @@ import UIKit
 
 class SettingTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet weak var statusIcon: UIImageView!
+
     // MARK: - Init
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,10 +20,6 @@ class SettingTableViewCell: UITableViewCell {
     }
     
     private func commonInit() {
-    }
-
-    // MARK: - Public methods
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        selectionStyle = .none
     }
 }

@@ -7,7 +7,7 @@
             "kilometersShort": "%@ km"
         },
         "emptyData": {
-            "places": "No data allowed",
+            "places": "No data downloaded",
             "favourites": "No favourites stored"
         },
         "error": {

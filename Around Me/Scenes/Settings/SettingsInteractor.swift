@@ -23,11 +23,19 @@ private class Setting {
 
 private class Option {
     var name: String = ""
+    var value: String
     var selected = false
     
     // MARK: - Init
-    init(_ name: String) {
+    init(_ name: String, value: String) {
         self.name = name
+        self.value = value
+    }
+
+    init(_ name: String, value: String, selected: Bool) {
+        self.name = name
+        self.value = value
+        self.selected = selected
     }
 }
 
@@ -37,16 +45,15 @@ class SettingsInteractor: InterfaceSettingsInteractor {
     unowned var delegate: InterfaceSettingsInteractorOutput
 
     private var settings: [Setting] = []
-
+    
     private let sectionRadious = 0
     private let sectionLanguage = 1
     
     // MARK: - Init
     init(delegate: InterfaceSettingsInteractorOutput) {
         self.delegate = delegate
-
-        settings.append(Setting("settings.radiousSearch".localized, values: [Option("100"), Option("250"), Option("500"), Option("1000"), Option("2500"), Option("5000")]))
-        settings.append(Setting("settings.language.title".localized, values: [Option("settings.language.option.english".localized), Option("settings.language.option.catalan".localized)]))
+        
+        setLocalizedSettings()
     }
 
     // MARK: - Public methods
@@ -62,8 +69,12 @@ class SettingsInteractor: InterfaceSettingsInteractor {
         return settings[section].name
     }
 
-    func optionValue(_ indexPath: IndexPath) -> String {
+    func optionTitle(_ indexPath: IndexPath) -> String {
         return settings[indexPath.section].values[indexPath.row].name
+    }
+
+    func optionValue(_ indexPath: IndexPath) -> String {
+        return settings[indexPath.section].values[indexPath.row].value
     }
 
     func sectionExpanded(_ section: Int) -> Bool {
@@ -80,8 +91,58 @@ class SettingsInteractor: InterfaceSettingsInteractor {
     }
     
     func selectOption(_ indexPath: IndexPath) {
-        // *** MARCAR A FALSE TODAS LAS OPCIONES ANTES DE CAMBIAR
-        //settings[indexPath.section].values[indexPath.row].selected = !settings[indexPath.section].values[indexPath.row].selected
+        let section = indexPath.section
+        if section == sectionRadious {
+            let selectedRadius = ConfigurationManager().retrieveStringFromPlist("searchRadius")
+            settings[section].values[settings[section].values.index(where: { $0.value == selectedRadius })!].selected = false
+            settings[section].values[indexPath.row].selected = true
+            ConfigurationManager().saveStringToPlist("searchRadius", value: optionValue(indexPath))
+        } else if section == sectionLanguage {
+            let selectedLanguage = ConfigurationManager().retrieveStringFromPlist("appLanguage")
+            settings[section].values[settings[section].values.index(where: { $0.value == selectedLanguage })!].selected = false
+            settings[section].values[indexPath.row].selected = true
+            ConfigurationManager().saveStringToPlist("appLanguage", value: optionValue(indexPath))
+            LocalizeManager().updateLanguage(optionValue(indexPath))
+
+            setLocalizedSettings()
+            
+            NotificationsManager().sendNotification(notificationLanguageChanged)
+        }
         delegate.optionSelected()
+    }
+    
+    // MARK: - Private methods
+    private func localizedDistance(_ number: Int) -> String {
+        if number < 1000 {
+            return String.localizedStringWithFormat("%d", number)
+        } else {
+            return String.localizedStringWithFormat("%.1f", Float(number) / 1000.0)
+        }
+    }
+    
+    func setLocalizedSettings() {
+        let radiousOptions = [Option(String(format: "generic.distance.meters".localized, localizedDistance(100)), value: "100"),
+                              Option(String(format: "generic.distance.meters".localized, localizedDistance(250)), value: "250"),
+                              Option(String(format: "generic.distance.meters".localized, localizedDistance(500)), value: "500"),
+                              Option(String(format: "generic.distance.kilometers".localized, localizedDistance(1000)), value: "1000"),
+                              Option(String(format: "generic.distance.kilometers".localized, localizedDistance(2500)), value: "2500"),
+                              Option(String(format: "generic.distance.kilometers".localized, localizedDistance(5000)), value: "5000")]
+        let selectedRadius = ConfigurationManager().retrieveStringFromPlist("searchRadius")
+        radiousOptions[radiousOptions.index(where: { $0.value == selectedRadius })!].selected = true
+        
+        let languageOptions = [Option("settings.language.option.english".localized, value: "en", selected: false),
+                               Option("settings.language.option.catalan".localized, value: "ca", selected: false)]
+        let selectedLanguage = ConfigurationManager().retrieveStringFromPlist("appLanguage")
+        languageOptions[languageOptions.index(where: { $0.value == selectedLanguage })!].selected = true
+        
+        let radiousSettings = Setting("settings.radiousSearch".localized, values: radiousOptions)
+        let languageSettings = Setting("settings.language.title".localized, values: languageOptions)
+        if settings.count > 0 {
+            radiousSettings.expanded = settings[sectionRadious].expanded
+            languageSettings.expanded = settings[sectionLanguage].expanded
+            settings.removeAll()
+        }
+        settings.append(radiousSettings)
+        settings.append(languageSettings)
     }
 }

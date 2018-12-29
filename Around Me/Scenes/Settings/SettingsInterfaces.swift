@@ -39,6 +39,7 @@ protocol InterfaceSettingsInteractor: class {
     func numberOfSections() -> Int
     func numberOfOptions(_ section: Int) -> Int
     func sectionTitle(_ section: Int) -> String
+    func optionTitle(_ indexPath: IndexPath) -> String
     func optionValue(_ indexPath: IndexPath) -> String
     func sectionExpanded(_ section: Int) -> Bool
     func optionSelected(_ indexPath: IndexPath) -> Bool

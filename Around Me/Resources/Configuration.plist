@@ -4,5 +4,7 @@
 <dict>
 	<key>searchRadius</key>
 	<string>1000</string>
+	<key>appLanguage</key>
+	<string>en</string>
 </dict>
 </plist>
