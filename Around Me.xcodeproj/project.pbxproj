@@ -81,6 +81,7 @@
 		3DF1A62821AFECED00A1E8A5 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A62721AFECED00A1E8A5 /* Place.swift */; };
 		3DF1A62A21AFEDFF00A1E8A5 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A62921AFEDFF00A1E8A5 /* ConfigurationManager.swift */; };
 		3DF1A62C21AFEE1300A1E8A5 /* RemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A62B21AFEE1300A1E8A5 /* RemoteDataManager.swift */; };
+		3DF3C12421D7EEFE006534D6 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF3C12321D7EEFE006534D6 /* UIColor.swift */; };
 		3DFDB13421D6ACBD00B8FDAE /* Translations-ca.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DFDB13321D6ACBC00B8FDAE /* Translations-ca.json */; };
 		3DFE536C21BBDF8C00593A0F /* PlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFE536A21BBDF8C00593A0F /* PlaceCollectionViewCell.swift */; };
 		3DFE536D21BBDF8C00593A0F /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DFE536B21BBDF8C00593A0F /* PlaceCollectionViewCell.xib */; };
@@ -187,6 +188,7 @@
 		3DF1A62721AFECED00A1E8A5 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		3DF1A62921AFEDFF00A1E8A5 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		3DF1A62B21AFEE1300A1E8A5 /* RemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataManager.swift; sourceTree = "<group>"; };
+		3DF3C12321D7EEFE006534D6 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		3DFDB13321D6ACBC00B8FDAE /* Translations-ca.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Translations-ca.json"; sourceTree = "<group>"; };
 		3DFE536A21BBDF8C00593A0F /* PlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DFE536B21BBDF8C00593A0F /* PlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				3D48706A21BD8AA7003090BB /* UIApplication.swift */,
+				3DF3C12321D7EEFE006534D6 /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				3D10FA8721D00B1300227126 /* SettingTableViewCell.swift in Sources */,
 				3D409DE121B99AF60001BBF0 /* TabBarViewController.swift in Sources */,
 				3DF1A62C21AFEE1300A1E8A5 /* RemoteDataManager.swift in Sources */,
+				3DF3C12421D7EEFE006534D6 /* UIColor.swift in Sources */,
 				3D079DA121BD737700330B2B /* SettingsInteractor.swift in Sources */,
 				3D9420AB21AEF71C00569238 /* MainInteractor.swift in Sources */,
 				3D2FEC4621CE8D690088B42C /* FavouriteCollectionViewCell.swift in Sources */,

@@ -20,6 +20,8 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     init() {
         super.init(nibName: "FavouritesListViewController", bundle: nil)
 
+        UINavigationBar.appearance().backgroundColor = UIColor.hexString("#FF8000")
+
         tabBarItem.image = UIImage(named:"IcoFavourites")
         setLocalizedTitles()
         

@@ -20,6 +20,8 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     init() {
         super.init(nibName: "PlacesListViewController", bundle: nil)
 
+        UINavigationBar.appearance().backgroundColor = UIColor.hexString("#FF8000")
+
         tabBarItem.image = UIImage(named:"IcoList")
         setLocalizedTitles()
         
