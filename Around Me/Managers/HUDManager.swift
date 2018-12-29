@@ -10,7 +10,22 @@ import UIKit
 import MBProgressHUD
 
 class HUDManager: NSObject {
+    private static var instance: HUDManager?
+
     var backgroundView: UIView?
+
+    // MARK: - Singleton
+    class func sharedInstance() -> HUDManager {
+        guard let currentInstance = instance else {
+            instance = HUDManager()
+            return instance!
+        }
+        return currentInstance
+    }
+    
+    class func clearInstance() {
+        instance = nil
+    }
 
     // MARK: - Init
     override init() {
@@ -36,17 +51,13 @@ class HUDManager: NSObject {
 
     func hideProgressHUD() {
         MBProgressHUD.hide(for: (UIApplication.topViewController()?.view)!, animated: true)
-        backgroundView?.removeFromSuperview()
+        removeBackgroundView()
     }
 
     // MARK: - Private methods
     private func createHUD(title: String, subtitle: String) -> MBProgressHUD {
         hideProgressHUD()
-
-        backgroundView = UIView(frame: UIScreen.main.bounds)
-        backgroundView?.backgroundColor = UIColor.black
-        backgroundView?.alpha = 0.5
-        UIApplication.topViewController()?.view.addSubview(backgroundView!)
+        createBackgroundView()
 
         let hud = MBProgressHUD.showAdded(to: (UIApplication.topViewController()?.view)!, animated: true)
         hud.mode = .indeterminate
@@ -60,5 +71,18 @@ class HUDManager: NSObject {
         }
 
         return hud
+    }
+    
+    private func createBackgroundView() {
+        backgroundView = UIView(frame: UIScreen.main.bounds)
+        backgroundView?.backgroundColor = UIColor.black
+        backgroundView?.alpha = 0.5
+        UIApplication.topViewController()?.view.addSubview(backgroundView!)
+    }
+    
+    private func removeBackgroundView() {
+        if backgroundView != nil {
+            backgroundView?.removeFromSuperview()
+        }
     }
 }

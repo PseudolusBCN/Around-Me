@@ -31,7 +31,7 @@ class MainViewController: UIViewController, InterfaceMainViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        HUDManager().showProgressHUD(title: "generic.hud.updatingLocation".localized)
+        HUDManager.sharedInstance().showProgressHUD(title: "generic.hud.updatingLocation".localized)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

@@ -20,6 +20,8 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     init() {
         super.init(nibName: "PlacesListViewController", bundle: nil)
 
+        UINavigationBar.appearance().backgroundColor = UIColor.hexString("#FF8000")
+
         tabBarItem.image = UIImage(named:"IcoList")
         setLocalizedTitles()
         
@@ -79,6 +81,12 @@ extension PlacesListViewController: UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == (presenter?.itemsForSection(indexPath.section))! - 1 {
+            presenter?.downloadData()
+        }
     }
 }
 

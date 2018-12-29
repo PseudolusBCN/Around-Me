@@ -31,6 +31,8 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
         
         collectionView.dataSource = viewController as? UICollectionViewDataSource
         collectionView.delegate = viewController as? UICollectionViewDelegate
+
+        addRefreshControl(collectionView)
     }
     
     func placeCollectionViewCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> PlaceCollectionViewCell {
@@ -63,9 +65,31 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
         interactor?.removeFavourite(placeId)
     }
     
+    func downloadData() {
+        interactor?.getRemoteData()
+    }
+
     // MARK: - Private methods
     private func collectionViewReuseIdentifier() -> String {
         return "PlaceCollectionCell"
+    }
+    
+    private func addRefreshControl(_ collectionView: UICollectionView) {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.tintColor = UIColor.black
+        
+        collectionView.addSubview(refreshControl)
+    }
+
+    @objc private func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+
+        let placesManager = PlacesManager.sharedInstance()
+        placesManager.clearToken()
+        placesManager.clearData()
+
+        interactor?.getRemoteData()
     }
 }
 
@@ -75,6 +99,10 @@ extension PlacesListPresenter: InterfacePlacesListInteractorOutput {
     }
 
     func favouriteRemoved() {
+        delegate.updateData()
+    }
+    
+    func dataDownloaded() {
         delegate.updateData()
     }
 }

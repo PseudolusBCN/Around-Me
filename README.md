@@ -6,6 +6,8 @@ Data persistance is allowed using CoreData library
 
 The app is developed using VIPER design pattern, taking as an example the tutorial https://theswiftdev.com/2018/03/12/the-ultimate-viper-architecture-tutorial/
 
+All assets used in the app are downloaded from https://material.io/tools/icons/?style=baseline
+
 ## External PODs
 
 * Alamofire (https://github.com/Alamofire/Alamofire)
@@ -23,4 +25,11 @@ The app is developed using VIPER design pattern, taking as an example the tutori
 * 1.0.1
 
     Settings
+    
     Catalan translations
+
+* 1.0.2
+
+    Refresh places list after scroll
+    
+    Added pull to reload places list data

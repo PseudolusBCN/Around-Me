@@ -23,6 +23,8 @@ protocol InterfacePlacesListPresenter: class {
 
     func addFavourite(_ placeId: String)
     func removeFavourite(_ placeId: String)
+    
+    func downloadData()
 }
 
 protocol InterfacePlacesListPresenterOutput: class {
@@ -38,11 +40,14 @@ protocol InterfacePlacesListInteractor: class {
     func numberOfPlaces() -> Int
     func place(_ index: NSInteger) -> Place
     func placeIsFavourite(_ place: Place) -> Bool
+
+    func getRemoteData()
 }
 
 protocol InterfacePlacesListInteractorOutput: class {
     func favouriteAdded()
     func favouriteRemoved()
+    func dataDownloaded()
 }
 
 protocol InterfacePlacesListRouter: class {

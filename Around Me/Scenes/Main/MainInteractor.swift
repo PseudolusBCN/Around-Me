@@ -36,7 +36,7 @@ class MainInteractor: InterfaceMainInteractor {
     @objc private func getRemoteData() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationLocationUpdated), object: nil)
 
-        HUDManager().showProgressHUD(title: "generic.hud.downloadingData".localized)
+        HUDManager.sharedInstance().showProgressHUD(title: "generic.hud.downloadingData".localized)
 
         let placesManager = PlacesManager.sharedInstance()
         let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
@@ -50,7 +50,7 @@ class MainInteractor: InterfaceMainInteractor {
     }
     
     private func getLocalData() {
-        HUDManager().showProgressHUD(title: "generic.hud.retrievingFavourites".localized)
+        HUDManager.sharedInstance().showProgressHUD(title: "generic.hud.retrievingFavourites".localized)
 
         let favouritesManager = FavouritesManager.sharedInstance()
 
@@ -61,7 +61,7 @@ class MainInteractor: InterfaceMainInteractor {
             for favourite in response! {
                 favouritesManager.addFavourite(favourite)
             }
-            HUDManager().hideProgressHUD()
+            HUDManager.sharedInstance().hideProgressHUD()
             self.delegate.gotoMainScene()
         }
     }
