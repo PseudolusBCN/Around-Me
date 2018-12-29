@@ -45,7 +45,7 @@ class FavouritesListPresenter: InterfaceFavouritesListPresenter {
     }
     
     func itemsForSection(_ section: Int) -> Int {
-        return interactor?.numberOfFavourites() ?? 0
+        return (interactor?.numberOfFavourites())!
     }
 
     // MARK: - Private methods

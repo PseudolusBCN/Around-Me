@@ -11,7 +11,7 @@ import UIKit
 class SettingsBuilder: BaseBuilder {
     func main() -> UIViewController {
         let view = SettingsViewController()
-        let presenter = SettingsPresenter()
+        let presenter = SettingsPresenter(delegate: view)
         let interactor = SettingsInteractor(delegate: presenter)
         let router = SettingsRouter()
         

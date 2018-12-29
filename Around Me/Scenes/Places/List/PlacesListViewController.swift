@@ -20,9 +20,10 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     init() {
         super.init(nibName: "PlacesListViewController", bundle: nil)
 
-        navigationItem.title = "main.appName".localized
-        tabBarItem.title = "main.tabBar.list".localized
         tabBarItem.image = UIImage(named:"IcoList")
+        setLocalizedTitles()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setLocalizedTitles), name: NSNotification.Name(rawValue: notificationLanguageChanged), object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,15 +53,21 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
             emptyResultsView!.removeFromSuperview()
         }
     }
+
+    // MARK: - Private methods
+    @objc private func setLocalizedTitles() {
+        navigationItem.title = "main.appName".localized
+        tabBarItem.title = "main.tabBar.list".localized
+    }
 }
 
-extension PlacesListViewController: UICollectionViewDataSource {
+extension PlacesListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.itemsForSection(section) ?? 0
+        return (presenter?.itemsForSection(section))!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,9 +77,7 @@ extension PlacesListViewController: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
-}
 
-extension PlacesListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     }
 }
