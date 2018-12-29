@@ -19,3 +19,8 @@ The app is developed using VIPER design pattern, taking as an example the tutori
 * 1.0.0
 
     Places and Favourites list    
+
+* 1.0.1
+
+    Settings
+    Catalan translations
