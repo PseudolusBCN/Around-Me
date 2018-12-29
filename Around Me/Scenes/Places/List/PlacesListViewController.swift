@@ -80,6 +80,12 @@ extension PlacesListViewController: UICollectionViewDataSource, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == (presenter?.itemsForSection(indexPath.section))! - 1 {
+            presenter?.downloadData()
+        }
+    }
 }
 
 extension PlacesListViewController: UICollectionViewDelegateFlowLayout {

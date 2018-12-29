@@ -63,6 +63,10 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
         interactor?.removeFavourite(placeId)
     }
     
+    func downloadData() {
+        interactor?.getRemoteData()
+    }
+
     // MARK: - Private methods
     private func collectionViewReuseIdentifier() -> String {
         return "PlaceCollectionCell"
@@ -75,6 +79,10 @@ extension PlacesListPresenter: InterfacePlacesListInteractorOutput {
     }
 
     func favouriteRemoved() {
+        delegate.updateData()
+    }
+    
+    func dataDownloaded() {
         delegate.updateData()
     }
 }
