@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results allowed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPR-82-bfI">
-                    <rect key="frame" x="75" y="292" width="225" height="83"/>
+                    <rect key="frame" x="47" y="313" width="281" height="41.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="35"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -31,7 +31,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="xPR-82-bfI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZBM-AF-81o"/>
-                <constraint firstItem="xPR-82-bfI" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="3/5" id="f3S-Nr-wFq"/>
+                <constraint firstItem="xPR-82-bfI" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="3/4" id="f3S-Nr-wFq"/>
                 <constraint firstItem="xPR-82-bfI" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="klp-6G-0qa"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

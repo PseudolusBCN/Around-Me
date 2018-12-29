@@ -20,6 +20,12 @@ class LocalizeManager: NSObject {
         Localize.update(provider: .json)
         Localize.update(fileName: "Translations")
         Localize.update(defaultLanguage: "en")
-        Localize.update(language: "en")
+        
+        let selectedLanguage = ConfigurationManager().retrieveStringFromPlist("appLanguage")
+        Localize.update(language: selectedLanguage)
+    }
+    
+    func updateLanguage(_ language: String) {
+        Localize.update(language: language)
     }
 }

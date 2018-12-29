@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import Localize
 
 class MainViewController: UIViewController, InterfaceMainViewController {
     var presenter: InterfaceMainPresenter?
