@@ -33,3 +33,7 @@ All assets used in the app are downloaded from https://material.io/tools/icons/?
     Refresh places list after scroll
     
     Added pull to reload places list data
+
+* 1.0.3
+
+    Filters
