@@ -25,6 +25,8 @@ protocol InterfacePlacesListPresenter: class {
     func removeFavourite(_ placeId: String)
     
     func downloadData()
+    
+    func gotoFilters()
 }
 
 protocol InterfacePlacesListPresenterOutput: class {
@@ -52,4 +54,6 @@ protocol InterfacePlacesListInteractorOutput: class {
 
 protocol InterfacePlacesListRouter: class {
     var presenter: InterfacePlacesListPresenter? { get set }
+    
+    func gotoFiltersScene()
 }

@@ -11,4 +11,9 @@ import UIKit
 class PlacesListRouter: InterfacePlacesListRouter {
     weak var presenter: InterfacePlacesListPresenter?
     weak var view: UIViewController?
+
+    func gotoFiltersScene() {
+        let viewController = FiltersBuilder().main()
+        view?.navigationController?.present(viewController, animated: true)
+    }
 }

@@ -20,6 +20,8 @@ protocol InterfaceFavouritesListPresenter: class {
     func setupCollectionView(_ collectionView: UICollectionView, viewController: UIViewController)
     func favouriteCollectionViewCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> FavouriteCollectionViewCell
     func itemsForSection(_ section: Int) -> Int
+    
+    func gotoFilters()
 }
 
 protocol InterfaceFavouritesListPresenterOutput: class {
@@ -38,4 +40,6 @@ protocol InterfaceFavouritesListInteractorOutput: class {
 
 protocol InterfaceFavouritesListRouter: class {
     var presenter: InterfaceFavouritesListPresenter? { get set }
+    
+    func gotoFiltersScene()
 }

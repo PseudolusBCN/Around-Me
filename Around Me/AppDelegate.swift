@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         LocalizeManager().setup()
         LocationManager.sharedInstance().startUpdatingLocation()
+
+        setupNavigationBar()
         launchMainScreen()
         
         return true
@@ -40,6 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Private methods
+    private func setupNavigationBar() {
+        UINavigationBar.appearance().backgroundColor = UIColor.hexString("#FF8000")
+        UINavigationBar.appearance().tintColor = UIColor.hexString("#000000")
+        //UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 20)!]
+    }
+    
     private func launchMainScreen() {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = MainBuilder().main()

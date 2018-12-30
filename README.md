@@ -6,7 +6,7 @@ Data persistance is allowed using CoreData library
 
 The app is developed using VIPER design pattern, taking as an example the tutorial https://theswiftdev.com/2018/03/12/the-ultimate-viper-architecture-tutorial/
 
-All assets used in the app are downloaded from https://material.io/tools/icons/?style=baseline
+All assets used in the app are downloaded from https://material.io/tools/icons
 
 ## External PODs
 

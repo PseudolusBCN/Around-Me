@@ -68,6 +68,10 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
     func downloadData() {
         interactor?.getRemoteData()
     }
+    
+    func gotoFilters() {
+        router?.gotoFiltersScene()
+    }
 
     // MARK: - Private methods
     private func collectionViewReuseIdentifier() -> String {
