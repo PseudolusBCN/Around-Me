@@ -42,6 +42,7 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     override func viewWillAppear(_ animated: Bool) {
         if presenter?.itemsForSection(0) == 0 {
             emptyResultsView = EmptyResultsView(frame: favouritesCollectionView.frame)
+            emptyResultsView!.imageIcon.image = UIImage(named: "IcoFavourites_Empty")
             emptyResultsView!.titleLabel.text = "generic.emptyData.favourites".localized
             view.addSubview(emptyResultsView!)
         } else {

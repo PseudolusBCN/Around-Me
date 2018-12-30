@@ -42,7 +42,8 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     override func viewWillAppear(_ animated: Bool) {
         if presenter?.itemsForSection(0) == 0 {
             emptyResultsView = EmptyResultsView(frame: placesCollectionView.frame)
-            emptyResultsView!.titleLabel.text = "generic.places.favourites".localized
+            emptyResultsView!.imageIcon.image = UIImage(named: "IcoList_Empty")
+            emptyResultsView!.titleLabel.text = "generic.emptyData.places".localized
             view.addSubview(emptyResultsView!)
         } else {
             placesCollectionView.reloadData()
