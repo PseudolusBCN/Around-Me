@@ -22,7 +22,7 @@ class FiltersInteractor: InterfaceFiltersInteractor {
     
     // MARK: - Public methods
     func numberOfFilters() -> Int {
-        return FiltersManager.sharedInstance().filters.count
+        return FiltersManager.sharedInstance().filtersList.count
     }
     
     func filterTitle(_ indexPath: IndexPath) -> String {
@@ -34,5 +34,15 @@ class FiltersInteractor: InterfaceFiltersInteractor {
     }
     
     func selectFilter(_ indexPath: IndexPath) {
+        let filtersManager = FiltersManager.sharedInstance()
+        let key = filtersManager.orderedFilters()[indexPath.row].key
+        let filter = filtersManager.filtersList.filter { $0.key == key }
+        let index = Array(filtersManager.filtersList).index(of: filter[0])
+
+        filtersManager.filtersList[index!].selected = !filtersManager.filtersList[index!].selected
+        
+        // TODO: - Guardar KEY en PLIST
+        
+        delegate.filterSelected()
     }
 }

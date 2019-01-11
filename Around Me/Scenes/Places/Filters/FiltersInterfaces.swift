@@ -28,6 +28,7 @@ protocol InterfaceFiltersPresenter: class {
 }
 
 protocol InterfaceFiltersPresenterOutput: class {
+    func updateData()
 }
 
 protocol InterfaceFiltersInteractor: class {
@@ -41,6 +42,7 @@ protocol InterfaceFiltersInteractor: class {
 }
 
 protocol InterfaceFiltersInteractorOutput: class {
+    func filterSelected()
 }
 
 protocol InterfaceFiltersRouter: class {

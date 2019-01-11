@@ -66,4 +66,7 @@ extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension FiltersViewController: InterfaceFiltersPresenterOutput {
+    func updateData() {
+        filtersTableView.reloadData()
+    }
 }

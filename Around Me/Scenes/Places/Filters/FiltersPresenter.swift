@@ -67,4 +67,7 @@ class FiltersPresenter: InterfaceFiltersPresenter {
 }
 
 extension FiltersPresenter: InterfaceFiltersInteractorOutput {
+    func filterSelected() {
+        delegate.updateData()
+    }
 }

@@ -11,7 +11,7 @@ import UIKit
 class FiltersManager: NSObject {
     private static var instance: FiltersManager?
     
-    var filters: [Filter]! = []
+    var filtersList: [Filter]! = []
 
     // MARK: - Singleton
     class func sharedInstance() -> FiltersManager {
@@ -40,18 +40,18 @@ class FiltersManager: NSObject {
         for item in filtersData {
             let filterKey = (item as! NSDictionary).object(forKey: "key") as! String
             let filterSelected = (item as! NSDictionary).object(forKey: "selected") as! Bool
-            filters.append(Filter(key: filterKey, selected: filterSelected))
+            filtersList.append(Filter(key: filterKey, selected: filterSelected))
         }
     }
     
     func orderedFilters() -> [Filter] {
-        return filters.sorted(by: { $0.localizedName < $1.localizedName })
+        return filtersList.sorted(by: { $0.localizedName < $1.localizedName })
     }
 
     // MARK: - Private methods
     @objc private func setLocalizedTitles() {
-        for index in 0...(filters.count - 1) {
-            filters[index].localizedName = "config.place.type.\(filters[index].key)".localized
+        for index in 0...(filtersList.count - 1) {
+            filtersList[index].localizedName = "config.place.type.\(filtersList[index].key)".localized
         }
     }
 }
