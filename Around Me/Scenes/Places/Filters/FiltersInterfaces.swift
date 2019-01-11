@@ -17,6 +17,13 @@ protocol InterfaceFiltersPresenter: class {
     var interactor: InterfaceFiltersInteractor? { get set }
     var view: InterfaceFiltersViewController? { get set }
     
+    func setupTableView(_ tableView: UITableView, viewController: UIViewController)
+    func filterTableViewCell(_ tableView: UITableView, indexPath: IndexPath) -> FilterTableViewCell
+    func numberOfSections() -> Int
+    func numberOfRows() -> Int
+
+    func selectFilter(_ indexPath: IndexPath)
+
     func closeView()
 }
 
@@ -25,6 +32,12 @@ protocol InterfaceFiltersPresenterOutput: class {
 
 protocol InterfaceFiltersInteractor: class {
     var presenter: InterfaceFiltersPresenter? { get set }
+    
+    func numberOfFilters() -> Int
+    func filterTitle(_ indexPath: IndexPath) -> String
+    func filterSelected(_ indexPath: IndexPath) -> Bool
+
+    func selectFilter(_ indexPath: IndexPath)
 }
 
 protocol InterfaceFiltersInteractorOutput: class {

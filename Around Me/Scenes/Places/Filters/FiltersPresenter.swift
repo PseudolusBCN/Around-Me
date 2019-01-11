@@ -21,8 +21,48 @@ class FiltersPresenter: InterfaceFiltersPresenter {
     }
     
     // MARK: - Public methods
+    func setupTableView(_ tableView: UITableView, viewController: UIViewController) {
+        tableView.register(UINib(nibName: "FilterTableViewCell", bundle: nil), forCellReuseIdentifier: tableViewReuseIdentifier())
+        
+        tableView.separatorStyle = .singleLine
+        tableView.estimatedRowHeight = 40.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        tableView.dataSource = viewController as? UITableViewDataSource
+        tableView.delegate = viewController as? UITableViewDelegate
+    }
+    
+    func filterTableViewCell(_ tableView: UITableView, indexPath: IndexPath) -> FilterTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewReuseIdentifier(), for: indexPath) as! FilterTableViewCell
+        cell.titleLabel.text = interactor?.filterTitle(indexPath)
+        
+        let icon = UIImage(named: "IcoOption_Selected")?.withRenderingMode(.alwaysTemplate)
+        cell.statusIcon.tintColor = UIColor.blue
+        cell.statusIcon.image = icon
+        cell.statusIcon.isHidden = !((interactor?.filterSelected(indexPath))!)
+        
+        return cell
+    }
+
+    func selectFilter(_ indexPath: IndexPath) {
+        interactor?.selectFilter(indexPath)
+    }
+
     func closeView() {
         router?.returnToOriginScene()
+    }
+    
+    // MARK: - Private methods
+    func tableViewReuseIdentifier() -> String {
+        return "FilterTableCell"
+    }
+    
+    func numberOfSections() -> Int {
+        return 1
+    }
+    
+    func numberOfRows() -> Int {
+        return interactor?.numberOfFilters() ?? 0
     }
 }
 

@@ -17,30 +17,18 @@ class ConfigurationManager: NSObject {
     private let fileName = "Configuration"
     
     // MARK: - Public methods
-    func retrieveStringFromPlist(_ key: String) -> String {
+    func retrieveDataFromPlist(_ key: String) -> Any {
         let configurationFile = pathConfigurationFile()
-        
-        let fileManager = FileManager.default
-        if !fileManager.fileExists(atPath: configurationFile) {
-            guard let bundlePath = Bundle.main.path(forResource: fileName, ofType: "plist") else {
+        if openConfigurationFile(configurationFile) {
+            if let data = NSDictionary(contentsOfFile: configurationFile) {
+                return data[key] as Any
+            } else {
                 return ""
             }
-            do {
-                try fileManager.copyItem(atPath: bundlePath, toPath: configurationFile)
-            } catch let error as NSError {
-                print("Error generando plist: \(error.localizedDescription)")
-                return ""
-            }
-        }
-        
-        if let data = NSDictionary(contentsOfFile: configurationFile) {
-            return data[key] as! String
-        } else {
-            print("Error leyendo plist")
         }
         return ""
     }
-    
+
     func saveStringToPlist(_ key: String, value: String) {
         let configurationFile = pathConfigurationFile()
         if let data = NSMutableDictionary(contentsOfFile: configurationFile) {
@@ -53,7 +41,23 @@ class ConfigurationManager: NSObject {
     private func pathConfigurationFile() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let documentsDirectory = paths.object(at: 0) as! NSString
-
         return documentsDirectory.appendingPathComponent("\(fileName).plist")
+    }
+    
+    private func openConfigurationFile(_ configurationFile: String) -> Bool {
+        let fileManager = FileManager.default
+        if !fileManager.fileExists(atPath: configurationFile) {
+            guard let bundlePath = Bundle.main.path(forResource: fileName, ofType: "plist") else {
+                return false
+            }
+            do {
+                try fileManager.copyItem(atPath: bundlePath, toPath: configurationFile)
+                return true
+            } catch let error as NSError {
+                print(error.localizedDescription)
+                return false
+            }
+        }
+        return true
     }
 }

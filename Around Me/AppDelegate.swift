@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LocalizeManager().setup()
         LocationManager.sharedInstance().startUpdatingLocation()
 
+        FiltersManager.sharedInstance().retrieveFilters()
+
         setupNavigationBar()
         launchMainScreen()
         

@@ -9,6 +9,8 @@
 import UIKit
 
 class FiltersViewController: UIViewController, InterfaceFiltersViewController {
+    @IBOutlet weak var filtersTableView: UITableView!
+    
     var presenter: InterfaceFiltersPresenter?
 
     // MARK: - Init
@@ -18,14 +20,6 @@ class FiltersViewController: UIViewController, InterfaceFiltersViewController {
         setLocalizedTitles()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "IcoBack"), style: .plain, target: self, action: #selector(closeView))
-
-//        
-//        tabBarItem.image = UIImage(named:"IcoList")
-//        setLocalizedTitles()
-//        
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "IcoFilter"), style: .plain, target: self, action: #selector(goToFilters))
-//        
-//        NotificationCenter.default.addObserver(self, selector: #selector(setLocalizedTitles), name: NSNotification.Name(rawValue: notificationLanguageChanged), object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,6 +29,8 @@ class FiltersViewController: UIViewController, InterfaceFiltersViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter?.setupTableView(filtersTableView, viewController: self)
     }
     
     // MARK: - Private methods
@@ -44,6 +40,28 @@ class FiltersViewController: UIViewController, InterfaceFiltersViewController {
 
     @objc private func closeView() {
         presenter?.closeView()
+    }
+}
+
+extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return (presenter?.numberOfSections())!
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter?.numberOfRows() ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = presenter?.filterTableViewCell(tableView, indexPath: indexPath) {
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        presenter?.selectFilter(indexPath)
     }
 }
 

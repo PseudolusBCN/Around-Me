@@ -93,12 +93,12 @@ class SettingsInteractor: InterfaceSettingsInteractor {
     func selectOption(_ indexPath: IndexPath) {
         let section = indexPath.section
         if section == sectionRadious {
-            let selectedRadius = ConfigurationManager().retrieveStringFromPlist("searchRadius")
+            let selectedRadius = ConfigurationManager().retrieveDataFromPlist("searchRadius") as! String
             settings[section].values[settings[section].values.index(where: { $0.value == selectedRadius })!].selected = false
             settings[section].values[indexPath.row].selected = true
             ConfigurationManager().saveStringToPlist("searchRadius", value: optionValue(indexPath))
         } else if section == sectionLanguage {
-            let selectedLanguage = ConfigurationManager().retrieveStringFromPlist("appLanguage")
+            let selectedLanguage = ConfigurationManager().retrieveDataFromPlist("appLanguage") as! String
             settings[section].values[settings[section].values.index(where: { $0.value == selectedLanguage })!].selected = false
             settings[section].values[indexPath.row].selected = true
             ConfigurationManager().saveStringToPlist("appLanguage", value: optionValue(indexPath))
@@ -127,12 +127,12 @@ class SettingsInteractor: InterfaceSettingsInteractor {
                               Option(String(format: "generic.distance.kilometers".localized, localizedDistance(1000)), value: "1000"),
                               Option(String(format: "generic.distance.kilometers".localized, localizedDistance(2500)), value: "2500"),
                               Option(String(format: "generic.distance.kilometers".localized, localizedDistance(5000)), value: "5000")]
-        let selectedRadius = ConfigurationManager().retrieveStringFromPlist("searchRadius")
+        let selectedRadius = ConfigurationManager().retrieveDataFromPlist("searchRadius") as! String
         radiousOptions[radiousOptions.index(where: { $0.value == selectedRadius })!].selected = true
         
         let languageOptions = [Option("settings.language.option.english".localized, value: "en", selected: false),
                                Option("settings.language.option.catalan".localized, value: "ca", selected: false)]
-        let selectedLanguage = ConfigurationManager().retrieveStringFromPlist("appLanguage")
+        let selectedLanguage = ConfigurationManager().retrieveDataFromPlist("appLanguage") as! String
         languageOptions[languageOptions.index(where: { $0.value == selectedLanguage })!].selected = true
         
         let radiousSettings = Setting("settings.radiousSearch".localized, values: radiousOptions)

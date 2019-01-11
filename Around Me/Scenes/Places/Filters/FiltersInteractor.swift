@@ -19,4 +19,20 @@ class FiltersInteractor: InterfaceFiltersInteractor {
     init(delegate: InterfaceFiltersInteractorOutput) {
         self.delegate = delegate
     }
+    
+    // MARK: - Public methods
+    func numberOfFilters() -> Int {
+        return FiltersManager.sharedInstance().filters.count
+    }
+    
+    func filterTitle(_ indexPath: IndexPath) -> String {
+        return FiltersManager.sharedInstance().orderedFilters()[indexPath.row].localizedName
+    }
+    
+    func filterSelected(_ indexPath: IndexPath) -> Bool {
+        return FiltersManager.sharedInstance().orderedFilters()[indexPath.row].selected
+    }
+    
+    func selectFilter(_ indexPath: IndexPath) {
+    }
 }
