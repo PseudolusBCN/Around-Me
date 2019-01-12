@@ -26,6 +26,7 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "IcoFilter"), style: .plain, target: self, action: #selector(goToFilters))
 
         NotificationCenter.default.addObserver(self, selector: #selector(setLocalizedTitles), name: NSNotification.Name(rawValue: notificationLanguageChanged), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(downloadNewData), name: NSNotification.Name(rawValue: notificationFilterChanged), object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,7 +62,11 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
         navigationItem.title = "main.appName".localized
         tabBarItem.title = "main.tabBar.list".localized
     }
-    
+
+    @objc private func downloadNewData() {
+        presenter?.downloadNewData()
+    }
+
     @objc private func goToFilters() {
         presenter?.gotoFilters()
     }
@@ -88,8 +93,10 @@ extension PlacesListViewController: UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == (presenter?.itemsForSection(indexPath.section))! - 1 {
-            presenter?.downloadData()
+        if PlacesManager.sharedInstance().nextPageToken.count > 0 {
+            if indexPath.row == (presenter?.itemsForSection(indexPath.section))! - 1 {
+                presenter?.downloadData()
+            }
         }
     }
 }

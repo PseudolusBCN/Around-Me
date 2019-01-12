@@ -12,6 +12,7 @@ class FiltersManager: NSObject {
     private static var instance: FiltersManager?
     
     var filtersList: [Filter]! = []
+    var selectedFilterIndex: Int?
 
     // MARK: - Singleton
     class func sharedInstance() -> FiltersManager {
@@ -40,12 +41,24 @@ class FiltersManager: NSObject {
         for item in filtersData {
             let filterKey = (item as! NSDictionary).object(forKey: "key") as! String
             let filterSelected = (item as! NSDictionary).object(forKey: "selected") as! Bool
-            filtersList.append(Filter(key: filterKey, selected: filterSelected))
+            let filter = Filter(key: filterKey, selected: filterSelected)
+            filtersList.append(filter)
+            if filterSelected {
+                selectedFilterIndex = filtersList.index(of: filter)
+            }
         }
     }
     
     func orderedFilters() -> [Filter] {
         return filtersList.sorted(by: { $0.localizedName < $1.localizedName })
+    }
+
+    func selectedFilters() -> [Filter] {
+        return filtersList.filter( { $0.selected })
+    }
+
+    func selectedFilter() -> String {
+        return (selectedFilterIndex != nil) ? filtersList[selectedFilterIndex!].key : ""
     }
 
     // MARK: - Private methods

@@ -25,6 +25,7 @@ protocol InterfacePlacesListPresenter: class {
     func removeFavourite(_ placeId: String)
     
     func downloadData()
+    func downloadNewData()
     
     func gotoFilters()
 }

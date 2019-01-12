@@ -27,14 +27,14 @@ class RemoteDataManager: NSObject {
     }
     
     // MARK: - Public methods
-    func getPointsListWithToken(_ pageToken: String, radius: Int, types: String, completion: @escaping(_ responseData: APIPlaces?, _ error: NSError?) -> Void) {
+    func getPointsListWithToken(_ pageToken: String, radius: Int, type: String, completion: @escaping(_ responseData: APIPlaces?, _ error: NSError?) -> Void) {
         let latitude = (LocationManager.sharedInstance().currentLocation?.coordinate.latitude)!
         let longitude = (LocationManager.sharedInstance().currentLocation?.coordinate.longitude)!
         
         let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
         let params: [String: Any] = ["location": String(format: "%f,%f", latitude, longitude),
                                      "radius": radius,
-                                     "types": types,
+                                     "type": type,
                                      "language": "es",
                                      "pagetoken": pageToken,
                                      "key": googleAPIKey]

@@ -35,13 +35,25 @@ class FiltersInteractor: InterfaceFiltersInteractor {
     
     func selectFilter(_ indexPath: IndexPath) {
         let filtersManager = FiltersManager.sharedInstance()
+
+        if filtersManager.selectedFilterIndex != nil {
+            filtersManager.filtersList[filtersManager.selectedFilterIndex!].selected = false
+            ConfigurationManager().saveBoolToPlist("filters", index: filtersManager.selectedFilterIndex!, secondaryKey: "selected", value: false)
+        }
+
         let key = filtersManager.orderedFilters()[indexPath.row].key
         let filter = filtersManager.filtersList.filter { $0.key == key }
-        let index = Array(filtersManager.filtersList).index(of: filter[0])
-
-        filtersManager.filtersList[index!].selected = !filtersManager.filtersList[index!].selected
         
-        ConfigurationManager().saveBoolToPlist("filters", index: index!, secondaryKey: "selected", value: filtersManager.filtersList[index!].selected)
+        if filtersManager.selectedFilterIndex == Array(filtersManager.filtersList).index(of: filter[0]) {
+            filtersManager.selectedFilterIndex = nil
+        } else {
+            filtersManager.selectedFilterIndex = Array(filtersManager.filtersList).index(of: filter[0])
+            filtersManager.filtersList[filtersManager.selectedFilterIndex!].selected = true
+            ConfigurationManager().saveBoolToPlist("filters", index: filtersManager.selectedFilterIndex!, secondaryKey: "selected", value: true)
+        }
+
+        NotificationsManager().sendNotification(notificationFilterChanged)
+
         delegate.filterSelected()
     }
 }
