@@ -36,7 +36,23 @@ class ConfigurationManager: NSObject {
             data.write(toFile: configurationFile, atomically: false)
         }
     }
-    
+
+    func saveBoolToPlist(_ key: String, value: Bool) {
+        let configurationFile = pathConfigurationFile()
+        if let data = NSMutableDictionary(contentsOfFile: configurationFile) {
+            data[key] = value
+            data.write(toFile: configurationFile, atomically: false)
+        }
+    }
+
+    func saveBoolToPlist(_ primaryKey: String, index: Int, secondaryKey: String, value: Bool) {
+        let configurationFile = pathConfigurationFile()
+        if let data = NSMutableDictionary(contentsOfFile: configurationFile) {
+            ((data[primaryKey] as! NSArray)[index] as! NSMutableDictionary)[secondaryKey] = value
+            data.write(toFile: configurationFile, atomically: false)
+        }
+    }
+
     // MARK: - Private methods
     private func pathConfigurationFile() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray

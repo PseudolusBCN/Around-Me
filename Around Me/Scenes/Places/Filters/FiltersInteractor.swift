@@ -41,8 +41,7 @@ class FiltersInteractor: InterfaceFiltersInteractor {
 
         filtersManager.filtersList[index!].selected = !filtersManager.filtersList[index!].selected
         
-        // TODO: - Guardar KEY en PLIST
-        
+        ConfigurationManager().saveBoolToPlist("filters", index: index!, secondaryKey: "selected", value: filtersManager.filtersList[index!].selected)
         delegate.filterSelected()
     }
 }
