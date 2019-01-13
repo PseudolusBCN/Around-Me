@@ -8,11 +8,21 @@
 
 import UIKit
 
-class FiltersBuilder: BaseBuilder {
-    func main() -> UIViewController {
+enum FilterSelectionMode {
+    case single
+    case multiple
+}
+
+enum ReloadDataAfterFilterChange {
+    case yes
+    case no
+}
+
+class FiltersBuilder {
+    func main(_ type: FilterType, selectionMode: FilterSelectionMode, reloadDataAfterFilterChange: ReloadDataAfterFilterChange) -> UIViewController {
         let view = FiltersViewController()
         let presenter = FiltersPresenter(delegate: view)
-        let interactor = FiltersInteractor(delegate: presenter)
+        let interactor = FiltersInteractor(delegate: presenter, filterType: type, filterSelectionMode: selectionMode, reloadDataAfterFilterChange: reloadDataAfterFilterChange)
         let router = FiltersRouter()
         
         view.presenter = presenter

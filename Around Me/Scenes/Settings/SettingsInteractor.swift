@@ -96,12 +96,12 @@ class SettingsInteractor: InterfaceSettingsInteractor {
             let selectedRadius = ConfigurationManager().retrieveDataFromPlist("searchRadius") as! String
             settings[section].values[settings[section].values.index(where: { $0.value == selectedRadius })!].selected = false
             settings[section].values[indexPath.row].selected = true
-            ConfigurationManager().saveStringToPlist("searchRadius", value: optionValue(indexPath))
+            ConfigurationManager().saveDataToPlist("searchRadius", value: optionValue(indexPath))
         } else if section == sectionLanguage {
             let selectedLanguage = ConfigurationManager().retrieveDataFromPlist("appLanguage") as! String
             settings[section].values[settings[section].values.index(where: { $0.value == selectedLanguage })!].selected = false
             settings[section].values[indexPath.row].selected = true
-            ConfigurationManager().saveStringToPlist("appLanguage", value: optionValue(indexPath))
+            ConfigurationManager().saveDataToPlist("appLanguage", value: optionValue(indexPath))
             LocalizeManager().updateLanguage(optionValue(indexPath))
 
             setLocalizedSettings()

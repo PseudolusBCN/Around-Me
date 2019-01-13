@@ -29,7 +29,7 @@ class ConfigurationManager: NSObject {
         return ""
     }
 
-    func saveStringToPlist(_ key: String, value: String) {
+    func saveDataToPlist(_ key: String, value: String) {
         let configurationFile = pathConfigurationFile()
         if let data = NSMutableDictionary(contentsOfFile: configurationFile) {
             data[key] = value
@@ -37,18 +37,10 @@ class ConfigurationManager: NSObject {
         }
     }
 
-    func saveBoolToPlist(_ key: String, value: Bool) {
+    func saveDataToPlist(_ key: String, value: Bool) {
         let configurationFile = pathConfigurationFile()
         if let data = NSMutableDictionary(contentsOfFile: configurationFile) {
             data[key] = value
-            data.write(toFile: configurationFile, atomically: false)
-        }
-    }
-
-    func saveBoolToPlist(_ primaryKey: String, index: Int, secondaryKey: String, value: Bool) {
-        let configurationFile = pathConfigurationFile()
-        if let data = NSMutableDictionary(contentsOfFile: configurationFile) {
-            ((data[primaryKey] as! NSArray)[index] as! NSMutableDictionary)[secondaryKey] = value
             data.write(toFile: configurationFile, atomically: false)
         }
     }

@@ -11,7 +11,7 @@ import UIKit
 class FiltersManager: NSObject {
     private static var instance: FiltersManager?
     
-    var filtersList: [Filter]! = []
+    private var filtersList: [Filter]! = []
     var selectedFilterIndex: Int?
 
     // MARK: - Singleton
@@ -39,26 +39,25 @@ class FiltersManager: NSObject {
     func retrieveFilters() {
         let filtersData = ConfigurationManager().retrieveDataFromPlist("filters") as! [Any]
         for item in filtersData {
-            let filterKey = (item as! NSDictionary).object(forKey: "key") as! String
-            let filterSelected = (item as! NSDictionary).object(forKey: "selected") as! Bool
-            let filter = Filter(key: filterKey, selected: filterSelected)
-            filtersList.append(filter)
-            if filterSelected {
-                selectedFilterIndex = filtersList.index(of: filter)
-            }
+            filtersList.append(Filter(key: item as! String, type: .list))
+            filtersList.append(Filter(key: item as! String, type: .favourites))
         }
     }
-    
-    func orderedFilters() -> [Filter] {
-        return filtersList.sorted(by: { $0.localizedName < $1.localizedName })
+
+    func filters(_ type: FilterType) -> [Filter] {
+        return filtersList.filter({ $0.type == type })
     }
 
-    func selectedFilters() -> [Filter] {
-        return filtersList.filter( { $0.selected })
+    func orderedFilters(_ type: FilterType) -> [Filter] {
+        return filters(type).sorted(by: { $0.localizedName < $1.localizedName })
     }
 
-    func selectedFilter() -> String {
-        return (selectedFilterIndex != nil) ? filtersList[selectedFilterIndex!].key : ""
+    func selectedFilters(_ type: FilterType) -> [Filter] {
+        return filters(type).filter( { $0.selected })
+    }
+
+    func selectedFilter(_ type: FilterType) -> String {
+        return (selectedFilterIndex != nil) ? filters(type)[selectedFilterIndex!].key : ""
     }
 
     // MARK: - Private methods

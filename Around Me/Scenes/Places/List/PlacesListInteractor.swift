@@ -74,7 +74,7 @@ class PlacesListInteractor: InterfacePlacesListInteractor {
         
         let placesManager = PlacesManager.sharedInstance()
         let radius = Int(ConfigurationManager().retrieveDataFromPlist("searchRadius") as! String)
-        let type = FiltersManager.sharedInstance().selectedFilter()
+        let type = FiltersManager.sharedInstance().selectedFilter(.list)
         RemoteDataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, type: type) { (response, error) in
             guard error == nil else {
                 return

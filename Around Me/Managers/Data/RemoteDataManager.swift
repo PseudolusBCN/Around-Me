@@ -11,7 +11,7 @@ import Alamofire
 import ObjectMapper
 import Localize
 
-enum requestStatus: String {
+enum RequestStatus: String {
     case requestOk = "OK"
     case zeroResults = "ZERO_RESULTS"
     case overQueryLimit = "OVER_QUERY_LIMIT"
@@ -54,7 +54,7 @@ class RemoteDataManager: NSObject {
     }
     
     // MARK: - Private methods
-    private func processErrorRequest(_ status: requestStatus) -> NSError {
+    private func processErrorRequest(_ status: RequestStatus) -> NSError {
         switch status {
         case .overQueryLimit:
             return NSError(domain: "NSURLErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "generic.error.request.overQuery".localized])

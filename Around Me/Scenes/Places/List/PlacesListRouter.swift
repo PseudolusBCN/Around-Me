@@ -13,7 +13,7 @@ class PlacesListRouter: InterfacePlacesListRouter {
     weak var view: UIViewController?
 
     func gotoFiltersScene() {
-        let viewController = FiltersBuilder().main()
+        let viewController = FiltersBuilder().main(.list, selectionMode: .single, reloadDataAfterFilterChange: .yes)
         view?.navigationController?.present(viewController, animated: true)
     }
 }

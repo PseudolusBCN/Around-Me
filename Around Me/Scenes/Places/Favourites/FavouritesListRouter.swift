@@ -13,7 +13,7 @@ class FavouritesListRouter: InterfaceFavouritesListRouter {
     weak var view: UIViewController?
 
     func gotoFiltersScene() {
-        let viewController = FiltersBuilder().main()
+        let viewController = FiltersBuilder().main(.favourites, selectionMode: .multiple, reloadDataAfterFilterChange: .no)
         view?.navigationController?.present(viewController, animated: true)
     }
 }

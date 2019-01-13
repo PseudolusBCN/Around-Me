@@ -8,9 +8,15 @@
 
 import UIKit
 
+enum FilterType {
+    case list
+    case favourites
+}
+
 class Filter: NSObject {
     var key = ""
     var localizedName = ""
+    var type: FilterType?
     var selected = false
 
     // MARK: - Init
@@ -18,14 +24,15 @@ class Filter: NSObject {
         super.init()
     }
     
-    init(key: String) {
+    init(key: String, type: FilterType) {
         self.key = key
         self.localizedName = "config.place.type.\(key)".localized
+        self.type = type
     }
 
-    init(key: String, selected: Bool) {
-        self.key = key
-        self.localizedName = "config.place.type.\(key)".localized
-        self.selected = selected
-    }
+//    init(key: String, type: FilterType, selected: Bool) {
+//        self.key = key
+//        self.localizedName = "config.place.type.\(key)".localized
+//        self.selected = selected
+//    }
 }

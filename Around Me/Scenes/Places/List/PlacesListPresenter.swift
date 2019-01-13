@@ -72,7 +72,7 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
     func downloadNewData() {
         PlacesManager.sharedInstance().clearToken()
         PlacesManager.sharedInstance().clearData()
-        
+
         interactor?.getRemoteData()
     }
     
