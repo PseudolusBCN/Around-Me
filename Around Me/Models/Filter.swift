@@ -29,10 +29,4 @@ class Filter: NSObject {
         self.localizedName = "config.place.type.\(key)".localized
         self.type = type
     }
-
-//    init(key: String, type: FilterType, selected: Bool) {
-//        self.key = key
-//        self.localizedName = "config.place.type.\(key)".localized
-//        self.selected = selected
-//    }
 }

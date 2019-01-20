@@ -79,7 +79,15 @@ class FavouritesManager: NSObject {
     func filteredFavourites() -> [Place] {
         let filtersManager = FiltersManager.sharedInstance()
         let selectedFilters = filtersManager.selectedFilters(.favourites).map( { $0.key })
-
-        return selectedFilters.isEmpty ? favourites : favourites.filter { selectedFilters.contains($0.type) }
+        if selectedFilters.isEmpty {
+            return favourites
+        } else {
+            //return selectedFilters.isEmpty ? favourites : favourites.filter { selectedFilters.contains($0.types) }
+            var favouritesList: [Place] = []
+            for filter in selectedFilters {
+                favouritesList.append(contentsOf: favourites.filter { $0.types.contains(filter)})
+            }
+            return favouritesList.reduce([], { $0.contains($1) ? $0 : $0 + [$1] })
+        }
     }
 }
