@@ -82,10 +82,9 @@ class FavouritesManager: NSObject {
         if selectedFilters.isEmpty {
             return favourites
         } else {
-            //return selectedFilters.isEmpty ? favourites : favourites.filter { selectedFilters.contains($0.types) }
             var favouritesList: [Place] = []
             for filter in selectedFilters {
-                favouritesList.append(contentsOf: favourites.filter { $0.types.contains(filter)})
+                favouritesList.append(contentsOf: favourites.filter { $0.types.contains(filter) })
             }
             return favouritesList.reduce([], { $0.contains($1) ? $0 : $0 + [$1] })
         }
