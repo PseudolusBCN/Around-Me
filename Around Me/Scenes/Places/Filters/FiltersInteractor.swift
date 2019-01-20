@@ -65,7 +65,6 @@ class FiltersInteractor: InterfaceFiltersInteractor {
             filtersManager.filters(filterType)[selectedIndex!].selected = !filtersManager.filters(filterType)[selectedIndex!].selected
         }
 
-        
         if reloadDataAfterFilterChange == .yes {
             NotificationsManager().sendNotification(notificationFilterChanged)
         }

@@ -11,7 +11,7 @@ import UIKit
 class PlacesManager: NSObject {
     private static var instance: PlacesManager?
 
-    var places: [Place] = []
+    private var places: [Place] = []
     var nextPageToken = ""
 
     // MARK: - Singleton
@@ -46,5 +46,17 @@ class PlacesManager: NSObject {
 
     func clearToken() {
         nextPageToken = ""
+    }
+    
+    func place(id: String) -> Place? {
+        return places.filter { $0.id == id }.isEmpty ? nil : places.filter { $0.id == id }[0]
+    }
+
+    func place(index: NSInteger) -> Place {
+        return places[index]
+    }
+    
+    func numerOfPlaces() -> Int {
+        return places.count
     }
 }

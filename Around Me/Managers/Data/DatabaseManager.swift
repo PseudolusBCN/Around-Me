@@ -26,6 +26,7 @@ class DatabaseManager: NSObject {
         let favourite = NSManagedObject(entity: entity, insertInto: managedContext)
         favourite.setValue(place.id, forKeyPath: "id")
         favourite.setValue(place.name, forKeyPath: "name")
+        favourite.setValue(place.type, forKeyPath: "type")
         favourite.setValue(place.icon, forKeyPath: "icon")
         favourite.setValue(place.location.latitude, forKeyPath: "latitude")
         favourite.setValue(place.location.longitude, forKeyPath: "longitude")
@@ -99,5 +100,4 @@ class DatabaseManager: NSObject {
     private func errorRemovingData() -> NSError {
         return NSError(domain: "CoreDataErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "ERROR REMOVING DATA"])
     }
-
 }
