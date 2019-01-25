@@ -28,7 +28,7 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical
         collectionView.collectionViewLayout = collectionViewLayout
-        
+
         collectionView.dataSource = viewController as? UICollectionViewDataSource
         collectionView.delegate = viewController as? UICollectionViewDelegate
 
@@ -68,6 +68,17 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
     func downloadData() {
         interactor?.getRemoteData()
     }
+    
+    func downloadNewData() {
+        PlacesManager.sharedInstance().clearToken()
+        PlacesManager.sharedInstance().clearData()
+
+        interactor?.getRemoteData()
+    }
+    
+    func gotoFilters() {
+        router?.gotoFiltersScene()
+    }
 
     // MARK: - Private methods
     private func collectionViewReuseIdentifier() -> String {
@@ -85,11 +96,7 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
     @objc private func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
 
-        let placesManager = PlacesManager.sharedInstance()
-        placesManager.clearToken()
-        placesManager.clearData()
-
-        interactor?.getRemoteData()
+        downloadNewData()
     }
 }
 

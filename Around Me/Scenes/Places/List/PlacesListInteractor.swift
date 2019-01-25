@@ -24,57 +24,59 @@ class PlacesListInteractor: InterfacePlacesListInteractor {
     // MARK: - Public methods
     func addFavourite(_ placeId: String) {
         let placesManager = PlacesManager.sharedInstance()
-        let place = placesManager.places.filter { $0.id == placeId }
-        
-        guard place.count > 0 else {
+
+        guard placesManager.place(id: placeId) != nil else {
             return
         }
-        DatabaseManager().addPlaceToFavourites(place[0], completion: { (error) in
+
+        let place = placesManager.place(id: placeId)!
+        DatabaseManager().addPlaceToFavourites(place, completion: { (error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             } else {
                 let favouritesManager = FavouritesManager.sharedInstance()
-                favouritesManager.addFavourite(place[0])
+                favouritesManager.addFavourite(place)
                 self.delegate.favouriteAdded()
             }
         })
     }
     
     func removeFavourite(_ placeId: String) {
-        let place = favouritesManager.places.filter { $0.id == placeId }
-        guard place.count > 0 else {
+        let favouritesManager = FavouritesManager.sharedInstance()
+        guard favouritesManager.placeIsFavourite(placeId) else {
             return
         }
         
-        DatabaseManager().removePlaceFromFavourites(place[0].id, completion: { (error) in
+        let place = favouritesManager.place(id: placeId)!
+        DatabaseManager().removePlaceFromFavourites(place.id, completion: { (error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             } else {
-                let favouritesManager = FavouritesManager.sharedInstance()
-                favouritesManager.removeFavourite(place[0])
+                favouritesManager.removeFavourite(place)
                 self.delegate.favouriteRemoved()
             }
         })
     }
 
     func numberOfPlaces() -> Int {
-        return placesManager.places.count
+        return placesManager.numerOfPlaces()
     }
 
     func place(_ index: NSInteger) -> Place {
-        return placesManager.places[index]
+        return placesManager.place(index: index)
     }
 
     func placeIsFavourite(_ place: Place) -> Bool {
-        return (favouritesManager.places.filter { $0.id == place.id }).count > 0
+        return favouritesManager.placeIsFavourite(place.id)
     }
 
     func getRemoteData() {
         HUDManager.sharedInstance().showProgressHUD(title: "generic.hud.downloadingData".localized)
         
         let placesManager = PlacesManager.sharedInstance()
-        let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
-        RemoteDataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, types: "") { (response, error) in
+        let radius = Int(ConfigurationManager().retrieveDataFromPlist("searchRadius") as! String)
+        let type = FiltersManager.sharedInstance().selectedFilter(.list)
+        RemoteDataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, type: type) { (response, error) in
             guard error == nil else {
                 return
             }

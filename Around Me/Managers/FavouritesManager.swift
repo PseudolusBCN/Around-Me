@@ -12,7 +12,7 @@ import CoreData
 class FavouritesManager: NSObject {
     private static var instance: FavouritesManager?
    
-    var places: [Place]!
+    private var favourites: [Place] = []
 
     // MARK: - Singleton
     class func sharedInstance() -> FavouritesManager {
@@ -30,34 +30,63 @@ class FavouritesManager: NSObject {
     // MARK: - Init
     override init() {
         super.init()
-
-        places = []
     }
     
     // MARK: - Public methods
     func addFavourite(_ item: Any) {
         if let place = item as? Place {
-            places?.append(place)
+            favourites.append(place)
         } else if let place = item as? APIPlace {
-            places?.append(Place.init(place))
+            favourites.append(Place.init(place))
         } else if let place = item as? NSManagedObject {
-            places?.append(Place.init(place))
+            favourites.append(Place.init(place))
         }
     }
     
     func removeFavourite(_ item: Any) {
         if let place = item as? Place {
-            if let itemIndex = places?.firstIndex(of: place) {
-                places?.remove(at: itemIndex)
+            if let itemIndex = favourites.firstIndex(of: place) {
+                favourites.remove(at: itemIndex)
             }
         } else if let place = item as? APIPlace {
-            if let itemIndex = places?.firstIndex(of: Place.init(place)) {
-                places?.remove(at: itemIndex)
+            if let itemIndex = favourites.firstIndex(of: Place.init(place)) {
+                favourites.remove(at: itemIndex)
             }
         } else  if let place = item as? NSManagedObject {
-            if let itemIndex = places?.firstIndex(of: Place.init(place)) {
-                places?.remove(at: itemIndex)
+            if let itemIndex = favourites.firstIndex(of: Place.init(place)) {
+                favourites.remove(at: itemIndex)
             }
+        }
+    }
+    
+    func place(id: String) -> Place? {
+        return filteredFavourites().filter { $0.id == id }.isEmpty ? nil : filteredFavourites().filter { $0.id == id }[0]
+    }
+    
+    func place(index: NSInteger) -> Place {
+        return filteredFavourites()[index]
+    }
+
+    func numberOfFavourites() -> Int {
+        return filteredFavourites().count
+    }
+    
+    func placeIsFavourite(_ id: String) -> Bool {
+        return !(filteredFavourites().filter { $0.id == id }).isEmpty
+    }
+    
+    // MARK: - Private methods
+    func filteredFavourites() -> [Place] {
+        let filtersManager = FiltersManager.sharedInstance()
+        let selectedFilters = filtersManager.selectedFilters(.favourites).map( { $0.key })
+        if selectedFilters.isEmpty {
+            return favourites
+        } else {
+            var favouritesList: [Place] = []
+            for filter in selectedFilters {
+                favouritesList.append(contentsOf: favourites.filter { $0.types.contains(filter) })
+            }
+            return favouritesList.reduce([], { $0.contains($1) ? $0 : $0 + [$1] })
         }
     }
 }

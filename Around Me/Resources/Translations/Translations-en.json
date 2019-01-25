@@ -16,6 +16,9 @@
                 "denied": "ERROR: REQUEST DENIED",
                 "notFound": "ERROR: REQUEST NOT FOUND",
                 "unknown": "ERROR: UNKNOWN ERROR"
+            },
+            "configuration": {
+                "open": "ERROR OPENING PLIST"
             }
         },
         "hud": {

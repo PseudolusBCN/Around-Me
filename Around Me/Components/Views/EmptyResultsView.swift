@@ -10,6 +10,7 @@ import UIKit
 
 class EmptyResultsView: UIView {
     @IBOutlet var view: UIView!
+    @IBOutlet weak var imageIcon: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - Init

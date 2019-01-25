@@ -20,11 +20,11 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     init() {
         super.init(nibName: "FavouritesListViewController", bundle: nil)
 
-        UINavigationBar.appearance().backgroundColor = UIColor.hexString("#FF8000")
-
         tabBarItem.image = UIImage(named:"IcoFavourites")
         setLocalizedTitles()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "IcoFilter"), style: .plain, target: self, action: #selector(goToFilters))
+
         NotificationCenter.default.addObserver(self, selector: #selector(setLocalizedTitles), name: NSNotification.Name(rawValue: notificationLanguageChanged), object: nil)
     }
     
@@ -36,15 +36,15 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emptyResultsView = EmptyResultsView(frame: favouritesCollectionView.frame)
-        emptyResultsView!.titleLabel.text = "generic.emptyData.favourites".localized
-
         presenter?.setupCollectionView(favouritesCollectionView, viewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if presenter?.itemsForSection(0) == 0 {
-            self.view.addSubview(emptyResultsView!)
+            emptyResultsView = EmptyResultsView(frame: favouritesCollectionView.frame)
+            emptyResultsView!.imageIcon.image = UIImage(named: "IcoFavourites_Empty")
+            emptyResultsView!.titleLabel.text = "generic.emptyData.favourites".localized
+            view.addSubview(emptyResultsView!)
         } else {
             favouritesCollectionView.reloadData()
         }
@@ -60,6 +60,10 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     @objc private func setLocalizedTitles() {
         navigationItem.title = "main.appName".localized
         tabBarItem.title = "main.tabBar.favourites".localized
+    }
+
+    @objc private func goToFilters() {
+        presenter?.gotoFilters()
     }
 }
 

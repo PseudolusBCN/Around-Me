@@ -20,12 +20,13 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     init() {
         super.init(nibName: "PlacesListViewController", bundle: nil)
 
-        UINavigationBar.appearance().backgroundColor = UIColor.hexString("#FF8000")
-
         tabBarItem.image = UIImage(named:"IcoList")
         setLocalizedTitles()
-        
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "IcoFilter"), style: .plain, target: self, action: #selector(goToFilters))
+
         NotificationCenter.default.addObserver(self, selector: #selector(setLocalizedTitles), name: NSNotification.Name(rawValue: notificationLanguageChanged), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(downloadNewData), name: NSNotification.Name(rawValue: notificationFilterChanged), object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,15 +37,15 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        emptyResultsView = EmptyResultsView(frame: placesCollectionView.frame)
-        emptyResultsView!.titleLabel.text = "generic.places.favourites".localized
-
         presenter?.setupCollectionView(placesCollectionView, viewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if presenter?.itemsForSection(0) == 0 {
-            self.view.addSubview(emptyResultsView!)
+            emptyResultsView = EmptyResultsView(frame: placesCollectionView.frame)
+            emptyResultsView!.imageIcon.image = UIImage(named: "IcoList_Empty")
+            emptyResultsView!.titleLabel.text = "generic.emptyData.places".localized
+            view.addSubview(emptyResultsView!)
         } else {
             placesCollectionView.reloadData()
         }
@@ -60,6 +61,14 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     @objc private func setLocalizedTitles() {
         navigationItem.title = "main.appName".localized
         tabBarItem.title = "main.tabBar.list".localized
+    }
+
+    @objc private func downloadNewData() {
+        presenter?.downloadNewData()
+    }
+
+    @objc private func goToFilters() {
+        presenter?.gotoFilters()
     }
 }
 
@@ -84,8 +93,10 @@ extension PlacesListViewController: UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == (presenter?.itemsForSection(indexPath.section))! - 1 {
-            presenter?.downloadData()
+        if PlacesManager.sharedInstance().nextPageToken.count > 0 {
+            if indexPath.row == (presenter?.itemsForSection(indexPath.section))! - 1 {
+                presenter?.downloadData()
+            }
         }
     }
 }

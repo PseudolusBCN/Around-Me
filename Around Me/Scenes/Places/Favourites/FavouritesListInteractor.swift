@@ -22,10 +22,10 @@ class FavouritesListInteractor: InterfaceFavouritesListInteractor {
     
     // MARK: - Public methods
     func numberOfFavourites() -> Int {
-        return favouritesManager.places.count
+        return favouritesManager.numberOfFavourites()
     }
     
     func place(_ index: NSInteger) -> Place {
-        return favouritesManager.places[index]
+        return favouritesManager.place(index: index)
     }
 }

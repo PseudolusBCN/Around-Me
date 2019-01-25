@@ -39,8 +39,8 @@ class MainInteractor: InterfaceMainInteractor {
         HUDManager.sharedInstance().showProgressHUD(title: "generic.hud.downloadingData".localized)
 
         let placesManager = PlacesManager.sharedInstance()
-        let radius = Int(ConfigurationManager().retrieveStringFromPlist("searchRadius"))
-        RemoteDataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, types: "") { (response, error) in
+        let radius = Int(ConfigurationManager().retrieveDataFromPlist("searchRadius") as! String)
+        RemoteDataManager().getPointsListWithToken(placesManager.nextPageToken, radius: radius!, type: "") { (response, error) in
             guard error == nil else {
                 return
             }
