@@ -10,10 +10,11 @@ import UIKit
 import CoreData
 
 class Place: NSObject {
-    var id: String = ""
-    var name: String = ""
-    var icon: String = ""
-    var location: PlaceLocation = PlaceLocation()
+    var id = ""
+    var name = ""
+    var icon = ""
+    var types: [String] = []
+    var location = PlaceLocation()
     
     // MARK: - Init
     override init() {
@@ -21,16 +22,18 @@ class Place: NSObject {
     }
 
     init(_ place: APIPlace) {
-        id = place.id!
-        name = place.name!
-        icon = place.icon!
-        location = PlaceLocation(lat: (place.geometry?.location?.lat)!, lng: (place.geometry?.location?.lng)!)
+        self.id = place.id!
+        self.name = place.name!
+        self.icon = place.icon!
+        self.types = place.types!
+        self.location = PlaceLocation(latitude: (place.geometry?.location?.lat)!, longitude: (place.geometry?.location?.lng)!)
     }
     
     init(_ place: NSManagedObject)  {
-        id = place.value(forKey: "id") as! String
-        name = place.value(forKey: "name") as! String
-        icon = place.value(forKey: "icon") as! String
-        location = PlaceLocation(lat: place.value(forKey: "latitude") as! Double, lng: place.value(forKey: "longitude") as! Double)
+        self.id = place.value(forKey: "id") as! String
+        self.name = place.value(forKey: "name") as! String
+        self.icon = place.value(forKey: "icon") as! String
+        self.types = place.value(forKey: "types") as! [String]
+        self.location = PlaceLocation(latitude: place.value(forKey: "latitude") as! Double, longitude: place.value(forKey: "longitude") as! Double)
     }
 }

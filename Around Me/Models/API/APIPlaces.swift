@@ -13,7 +13,7 @@ class APIPlaces: Mappable {
     var htmlAttributions: [Any?]?
     var nextPageToken: String?
     var results: [APIPlace]?
-    var status: requestStatus?
+    var status: RequestStatus?
     
     // MARK: - Init
     required init?(map: Map) {

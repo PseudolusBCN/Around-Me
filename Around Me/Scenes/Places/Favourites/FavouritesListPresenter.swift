@@ -48,6 +48,10 @@ class FavouritesListPresenter: InterfaceFavouritesListPresenter {
         return (interactor?.numberOfFavourites())!
     }
 
+    func gotoFilters() {
+        router?.gotoFiltersScene()
+    }
+
     // MARK: - Private methods
     private func collectionViewReuseIdentifier() -> String {
         return "FavouriteCollectionCell"

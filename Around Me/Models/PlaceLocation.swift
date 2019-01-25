@@ -16,12 +16,12 @@ class PlaceLocation: NSObject {
     override init() {
         super.init()
         
-        latitude = 0.0
-        longitude = 0.0
+        self.latitude = 0.0
+        self.longitude = 0.0
     }
 
-    init(lat: Double, lng: Double) {
-        latitude = lat
-        longitude = lng
+    init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }

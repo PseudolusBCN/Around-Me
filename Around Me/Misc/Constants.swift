@@ -12,6 +12,8 @@ public let notificationLocationAuthorized = "notificationLocationAuthorized"
 public let notificationLocationUnauthorized = "notificationLocationUnauthorized"
 public let notificationLocationUpdated = "notificationLocationUpdated"
 
+public let notificationFilterChanged = "notificationFilterChanged"
+
 public let notificationLanguageChanged = "notificationLanguageChanged"
 
 public let googleAPIKey = "AIzaSyCxuVJdnxwfiFIHURJN8rlgdKgiVR6iUPs"
