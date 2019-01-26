@@ -43,6 +43,8 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         filtersTitleLabel.text = "generic.filterSelected".localized
         filtersLabel.text = FiltersManager.sharedInstance().selectedFiltersString(.list)
 
@@ -58,6 +60,8 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
         if presenter?.itemsForSection(placesCollectionView, section: 0) == 0 {
             emptyResultsView!.removeFromSuperview()
         }
