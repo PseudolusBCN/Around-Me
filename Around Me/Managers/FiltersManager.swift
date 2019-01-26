@@ -56,6 +56,19 @@ class FiltersManager: NSObject {
         return filters(type).filter( { $0.selected })
     }
 
+    func selectedFiltersString(_ type: FilterType) -> String {
+        if filters(type).filter( { $0.selected }).isEmpty {
+            return "generic.none".localized
+        } else {
+            let filtersList = orderedFilters(type).filter{ $0.selected }
+            var filters = ""
+            for item in 0 ..< filtersList.count {
+                filters = filters + filtersList[item].localizedName + ((item == (filtersList.count - 1)) ? "" : ", ")
+            }
+            return filters
+        }
+    }
+    
     func selectedFilter(_ type: FilterType) -> String {
         return (selectedFilterIndex != nil) ? filters(type)[selectedFilterIndex!].key : ""
     }

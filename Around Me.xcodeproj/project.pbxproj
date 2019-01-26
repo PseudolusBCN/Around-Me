@@ -88,6 +88,7 @@
 		3DA14A0621CFA6A20099EAC7 /* EmptyResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA14A0421CFA6A20099EAC7 /* EmptyResultsView.xib */; };
 		3DB0D86F21D1775500AA7F7D /* SettingSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB0D86E21D1775500AA7F7D /* SettingSectionView.xib */; };
 		3DDD02FA21EBB24F009019E5 /* BaseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD02F921EBB24E009019E5 /* BaseBuilder.swift */; };
+		3DED85B821FBC7EF00C4E663 /* PlacesLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED85B721FBC7EF00C4E663 /* PlacesLayout.swift */; };
 		3DF1A62421AFEB2700A1E8A5 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DF1A62321AFEB2700A1E8A5 /* Configuration.plist */; };
 		3DF1A62821AFECED00A1E8A5 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A62721AFECED00A1E8A5 /* Place.swift */; };
 		3DF1A62A21AFEDFF00A1E8A5 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1A62921AFEDFF00A1E8A5 /* ConfigurationManager.swift */; };
@@ -206,6 +207,7 @@
 		3DA14A0421CFA6A20099EAC7 /* EmptyResultsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyResultsView.xib; sourceTree = "<group>"; };
 		3DB0D86E21D1775500AA7F7D /* SettingSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSectionView.xib; sourceTree = "<group>"; };
 		3DDD02F921EBB24E009019E5 /* BaseBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBuilder.swift; sourceTree = "<group>"; };
+		3DED85B721FBC7EF00C4E663 /* PlacesLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesLayout.swift; sourceTree = "<group>"; };
 		3DF1A62321AFEB2700A1E8A5 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		3DF1A62721AFECED00A1E8A5 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		3DF1A62921AFEDFF00A1E8A5 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 		3D10FA8021CFF1F300227126 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3DED85B421FBC77F00C4E663 /* Layouts */,
 				3D10FA8221CFF20400227126 /* Views */,
 				3D10FA8121CFF1FF00227126 /* Cells */,
 			);
@@ -577,6 +580,14 @@
 				3DDD02F921EBB24E009019E5 /* BaseBuilder.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		3DED85B421FBC77F00C4E663 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				3DED85B721FBC7EF00C4E663 /* PlacesLayout.swift */,
+			);
+			path = Layouts;
 			sourceTree = "<group>";
 		};
 		3DF1A62521AFEC3000A1E8A5 /* Models */ = {
@@ -876,6 +887,7 @@
 				3D079DA321BD737E00330B2B /* SettingsPresenter.swift in Sources */,
 				3D10FA8721D00B1300227126 /* SettingTableViewCell.swift in Sources */,
 				3D409DE121B99AF60001BBF0 /* TabBarViewController.swift in Sources */,
+				3DED85B821FBC7EF00C4E663 /* PlacesLayout.swift in Sources */,
 				3D2FD00C21E902E400D18BF5 /* FilterTableViewCell.swift in Sources */,
 				3DF1A62C21AFEE1300A1E8A5 /* RemoteDataManager.swift in Sources */,
 				3DF3C12421D7EEFE006534D6 /* UIColor.swift in Sources */,

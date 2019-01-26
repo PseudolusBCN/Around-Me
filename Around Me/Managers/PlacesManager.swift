@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize
 
 class PlacesManager: NSObject {
     private static var instance: PlacesManager?
@@ -58,5 +59,17 @@ class PlacesManager: NSObject {
     
     func numerOfPlaces() -> Int {
         return places.count
+    }
+
+    func placeTypes(_ place: Place, filterType: FilterType) -> String {
+        var typesList: String = ""
+        for item in 0 ..< place.types.count {
+            let placeType = FiltersManager.sharedInstance().filters(filterType).filter({ $0.key == place.types[item] })
+            if !placeType.isEmpty {
+                let localizedType = placeType[0].localizedName
+                typesList = typesList + localizedType + ", "
+            }
+        }
+        return (typesList.count > 0) ? String(typesList.dropLast(2)) : typesList
     }
 }

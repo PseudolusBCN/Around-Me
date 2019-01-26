@@ -37,3 +37,13 @@ All assets used in the app are downloaded from https://material.io/tools/icons
 * 1.0.3
 
     Filters
+
+* 1.0.4
+
+    New layout for Places List view
+    
+    Selected filter shown in Places List view
+    
+    Selected filters shown in Favourites view
+    
+    Place types shown in places and favourites cell

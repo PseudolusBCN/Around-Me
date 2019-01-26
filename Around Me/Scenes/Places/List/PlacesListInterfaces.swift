@@ -18,8 +18,9 @@ protocol InterfacePlacesListPresenter: class {
     var view: InterfacePlacesListViewController? { get set }
     
     func setupCollectionView(_ collectionView: UICollectionView, viewController: UIViewController)
-    func placeCollectionViewCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> PlaceCollectionViewCell
-    func itemsForSection(_ section: Int) -> Int
+    func clearCollectionViewLayout(_ collectionView: UICollectionView)
+    func collectionViewCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> Any
+    func itemsForSection(_ collectionView: UICollectionView, section: Int) -> Int
 
     func addFavourite(_ placeId: String)
     func removeFavourite(_ placeId: String)

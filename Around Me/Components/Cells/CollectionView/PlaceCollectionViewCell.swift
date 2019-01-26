@@ -15,6 +15,7 @@ protocol PlaceCollectionViewCellDelegate {
 class PlaceCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var placeIcon: UIImageView!
     @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var placeTypes: UILabel!
     @IBOutlet weak var favouriteImage: UIImageView!
     @IBOutlet weak var favouriteButton: UIButton!
     
