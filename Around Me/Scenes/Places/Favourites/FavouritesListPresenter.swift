@@ -25,10 +25,7 @@ class FavouritesListPresenter: InterfaceFavouritesListPresenter {
     func setupCollectionView(_ collectionView: UICollectionView, viewController: UIViewController) {
         collectionView.register(UINib(nibName: "FavouriteCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: collectionViewReuseIdentifier())
         
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.scrollDirection = .vertical
-        collectionView.collectionViewLayout = collectionViewLayout
-        
+        collectionView.collectionViewLayout = PlacesLayout()
         collectionView.dataSource = viewController as? UICollectionViewDataSource
         collectionView.delegate = viewController as? UICollectionViewDelegate
     }

@@ -93,20 +93,6 @@ extension FavouritesListViewController: UICollectionViewDataSource, UICollection
     }
 }
 
-extension FavouritesListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return CGSize(width: (collectionView.frame.size.width - 10) / 2, height: 120)
-        } else {
-            return CGSize(width: (collectionView.frame.size.width - 10), height: 120)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.init(top: 2.5, left: 5, bottom: 2.5, right: 5)
-    }
-}
-
 extension FavouritesListViewController: InterfaceFavouritesListPresenterOutput {
     func updateData() {
         favouritesCollectionView.reloadData()
