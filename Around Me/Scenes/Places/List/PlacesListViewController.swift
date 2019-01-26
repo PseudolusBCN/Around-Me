@@ -10,8 +10,10 @@ import UIKit
 import Localize
 
 class PlacesListViewController: UIViewController, InterfacePlacesListViewController {
+    @IBOutlet weak var filtersTitleLabel: UILabel!
+    @IBOutlet weak var filtersLabel: UILabel!
     @IBOutlet weak var placesCollectionView: UICollectionView!
-    
+
     var presenter: InterfacePlacesListPresenter?
 
     private var emptyResultsView: EmptyResultsView?
@@ -41,7 +43,11 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if presenter?.itemsForSection(0) == 0 {
+        filtersTitleLabel.text = "generic.filterSelected".localized
+        filtersLabel.text = FiltersManager.sharedInstance().selectedFiltersString(.list)
+
+        presenter?.clearCollectionViewLayout(placesCollectionView)
+        if presenter?.itemsForSection(placesCollectionView, section: 0) == 0 {
             emptyResultsView = EmptyResultsView(frame: placesCollectionView.frame)
             emptyResultsView!.imageIcon.image = UIImage(named: "IcoList_Empty")
             emptyResultsView!.titleLabel.text = "generic.emptyData.places".localized
@@ -52,7 +58,7 @@ class PlacesListViewController: UIViewController, InterfacePlacesListViewControl
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if presenter?.itemsForSection(0) == 0 {
+        if presenter?.itemsForSection(placesCollectionView, section: 0) == 0 {
             emptyResultsView!.removeFromSuperview()
         }
     }
@@ -78,13 +84,15 @@ extension PlacesListViewController: UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (presenter?.itemsForSection(section))!
+        return (presenter?.itemsForSection(collectionView, section: section))!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = presenter?.placeCollectionViewCell(collectionView, indexPath: indexPath) {
-            cell.delegate = self
-            return cell
+        if let cell = presenter?.collectionViewCell(collectionView, indexPath: indexPath) {
+            if cell is PlaceCollectionViewCell {
+                (cell as! PlaceCollectionViewCell).delegate = self
+            }
+            return cell as! UICollectionViewCell
         }
         return UICollectionViewCell()
     }
@@ -94,24 +102,10 @@ extension PlacesListViewController: UICollectionViewDataSource, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if PlacesManager.sharedInstance().nextPageToken.count > 0 {
-            if indexPath.row == (presenter?.itemsForSection(indexPath.section))! - 1 {
+            if indexPath.row == (presenter?.itemsForSection(placesCollectionView, section: indexPath.section))! - 1 {
                 presenter?.downloadData()
             }
         }
-    }
-}
-
-extension PlacesListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return CGSize(width: (collectionView.frame.size.width - 10) / 2, height: 120)
-        } else {
-            return CGSize(width: (collectionView.frame.size.width - 10), height: 120)
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.init(top: 2.5, left: 5, bottom: 2.5, right: 5)
     }
 }
 

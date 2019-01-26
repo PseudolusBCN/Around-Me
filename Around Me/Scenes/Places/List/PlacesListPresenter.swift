@@ -23,37 +23,41 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
 
     // MARK: - Public methods
     func setupCollectionView(_ collectionView: UICollectionView, viewController: UIViewController) {
-        collectionView.register(UINib(nibName: "PlaceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: collectionViewReuseIdentifier())
-        
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.scrollDirection = .vertical
-        collectionView.collectionViewLayout = collectionViewLayout
+        let nib = UINib(nibName: "PlaceCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: placeCellIdentifier())
 
+        collectionView.collectionViewLayout = PlacesLayout()
         collectionView.dataSource = viewController as? UICollectionViewDataSource
         collectionView.delegate = viewController as? UICollectionViewDelegate
 
         addRefreshControl(collectionView)
     }
-    
-    func placeCollectionViewCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> PlaceCollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewReuseIdentifier(), for: indexPath) as! PlaceCollectionViewCell
 
-        let place: Place = (interactor?.place(indexPath.row))!
-        cell.placeId = place.id
-        cell.placeIcon.af_setImage(withURL: URL(string: place.icon)!)
-        cell.placeLabel.text = place.name
-        if (interactor?.placeIsFavourite(place))! {
-            cell.favouriteButton.isSelected = true
-            cell.favouriteImage.image = UIImage(named: "BtnFavourite_On")
-        } else {
-            cell.favouriteButton.isSelected = false
-            cell.favouriteImage.image = UIImage(named: "BtnFavourite_Off")
-        }
-
-        return cell
+    func clearCollectionViewLayout(_ collectionView: UICollectionView) {
+        (collectionView.collectionViewLayout as! PlacesLayout).clearCache()
     }
 
-    func itemsForSection(_ section: Int) -> Int {
+    func collectionViewCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> Any {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: placeCellIdentifier(), for: indexPath) as? PlaceCollectionViewCell {
+            let place: Place = (interactor?.place(indexPath.row))!
+            cell.placeId = place.id
+            cell.placeIcon.af_setImage(withURL: URL(string: place.icon)!)
+            cell.placeLabel.text = place.name
+            if (interactor?.placeIsFavourite(place))! {
+                cell.favouriteButton.isSelected = true
+                cell.favouriteImage.image = UIImage(named: "BtnFavourite_On")
+            } else {
+                cell.favouriteButton.isSelected = false
+                cell.favouriteImage.image = UIImage(named: "BtnFavourite_Off")
+            }
+            
+            return cell
+        }
+        
+        return UITableViewCell()
+    }
+
+    func itemsForSection(_ collectionView: UICollectionView, section: Int) -> Int {
         return (interactor?.numberOfPlaces())!
     }
 
@@ -81,10 +85,10 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
     }
 
     // MARK: - Private methods
-    private func collectionViewReuseIdentifier() -> String {
+    private func placeCellIdentifier() -> String {
         return "PlaceCollectionCell"
     }
-    
+
     private func addRefreshControl(_ collectionView: UICollectionView) {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)

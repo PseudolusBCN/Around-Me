@@ -47,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupNavigationBar() {
         UINavigationBar.appearance().backgroundColor = UIColor.hexString("#FF8000")
         UINavigationBar.appearance().tintColor = UIColor.hexString("#000000")
-        //UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 20)!]
     }
     
