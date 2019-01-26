@@ -10,6 +10,8 @@ import UIKit
 import Localize
 
 class FavouritesListViewController: UIViewController, InterfaceFavouritesListViewController {
+    @IBOutlet weak var filtersTitleLabel: UILabel!
+    @IBOutlet weak var filtersLabel: UILabel!
     @IBOutlet weak var favouritesCollectionView: UICollectionView!
 
     var presenter: InterfaceFavouritesListPresenter?
@@ -40,6 +42,11 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        filtersTitleLabel.text = "generic.filtersSelected".localized
+        filtersLabel.text = FiltersManager.sharedInstance().selectedFiltersString(.favourites)
+
         if presenter?.itemsForSection(0) == 0 {
             emptyResultsView = EmptyResultsView(frame: favouritesCollectionView.frame)
             emptyResultsView!.imageIcon.image = UIImage(named: "IcoFavourites_Empty")
@@ -51,6 +58,8 @@ class FavouritesListViewController: UIViewController, InterfaceFavouritesListVie
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
         if presenter?.itemsForSection(0) == 0 {
             emptyResultsView!.removeFromSuperview()
         }

@@ -21,11 +21,14 @@
                 "open": "ERROR OPENING PLIST"
             }
         },
+        "filterSelected": "Filtre seleccionat:",
+        "filtersSelected": "Filtres seleccionats:",
         "hud": {
             "updatingLocation": "Actualitzant ubicació",
             "downloadingData": "Descarregant dades",
             "retrievingFavourites": "Recuperant favorits"
-        }
+        },
+        "none": "Cap"
     },
     "main": {
         "appName": "Around Me",

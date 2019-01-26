@@ -21,11 +21,14 @@
                 "open": "ERROR OPENING PLIST"
             }
         },
+        "filterSelected": "Selected filter:",
+        "filtersSelected": "Selected filters:",
         "hud": {
             "updatingLocation": "Updating location",
             "downloadingData": "Downloading data",
             "retrievingFavourites": "Retrieving favourites"
-        }
+        },
+        "none": "None"
     },
     "main": {
         "appName": "Around Me",
