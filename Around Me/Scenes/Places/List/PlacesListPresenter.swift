@@ -43,6 +43,7 @@ class PlacesListPresenter: InterfacePlacesListPresenter {
             cell.placeId = place.id
             cell.placeIcon.af_setImage(withURL: URL(string: place.icon)!)
             cell.placeLabel.text = place.name
+            cell.placeTypes.text = PlacesManager.sharedInstance().placeTypes(place, filterType: .list)
             if (interactor?.placeIsFavourite(place))! {
                 cell.favouriteButton.isSelected = true
                 cell.favouriteImage.image = UIImage(named: "BtnFavourite_On")

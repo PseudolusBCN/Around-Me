@@ -29,17 +29,26 @@
                                     <constraint firstAttribute="height" constant="20" id="c2A-Io-IuH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEk-ph-tNk">
-                                <rect key="frame" x="40" y="10" width="270" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEk-ph-tNk">
+                                <rect key="frame" x="40" y="10" width="270" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Types" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLz-OL-xcp">
+                                <rect key="frame" x="10" y="41" width="300" height="14.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QLz-OL-xcp" firstAttribute="leading" secondItem="jE8-NV-ggY" secondAttribute="leading" constant="10" id="0Nf-fO-FPe"/>
                             <constraint firstItem="pEk-ph-tNk" firstAttribute="leading" secondItem="IZ0-w7-SpU" secondAttribute="trailing" constant="10" id="0wA-AZ-odh"/>
+                            <constraint firstAttribute="trailing" secondItem="QLz-OL-xcp" secondAttribute="trailing" constant="10" id="BKo-OK-xqo"/>
                             <constraint firstItem="IZ0-w7-SpU" firstAttribute="leading" secondItem="jE8-NV-ggY" secondAttribute="leading" constant="10" id="P1t-Cj-8CW"/>
+                            <constraint firstItem="QLz-OL-xcp" firstAttribute="top" secondItem="pEk-ph-tNk" secondAttribute="bottom" constant="10" id="c6s-7V-XZI"/>
                             <constraint firstItem="IZ0-w7-SpU" firstAttribute="top" secondItem="jE8-NV-ggY" secondAttribute="top" constant="10" id="mis-AL-Bvs"/>
                             <constraint firstItem="pEk-ph-tNk" firstAttribute="top" secondItem="IZ0-w7-SpU" secondAttribute="top" id="qBb-Mx-IGU"/>
                             <constraint firstAttribute="trailing" secondItem="pEk-ph-tNk" secondAttribute="trailing" constant="10" id="xoA-r1-U3k"/>
@@ -58,6 +67,7 @@
             <connections>
                 <outlet property="placeIcon" destination="IZ0-w7-SpU" id="bqF-5m-qQ7"/>
                 <outlet property="placeLabel" destination="pEk-ph-tNk" id="79W-kV-t8P"/>
+                <outlet property="placeTypes" destination="QLz-OL-xcp" id="Kfw-hL-K6W"/>
             </connections>
         </collectionViewCell>
     </objects>

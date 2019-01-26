@@ -43,4 +43,5 @@ All assets used in the app are downloaded from https://material.io/tools/icons
     New layout for Places List view
     Selected filter shown in Places List view
     Selected filters shown in Favourites view
+    Place types shown in cell
 
