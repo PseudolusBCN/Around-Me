@@ -49,7 +49,7 @@ class PlacesLayout: UICollectionViewFlowLayout {
         }
         
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
-        let cellHeight: CGFloat = 120.0
+        let cellHeight: CGFloat = 130.0
         
         var xOffset = [CGFloat]()
         for column in 0 ..< numberOfColumns {

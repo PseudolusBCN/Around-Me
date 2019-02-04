@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RateView" customModule="Around_Me" customModuleProvider="target">
+            <connections>
+                <outlet property="imageIcon1" destination="qh1-xo-LyL" id="WjM-gk-FaN"/>
+                <outlet property="imageIcon2" destination="2ze-Kj-ZAK" id="vOD-X7-uE1"/>
+                <outlet property="imageIcon3" destination="fzN-qY-3rU" id="UH0-KF-Us4"/>
+                <outlet property="imageIcon4" destination="477-T2-B7d" id="QAX-YV-LYA"/>
+                <outlet property="imageIcon5" destination="yh8-NL-wTE" id="Q08-uc-TQm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Nb-Sf-kFf">
+                    <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IcoRating_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="qh1-xo-LyL">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="qh1-xo-LyL" secondAttribute="height" multiplier="1:1" id="76w-DF-QDg"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IcoRating_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="2ze-Kj-ZAK">
+                            <rect key="frame" x="30" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="2ze-Kj-ZAK" secondAttribute="height" multiplier="1:1" id="dl2-yJ-hE6"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IcoRating_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="fzN-qY-3rU">
+                            <rect key="frame" x="60" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="fzN-qY-3rU" secondAttribute="height" multiplier="1:1" id="M1Q-ox-XRh"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IcoRating_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="477-T2-B7d">
+                            <rect key="frame" x="90" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="477-T2-B7d" secondAttribute="height" multiplier="1:1" id="vcW-vZ-9GE"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IcoRating_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-NL-wTE">
+                            <rect key="frame" x="120" y="0.0" width="30" height="30"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="yh8-NL-wTE" secondAttribute="bottom" id="0Wd-YN-SHE"/>
+                        <constraint firstAttribute="width" secondItem="3Nb-Sf-kFf" secondAttribute="height" multiplier="5:1" id="9eE-nO-LQr"/>
+                        <constraint firstAttribute="bottom" secondItem="fzN-qY-3rU" secondAttribute="bottom" id="Id4-2x-0Tl"/>
+                        <constraint firstItem="yh8-NL-wTE" firstAttribute="top" secondItem="3Nb-Sf-kFf" secondAttribute="top" id="N4u-tT-0mZ"/>
+                        <constraint firstAttribute="bottom" secondItem="477-T2-B7d" secondAttribute="bottom" id="V9u-1e-PJr"/>
+                        <constraint firstItem="fzN-qY-3rU" firstAttribute="leading" secondItem="2ze-Kj-ZAK" secondAttribute="trailing" id="XzR-8M-XcJ"/>
+                        <constraint firstItem="qh1-xo-LyL" firstAttribute="top" secondItem="3Nb-Sf-kFf" secondAttribute="top" id="duy-rO-43d"/>
+                        <constraint firstItem="fzN-qY-3rU" firstAttribute="top" secondItem="3Nb-Sf-kFf" secondAttribute="top" id="fHD-gV-wms"/>
+                        <constraint firstAttribute="trailing" secondItem="yh8-NL-wTE" secondAttribute="trailing" id="iVX-kV-G9d"/>
+                        <constraint firstItem="477-T2-B7d" firstAttribute="top" secondItem="3Nb-Sf-kFf" secondAttribute="top" id="mdZ-XG-Utx"/>
+                        <constraint firstAttribute="bottom" secondItem="qh1-xo-LyL" secondAttribute="bottom" id="otJ-26-RPi"/>
+                        <constraint firstItem="qh1-xo-LyL" firstAttribute="leading" secondItem="3Nb-Sf-kFf" secondAttribute="leading" id="rA5-mb-cCe"/>
+                        <constraint firstItem="2ze-Kj-ZAK" firstAttribute="leading" secondItem="qh1-xo-LyL" secondAttribute="trailing" id="tof-gf-L7f"/>
+                        <constraint firstItem="yh8-NL-wTE" firstAttribute="leading" secondItem="477-T2-B7d" secondAttribute="trailing" id="uT1-dQ-1eN"/>
+                        <constraint firstItem="2ze-Kj-ZAK" firstAttribute="top" secondItem="3Nb-Sf-kFf" secondAttribute="top" id="uv0-DT-yEv"/>
+                        <constraint firstItem="477-T2-B7d" firstAttribute="leading" secondItem="fzN-qY-3rU" secondAttribute="trailing" id="uzA-0d-7QW"/>
+                        <constraint firstAttribute="bottom" secondItem="2ze-Kj-ZAK" secondAttribute="bottom" id="xxL-UP-HcW"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3Nb-Sf-kFf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3US-9N-vcN"/>
+                <constraint firstItem="3Nb-Sf-kFf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Czy-fL-Yai"/>
+                <constraint firstAttribute="bottom" secondItem="3Nb-Sf-kFf" secondAttribute="bottom" id="IV8-1C-Qfx"/>
+                <constraint firstAttribute="trailing" secondItem="3Nb-Sf-kFf" secondAttribute="trailing" id="zWh-Eu-YAE"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="IcoRating_Empty" width="18" height="18"/>
+    </resources>
+</document>
