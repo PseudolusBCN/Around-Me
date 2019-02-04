@@ -87,6 +87,8 @@
 		3DA14A0521CFA6A20099EAC7 /* EmptyResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA14A0321CFA6A20099EAC7 /* EmptyResultsView.swift */; };
 		3DA14A0621CFA6A20099EAC7 /* EmptyResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA14A0421CFA6A20099EAC7 /* EmptyResultsView.xib */; };
 		3DB0D86F21D1775500AA7F7D /* SettingSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB0D86E21D1775500AA7F7D /* SettingSectionView.xib */; };
+		3DC790942208E54A0079CFDC /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC790922208E5490079CFDC /* RatingView.swift */; };
+		3DC790952208E54A0079CFDC /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DC790932208E5490079CFDC /* RatingView.xib */; };
 		3DDD02FA21EBB24F009019E5 /* BaseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD02F921EBB24E009019E5 /* BaseBuilder.swift */; };
 		3DED85B821FBC7EF00C4E663 /* PlacesLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED85B721FBC7EF00C4E663 /* PlacesLayout.swift */; };
 		3DF1A62421AFEB2700A1E8A5 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DF1A62321AFEB2700A1E8A5 /* Configuration.plist */; };
@@ -206,6 +208,8 @@
 		3DA14A0321CFA6A20099EAC7 /* EmptyResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResultsView.swift; sourceTree = "<group>"; };
 		3DA14A0421CFA6A20099EAC7 /* EmptyResultsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyResultsView.xib; sourceTree = "<group>"; };
 		3DB0D86E21D1775500AA7F7D /* SettingSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSectionView.xib; sourceTree = "<group>"; };
+		3DC790922208E5490079CFDC /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		3DC790932208E5490079CFDC /* RatingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 		3DDD02F921EBB24E009019E5 /* BaseBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBuilder.swift; sourceTree = "<group>"; };
 		3DED85B721FBC7EF00C4E663 /* PlacesLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesLayout.swift; sourceTree = "<group>"; };
 		3DF1A62321AFEB2700A1E8A5 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 			children = (
 				3DA14A0321CFA6A20099EAC7 /* EmptyResultsView.swift */,
 				3DA14A0421CFA6A20099EAC7 /* EmptyResultsView.xib */,
+				3DC790922208E5490079CFDC /* RatingView.swift */,
+				3DC790932208E5490079CFDC /* RatingView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -735,6 +741,7 @@
 				3D1681AE21BC00FE007ABC72 /* Assets.xcassets in Resources */,
 				3D10FA8821D00B1300227126 /* SettingTableViewCell.xib in Resources */,
 				3D409DFC21B9A9ED0001BBF0 /* Translations-en.json in Resources */,
+				3DC790952208E54A0079CFDC /* RatingView.xib in Resources */,
 				3D409DF821B99CCD0001BBF0 /* PlaceDetailViewController.xib in Resources */,
 				3D2FEC4721CE8D690088B42C /* FavouriteCollectionViewCell.xib in Resources */,
 				3D409DE921B99B730001BBF0 /* SettingsViewController.xib in Resources */,
@@ -880,6 +887,7 @@
 				3D94207821AEF13C00569238 /* Around_Me.xcdatamodeld in Sources */,
 				3D5BA32B21B9334A00A1D985 /* APIPlaceLocation.swift in Sources */,
 				3D079D9121BD6DAD00330B2B /* PlacesListPresenter.swift in Sources */,
+				3DC790942208E54A0079CFDC /* RatingView.swift in Sources */,
 				3D1681C521BC45B8007ABC72 /* PlaceDetailBuilder.swift in Sources */,
 				3D5BA33121B9337600A1D985 /* APIPlacePlusCode.swift in Sources */,
 				3D5BA32721B9332700A1D985 /* APIPlaceGeometry.swift in Sources */,

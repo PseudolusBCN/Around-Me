@@ -47,3 +47,8 @@ All assets used in the app are downloaded from https://material.io/tools/icons
     Selected filters shown in Favourites view
     
     Place types shown in places and favourites cell
+
+* 1.0.6
+
+    Added rating view in Places and Favourites cell
+

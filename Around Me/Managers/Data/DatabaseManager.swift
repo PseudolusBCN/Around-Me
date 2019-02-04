@@ -28,6 +28,7 @@ class DatabaseManager: NSObject {
         favourite.setValue(place.name, forKeyPath: "name")
         favourite.setValue(place.types, forKeyPath: "types")
         favourite.setValue(place.icon, forKeyPath: "icon")
+        favourite.setValue(place.rating, forKeyPath: "rating")
         favourite.setValue(place.location.latitude, forKeyPath: "latitude")
         favourite.setValue(place.location.longitude, forKeyPath: "longitude")
 
