@@ -36,6 +36,7 @@ class Place: NSObject {
         self.name = place.value(forKey: "name") as! String
         self.icon = place.value(forKey: "icon") as! String
         self.icon = place.value(forKey: "icon") as! String
+        self.rating = place.value(forKey: "rating") as! Double
         self.types = place.value(forKey: "types") as! [String]
         self.location = PlaceLocation(latitude: place.value(forKey: "latitude") as! Double, longitude: place.value(forKey: "longitude") as! Double)
     }

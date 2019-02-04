@@ -12,6 +12,7 @@ class FavouriteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var placeIcon: UIImageView!
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var placeTypes: UILabel!
+    @IBOutlet weak var ratingView: RatingView!
 
     var placeId: String!
     

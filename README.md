@@ -50,4 +50,5 @@ All assets used in the app are downloaded from https://material.io/tools/icons
 
 * 1.0.6
 
-    Added rating view in places cell
+    Added rating view in Places and Favourites cell
+

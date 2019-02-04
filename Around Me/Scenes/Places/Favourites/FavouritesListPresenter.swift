@@ -38,6 +38,7 @@ class FavouritesListPresenter: InterfaceFavouritesListPresenter {
         cell.placeIcon.af_setImage(withURL: URL(string: place.icon)!)
         cell.placeLabel.text = place.name
         cell.placeTypes.text = PlacesManager.sharedInstance().placeTypes(place, filterType: .favourites)
+        cell.ratingView.setRating(place.rating)
 
         return cell
     }
